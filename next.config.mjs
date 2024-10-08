@@ -10,6 +10,35 @@ const nextConfig = {
       '/articles/*': ['./src/app/articles/**/*.mdx'],
     },
   },
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/', // Redirige vers la page d'accueil
+        permanent: false, // Indique que la redirection est temporaire
+      },
+      {
+        source: '/articles',
+        destination: '/', // Redirige vers la page d'accueil
+        permanent: false,
+      },
+      {
+        source: '/projects',
+        destination: '/', // Redirige vers la page d'accueil
+        permanent: false,
+      },
+      {
+        source: '/speaking',
+        destination: '/', // Redirige vers la page d'accueil
+        permanent: false,
+      },
+      {
+        source: '/use',
+        destination: '/', // Redirige vers la page d'accueil
+        permanent: false,
+      },
+    ]
+  },
 }
 
 const withMDX = nextMDX({

@@ -5,12 +5,12 @@ import '@/styles/tailwind.css'
 
 export const metadata = {
   title: {
-    template: '%s - Spencer Sharp',
+    // template: '%s - Spencer Sharp',
     default:
-      'Spencer Sharp - Software designer, founder, and amateur astronaut',
+      'Youness Bennaj - Front-end developer, freelancer, inspired by cultural discovery and the world’s diversity.',
   },
   description:
-    'I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.',
+    ' I’m Youness, a front-end developer with over 5 years of experience. I help companies build user-friendly and feature-rich web applications using React, TypeScript, and modern technologies. I split my year between Tokyo, Bangkok, and Kuala Lumpur to draw inspiration from these vibrant cities.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,

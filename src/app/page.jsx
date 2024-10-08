@@ -5,16 +5,9 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  XIcon,
-} from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import logoLeeto from '@/images/logos/leeto.svg'
+import logoYuso from '@/images/logos/yuso.svg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -174,35 +167,18 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
+      company: 'Leeto',
+      title: 'Front-End Engineer',
+      logo: logoLeeto,
+      start: 'January 2021',
+      end: 'August 2024',
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
-    },
-    {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'Yuso Fleet',
+      title: 'Front-End Engineer',
+      logo: logoYuso,
+      start: 'October 2016',
+      end: 'September 2018',
     },
   ]
 
@@ -217,7 +193,14 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
+
+      <Button
+        href="/resume.pdf"
+        locale={false}
+        target="_blank"
+        variant="secondary"
+        className="group mt-6 w-full"
+      >
         Download CV
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
@@ -260,37 +243,36 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software designer, founder, and amateur astronaut.
+            Front-end developer, freelancer, inspired by cultural discovery and
+            the world’s diversity.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I’m Youness, a front-end developer with over 5 years of experience.
+            I help companies build user-friendly and feature-rich web
+            applications using React, TypeScript, and modern technologies. I
+            split my year between Tokyo, Bangkok, and Kuala Lumpur to draw
+            inspiration from these vibrant cities.
           </p>
           <div className="mt-6 flex gap-6">
-            <SocialLink href="#" aria-label="Follow on X" icon={XIcon} />
             <SocialLink
-              href="#"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="#"
+              href="https://github.com/younessbennaj"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
+              target="_blank"
             />
             <SocialLink
-              href="#"
+              href="https://www.linkedin.com/in/youness-bennaj/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
+              target="_blank"
             />
           </div>
         </div>
       </Container>
       <Photos />
       <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+        <Resume />
+        {/* <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
@@ -300,7 +282,7 @@ export default async function Home() {
             <Newsletter />
             <Resume />
           </div>
-        </div>
+        </div> */}
       </Container>
     </>
   )
