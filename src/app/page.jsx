@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { Briefcase, Book, Settings } from 'react-feather'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import logoLeeto from '@/images/logos/leeto.svg'
+import epitechLogo from '@/images/logos/epitech.svg'
 import logoYuso from '@/images/logos/yuso.svg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
@@ -182,17 +184,59 @@ function Resume() {
     },
   ]
 
+  let skills = [
+    'React',
+    'TypeScript',
+    'Next.js',
+    'Tailwind CSS',
+    'TanStack Query',
+    'Vite',
+    'Storybook',
+    'Jest',
+    'React Testing Library',
+    'Cypress',
+  ]
+
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
+      <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <Briefcase className="h-6 w-6 flex-none text-zinc-500" />
         <span className="ml-3">Work</span>
       </h2>
-      <ol className="mt-6 space-y-4">
+      <ol className="mb-6 mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
+      <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <Book className="h-6 w-6 flex-none text-zinc-500" />
+        <span className="ml-3">Education</span>
+      </h2>
+      <ol className="mb-6 mt-6 space-y-4">
+        <Role
+          role={{
+            company: 'Epitech',
+            title: 'Master Degree, Computer Science',
+            logo: epitechLogo,
+            start: '2020',
+            end: '2022',
+          }}
+        />
+      </ol>
+      <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <Settings className="h-6 w-6 flex-none text-zinc-500" />
+        <span className="ml-3">Skills</span>
+      </h2>
+      <div className="mt-6 flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <div
+            key={skill}
+            class="focus:ring-ring text-primary-foreground hover:bg-primary/80 dark:bg-primary inline-flex items-center rounded-md border border-transparent bg-zinc-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+          >
+            {skill}
+          </div>
+        ))}
+      </div>
 
       <Button
         href="/resume.pdf"
@@ -271,6 +315,12 @@ export default async function Home() {
       </Container>
       <Photos />
       <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Experience and Skills
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          My professional journey and the technologies I master
+        </h3>
         <Resume />
         {/* <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
