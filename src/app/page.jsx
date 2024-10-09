@@ -231,7 +231,7 @@ function Resume() {
         {skills.map((skill) => (
           <div
             key={skill}
-            class="focus:ring-ring text-primary-foreground hover:bg-primary/80 dark:bg-primary inline-flex items-center rounded-md border border-transparent bg-zinc-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
+            className="focus:ring-ring text-primary-foreground hover:bg-primary/80 dark:bg-primary inline-flex items-center rounded-md border border-transparent bg-zinc-600 px-2.5 py-0.5 text-xs font-semibold text-white shadow transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2"
           >
             {skill}
           </div>
