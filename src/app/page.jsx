@@ -7,6 +7,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import { Globe } from '@/components/Globe'
 import logoLeeto from '@/images/logos/leeto.svg'
 import epitechLogo from '@/images/logos/epitech.svg'
 import logoYuso from '@/images/logos/yuso.svg'
@@ -333,6 +334,15 @@ export default async function Home() {
             <Resume />
           </div>
         </div> */}
+        <Container className="mt-24 md:mt-28">
+          <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+            Remote Work, Global Vision
+          </h2>
+          <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+            Discover how I manage work from vibrant cities around the world
+          </h3>
+          <Globe />
+        </Container>
       </Container>
     </>
   )
