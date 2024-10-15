@@ -1,8 +1,34 @@
 'use client'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import createGlobe from 'cobe'
+import dayjs from 'dayjs'
+
+const CITIES = [
+  {
+    name: 'Tokyo',
+    lat: 35.6762,
+    long: 139.6503,
+    start_date: '2024-09-03',
+    end_date: '2024-11-03',
+  },
+  {
+    name: 'Bangkok',
+    lat: 13.7563,
+    long: 100.5018,
+    start_date: '2024-11-03',
+    end_date: '2025-01-26',
+  },
+  {
+    name: 'Kuala Lumpur',
+    lat: 3.139,
+    long: 101.6869,
+    start_date: '2025-01-26',
+    end_date: '2025-03-02',
+  },
+]
 
 export function Globe() {
+  const [cityIndex, setCityIndex] = useState(0)
   const canvasRef = useRef()
   const locationToAngles = (lat, long) => {
     return [
@@ -10,8 +36,28 @@ export function Globe() {
       (lat * Math.PI) / 180,
     ]
   }
-  const tokyoAngles = locationToAngles(35.6762, 139.6503)
-  const focusRef = useRef([tokyoAngles[0], tokyoAngles[1]])
+  const currentAngles = locationToAngles(
+    CITIES[cityIndex].lat,
+    CITIES[cityIndex].long,
+  )
+  const focusRef = useRef([currentAngles[0], currentAngles[1]])
+
+  const handleNextClick = () => {
+    focusRef.current = locationToAngles(
+      CITIES[(cityIndex + 1) % CITIES.length].lat,
+      CITIES[(cityIndex + 1) % CITIES.length].long,
+    )
+    setCityIndex((prevIndex) => (prevIndex + 1) % CITIES.length)
+  }
+
+  const handlePreviousClick = () => {
+    focusRef.current = locationToAngles(
+      CITIES[(cityIndex - 1 + CITIES.length) % CITIES.length].lat,
+      CITIES[(cityIndex - 1 + CITIES.length) % CITIES.length].long,
+    )
+    setCityIndex((prevIndex) => (prevIndex - 1 + CITIES.length) % CITIES.length)
+  }
+
   useEffect(() => {
     let width = 0
     let currentPhi = 0
@@ -63,50 +109,87 @@ export function Globe() {
     }
   }, [])
   return (
-    <div
-      style={{
-        width: '100%',
-        maxWidth: 600,
-        aspectRatio: 1,
-        margin: 'auto',
-        position: 'relative',
-      }}
-    >
-      <canvas
-        ref={canvasRef}
-        style={{
-          width: '100%',
-          height: '100%',
-          contain: 'layout paint size',
-          opacity: 0,
-          transition: 'opacity 1s ease',
-        }}
-      />
-      <div
-        className="control-buttons flex flex-col items-center justify-center md:flex-row"
-        style={{ gap: '.5rem' }}
-      >
-        Rotate to:
+    <div>
+      <div className="flex flex-col gap-1 text-center">
+        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-5xl font-semibold leading-[70px] text-transparent md:text-6xl dark:from-white dark:to-slate-900/10">
+          {CITIES[cityIndex].name}
+        </span>
+        <span className="text-xs text-slate-900/80 dark:text-gray-300/80">
+          From {dayjs(CITIES[cityIndex].start_date).format('D MMM YYYY')} to{' '}
+          {dayjs(CITIES[cityIndex].end_date).format('D MMM YYYY')}
+        </span>
+      </div>
+      <div class="relative w-full">
+        <div class="rounded-lg">
+          <div
+            style={{
+              width: '100%',
+              maxWidth: 500,
+              aspectRatio: 1,
+              margin: 'auto',
+              position: 'relative',
+            }}
+          >
+            <canvas
+              ref={canvasRef}
+              style={{
+                width: '100%',
+                height: '100%',
+                contain: 'layout paint size',
+                opacity: 0,
+                transition: 'opacity 1s ease',
+              }}
+            />
+          </div>
+        </div>
+
         <button
-          onClick={() => {
-            focusRef.current = locationToAngles(35.6762, 139.6503)
-          }}
+          type="button"
+          class="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+          onClick={handlePreviousClick}
         >
-          📍 Tokyo
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+            <svg
+              class="h-4 w-4 text-white rtl:rotate-180 dark:text-gray-800"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 1 1 5l4 4"
+              />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
         </button>
         <button
-          onClick={() => {
-            focusRef.current = locationToAngles(13.7563, 100.5018)
-          }}
+          onClick={handleNextClick}
+          type="button"
+          class="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         >
-          📍 Bangkok
-        </button>
-        <button
-          onClick={() => {
-            focusRef.current = locationToAngles(3.139, 101.6869)
-          }}
-        >
-          📍 Kuala Lumpur
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+            <svg
+              class="h-4 w-4 text-white rtl:rotate-180 dark:text-gray-800"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 6 10"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 9 4-4-4-4"
+              />
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
         </button>
       </div>
     </div>
