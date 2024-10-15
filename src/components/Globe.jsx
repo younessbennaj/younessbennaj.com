@@ -111,7 +111,7 @@ export function Globe() {
   return (
     <div>
       <div className="flex flex-col gap-1 text-center">
-        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-5xl font-semibold leading-[70px] text-transparent md:text-6xl dark:from-white dark:to-slate-900/10">
+        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/60 bg-clip-text text-center text-5xl font-semibold leading-[70px] text-transparent md:text-5xl md:leading-[70px] dark:from-white dark:to-gray-800/10">
           {CITIES[cityIndex].name}
         </span>
         <span className="text-xs text-slate-900/80 dark:text-gray-300/80">
@@ -142,15 +142,14 @@ export function Globe() {
             />
           </div>
         </div>
-
         <button
+          onClick={handlePreviousClick}
           type="button"
           class="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-          onClick={handlePreviousClick}
         >
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+          <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-800/10 backdrop-blur-sm group-hover:bg-gray-800/20 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-800/30 dark:bg-white/30 dark:group-hover:bg-white/40 dark:group-focus:ring-white/50 md:dark:bg-gray-800/30 md:dark:group-hover:bg-gray-800/40 md:dark:group-focus:ring-gray-800/50">
             <svg
-              class="h-4 w-4 text-white rtl:rotate-180 dark:text-gray-800"
+              class="h-4 w-4 text-white md:text-gray-800/80 rtl:rotate-180 dark:text-white/80"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -172,9 +171,9 @@ export function Globe() {
           type="button"
           class="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         >
-          <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70">
+          <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-800/10 backdrop-blur-sm group-hover:bg-gray-800/20 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-800/30 dark:bg-white/30 dark:group-hover:bg-white/40 dark:group-focus:ring-white/50 md:dark:bg-gray-800/30 md:dark:group-hover:bg-gray-800/40 md:dark:group-focus:ring-gray-800/50">
             <svg
-              class="h-4 w-4 text-white rtl:rotate-180 dark:text-gray-800"
+              class="h-4 w-4 text-white md:text-gray-800/80 rtl:rotate-180 dark:text-white/80"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
