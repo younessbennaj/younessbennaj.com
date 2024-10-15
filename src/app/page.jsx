@@ -339,9 +339,18 @@ export default async function Home() {
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Remote Work, Global Vision
         </h2>
-        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+        <h3 className="mb-4 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           Discover how I manage work from vibrant cities around the world
         </h3>
+        <div className="mb-12 mt-6 space-y-7 text-center text-lg text-zinc-600 dark:text-zinc-400">
+          <p>
+            Embracing a full remote, location-independent lifestyle allows me to
+            fuel both my <b>creativity</b> and <b>productivity</b> as a
+            front-end developer. By working from vibrant cities like Tokyo,
+            Bangkok, and Kuala Lumpur, I stay connected with dynamic, fast-paced
+            environments that inspire my work.
+          </p>
+        </div>
         <div className="relative">
           <Globe />
         </div>
