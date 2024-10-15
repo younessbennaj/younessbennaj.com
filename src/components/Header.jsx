@@ -172,9 +172,6 @@ function ThemeToggle() {
     setMounted(true)
   }, [])
 
-  console.log('resolvedTheme', resolvedTheme)
-  console.log(resolvedTheme === 'dark' ? 'flex-end' : 'flex-start')
-
   return (
     <button
       type="button"
