@@ -182,7 +182,6 @@ export function Globe() {
               <path
                 stroke="currentColor"
                 strokeLinecap="round"
-                strokeLinecap="round"
                 strokeWidth="2"
                 d="m1 9 4-4-4-4"
               />
