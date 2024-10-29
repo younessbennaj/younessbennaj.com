@@ -1,0 +1,84 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import autocompleteImage from './autocomplete.png'
+
+export const article = {
+  author: 'Youness Bennaj',
+  date: '2023-10-15',
+  title: 'Building a Dynamic Autocomplete Component',
+  description:
+    'A highly responsive autocomplete component that enhances the user experience by providing dynamic search suggestions as users type. Designed for seamless integration in front-end applications using React and TypeScript.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={autocompleteImage} alt="" />
+
+[View Repository](https://github.com/younessbennaj/autocomplete) | [View Demo](https://autocomplete-bice.vercel.app/)
+
+An autocomplete component is essential for applications that involve extensive user interactions with search fields. By anticipating user input and displaying relevant suggestions, autocomplete enhances user experience and significantly reduces the time required to find information.
+
+## Purpose of the Autocomplete Component
+
+The primary goal of this project was to build a responsive, high-performance autocomplete component that integrates seamlessly into React applications. This component is designed to be both flexible and efficient, offering a smooth experience across various screen sizes and devices.
+
+## Key Features
+
+Here are the core features of the autocomplete component:
+
+1. **Dynamic Suggestions**: As users type, the component generates a list of relevant suggestions in real-time, powered by an efficient search algorithm.
+2. **Customizable Data Source**: Allows integration with various data sources, from local arrays to remote APIs, making it adaptable to different use cases.
+3. **Keyboard Navigation**: Users can navigate through suggestions using the keyboard, providing a seamless and accessible experience.
+4. **Debouncing**: Minimizes the number of requests sent to external sources by implementing debouncing, which improves performance and reduces server load.
+
+## Code Example
+
+Here's a simplified example of how this component is structured in React:
+
+```javascript
+import { useState } from 'react'
+
+function Autocomplete({ suggestions }) {
+  const [query, setQuery] = useState('')
+  const [filteredSuggestions, setFilteredSuggestions] = useState([])
+
+  const handleInputChange = (e) => {
+    const input = e.target.value
+    setQuery(input)
+
+    if (input.length > 2) {
+      const matchedSuggestions = suggestions.filter((suggestion) =>
+        suggestion.toLowerCase().includes(input.toLowerCase()),
+      )
+      setFilteredSuggestions(matchedSuggestions)
+    } else {
+      setFilteredSuggestions([])
+    }
+  }
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={handleInputChange}
+        className="rounded border p-2"
+        placeholder="Start typing..."
+      />
+      <ul className="mt-2 rounded border">
+        {filteredSuggestions.map((suggestion, index) => (
+          <li key={index} className="cursor-pointer p-2 hover:bg-gray-200">
+            {suggestion}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default Autocomplete
+```

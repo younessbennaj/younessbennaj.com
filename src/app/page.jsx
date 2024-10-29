@@ -89,7 +89,7 @@ function Article({ article }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>Read use case</Card.Cta>
     </Card>
   )
 }
@@ -305,6 +305,8 @@ const useCases = [
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
+  console.log(articles)
+
   return (
     <>
       <Container className="mt-9">
@@ -381,13 +383,18 @@ export default async function Home() {
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           My Projects
         </h2>
-        <h3 className="mb-8 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+        <h3 className="mb-[64px] mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           Explore the projects I’ve worked on recently
         </h3>
-        <div className="mb-8 text-center">
+        <div className="mb-[64px] flex flex-col gap-16">
+          {articles.map((article) => (
+            <Article key={article.slug} article={article} />
+          ))}
+        </div>
+        <div className="text-center">
           <Button>View all case studies</Button>
         </div>
-        <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
           {useCases.map((useCase, index) => (
             <UseCaseCard
               key={index}
@@ -396,7 +403,7 @@ export default async function Home() {
               tags={useCase.tags}
             />
           ))}
-        </div>
+        </div> */}
       </Container>
     </>
   )
