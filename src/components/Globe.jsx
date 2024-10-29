@@ -119,8 +119,8 @@ export function Globe() {
           {dayjs(CITIES[cityIndex].end_date).format('D MMM YYYY')}
         </span>
       </div>
-      <div class="relative w-full">
-        <div class="rounded-lg">
+      <div className="relative w-full">
+        <div className="rounded-lg">
           <div
             style={{
               width: '100%',
@@ -145,11 +145,11 @@ export function Globe() {
         <button
           onClick={handlePreviousClick}
           type="button"
-          class="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+          className="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         >
-          <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-800/10 backdrop-blur-sm group-hover:bg-gray-800/20 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-800/30 dark:bg-white/30 dark:group-hover:bg-white/40 dark:group-focus:ring-white/50 md:dark:bg-gray-800/30 md:dark:group-hover:bg-gray-800/40 md:dark:group-focus:ring-gray-800/50">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-800/10 backdrop-blur-sm group-hover:bg-gray-800/20 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-800/30 dark:bg-white/30 dark:group-hover:bg-white/40 dark:group-focus:ring-white/50 md:dark:bg-gray-800/30 md:dark:group-hover:bg-gray-800/40 md:dark:group-focus:ring-gray-800/50">
             <svg
-              class="h-4 w-4 text-white md:text-gray-800/80 rtl:rotate-180 dark:text-white/80"
+              className="h-4 w-4 text-white md:text-gray-800/80 rtl:rotate-180 dark:text-white/80"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -157,23 +157,22 @@ export function Globe() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
                 d="M5 1 1 5l4 4"
               />
             </svg>
-            <span class="sr-only">Previous</span>
+            <span className="sr-only">Previous</span>
           </span>
         </button>
         <button
           onClick={handleNextClick}
           type="button"
-          class="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+          className="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         >
-          <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-800/10 backdrop-blur-sm group-hover:bg-gray-800/20 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-800/30 dark:bg-white/30 dark:group-hover:bg-white/40 dark:group-focus:ring-white/50 md:dark:bg-gray-800/30 md:dark:group-hover:bg-gray-800/40 md:dark:group-focus:ring-gray-800/50">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gray-800/10 backdrop-blur-sm group-hover:bg-gray-800/20 group-focus:outline-none group-focus:ring-4 group-focus:ring-gray-800/30 dark:bg-white/30 dark:group-hover:bg-white/40 dark:group-focus:ring-white/50 md:dark:bg-gray-800/30 md:dark:group-hover:bg-gray-800/40 md:dark:group-focus:ring-gray-800/50">
             <svg
-              class="h-4 w-4 text-white md:text-gray-800/80 rtl:rotate-180 dark:text-white/80"
+              className="h-4 w-4 text-white md:text-gray-800/80 rtl:rotate-180 dark:text-white/80"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -181,13 +180,12 @@ export function Globe() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
                 d="m1 9 4-4-4-4"
               />
             </svg>
-            <span class="sr-only">Next</span>
+            <span className="sr-only">Next</span>
           </span>
         </button>
       </div>

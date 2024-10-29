@@ -1,0 +1,87 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import slideOutMenuImage from './slide-out-menu.png'
+
+export const article = {
+  author: 'Youness Bennaj',
+  date: '2024-10-14',
+  title: 'Designing an Intuitive Slide Out Menu',
+  description:
+    'A responsive slide-out menu that offers seamless navigation on both mobile and desktop views. This menu enhances the user experience by providing quick access to key sections in an application, with smooth animations and customizable options.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+<Image src={slideOutMenuImage} alt="" />
+
+[View Repository](https://github.com/younessbennaj/slide-out-menu) | [View Demo](https://slide-out-menu-kappa.vercel.app/)
+
+Creating a responsive and intuitive navigation experience is essential in modern web applications, especially for mobile users. In this project, I developed a custom slide-out menu component that provides a seamless navigation experience on both desktop and mobile devices, allowing users to quickly access different sections of the application without cluttering the main interface.
+
+## Why a Slide Out Menu?
+
+Slide-out menus are widely used in mobile applications because they save valuable screen space and are accessible with a simple gesture or button tap. By incorporating a slide-out menu, I aimed to create a navigation component that would be intuitive for users and easily customizable to match the branding of any application.
+
+## Key Features
+
+Here are some of the core features of this slide-out menu component:
+
+1. **Responsive Design**: Built to work across devices, the menu is optimized for both mobile and desktop views. It automatically adapts to different screen sizes and orientations.
+
+2. **Smooth Animations**: The menu slides in and out with smooth animations, creating a seamless experience that feels natural and unobtrusive to the user.
+
+3. **Customizable Appearance**: Easily customizable in terms of colors, dimensions, and icon styles, this component can be tailored to fit the aesthetic of any project.
+
+4. **Accessibility**: Includes keyboard navigation support and ARIA attributes to ensure the menu is accessible to all users.
+
+## Code Example
+
+Here's a basic implementation of the slide-out menu using React:
+
+```javascript
+import { useState } from 'react'
+
+function SlideOutMenu() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
+
+  return (
+    <div>
+      <button onClick={toggleMenu} aria-expanded={isOpen} aria-controls="menu">
+        {isOpen ? 'Close Menu' : 'Open Menu'}
+      </button>
+      <nav
+        id="menu"
+        className={`fixed right-0 top-0 h-full w-64 transform bg-gray-800 ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        } transition-transform duration-300`}
+        aria-hidden={!isOpen}
+      >
+        <ul className="p-4 text-white">
+          <li>
+            <a href="#home">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  )
+}
+
+export default SlideOutMenu
+```

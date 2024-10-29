@@ -7,6 +7,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
+import { UseCaseCard } from '@/components/UseCaseCard'
 import { Globe } from '@/components/Globe'
 import logoLeeto from '@/images/logos/leeto.svg'
 import epitechLogo from '@/images/logos/epitech.svg'
@@ -88,7 +89,7 @@ function Article({ article }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Cta>Read use case</Card.Cta>
     </Card>
   )
 }
@@ -280,8 +281,31 @@ function Photos() {
   )
 }
 
+const useCases = [
+  {
+    image: 'https://placehold.co/400x300.png',
+    title:
+      'Unlocking the Power of Cloud Computing: A Guide to Scalable Solutions',
+    tags: ['Cloud', 'AWS', 'Infrastructure'],
+  },
+  {
+    image: 'https://placehold.co/400x300.png',
+    title:
+      'The Future of AI: How Machine Learning is Revolutionizing Industries',
+    tags: ['AI', 'Machine Learning', 'Python'],
+  },
+  {
+    image: 'https://placehold.co/400x300.png',
+    title:
+      'The Impact of 5G on Business: How Faster Networks are Transforming the Way We Work',
+    tags: ['5G', 'Networks', 'Telecommunications'],
+  },
+]
+
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
+
+  console.log(articles)
 
   return (
     <>
@@ -354,6 +378,32 @@ export default async function Home() {
         <div className="relative">
           <Globe />
         </div>
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          My Projects
+        </h2>
+        <h3 className="mb-[64px] mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          Explore the projects I’ve worked on recently
+        </h3>
+        <div className="mb-[64px] flex flex-col gap-16">
+          {articles.map((article) => (
+            <Article key={article.slug} article={article} />
+          ))}
+        </div>
+        <div className="text-center">
+          <Button>View all case studies</Button>
+        </div>
+        {/* <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
+          {useCases.map((useCase, index) => (
+            <UseCaseCard
+              key={index}
+              image={useCase.image}
+              title={useCase.title}
+              tags={useCase.tags}
+            />
+          ))}
+        </div> */}
       </Container>
     </>
   )
