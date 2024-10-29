@@ -2,12 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 import { Briefcase, Book, Settings } from 'react-feather'
+import Balancer from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
-import { UseCaseCard } from '@/components/UseCaseCard'
+import { CustomAccordion } from '@/components/CustomAccordion'
 import { Globe } from '@/components/Globe'
 import logoLeeto from '@/images/logos/leeto.svg'
 import epitechLogo from '@/images/logos/epitech.svg'
@@ -302,10 +303,59 @@ const useCases = [
   },
 ]
 
+const questions = [
+  {
+    question: 'What experience do you have with remote work?',
+    answer:
+      'I have over three years of experience working in fully remote teams, both in France and internationally. I’m highly adaptable to asynchronous workflows and proficient with a wide range of remote communication tools. My approach ensures seamless collaboration across time zones, keeping projects on track no matter where I am.',
+  },
+  {
+    question: 'What makes you different from other front-end developers?',
+    answer:
+      'I combine a strong technical foundation in React, TypeScript, and modern web development technologies with a unique, culturally rich perspective. My location-independent lifestyle inspires my work, allowing me to stay creatively energized while maintaining an organized, stable routine. I also have a proactive approach to continuous learning and skill enhancement, which I apply to all my projects.',
+  },
+  {
+    question: 'Can you handle both large and small projects?',
+    answer:
+      'Absolutely. I have experience working on a range of projects, from full-scale web applications to smaller feature-focused components like autocomplete and toast notifications. I tailor my approach to fit the unique needs and scope of each project, ensuring high-quality results regardless of size.',
+  },
+  {
+    question:
+      'How do you manage project timelines and client communication in different time zones?',
+    answer:
+      'I structure my day around a stable routine and keep clients updated on progress through regular check-ins, adapting my schedule as needed to sync with their time zones. Whether through asynchronous communication or scheduled meetings, I ensure that all parties are aligned, regardless of location.',
+  },
+  {
+    question:
+      'Do you offer any additional services beyond front-end development?',
+    answer:
+      'Yes! Along with front-end development, I provide guidance on project structure, performance optimization, and user experience. I also build custom UI components and am experienced in setting up CI/CD processes, ensuring seamless deployments and streamlined development workflows.',
+  },
+  {
+    question:
+      'How do you ensure your work aligns with the latest industry trends?',
+    answer:
+      'Staying current is a priority. I actively follow the latest advancements in React, TypeScript, and the broader tech ecosystem. Additionally, my time spent in various tech-forward cities like Tokyo and Kuala Lumpur allows me to stay tuned into global trends and apply fresh perspectives to my work.',
+  },
+  {
+    question: 'Can you work with legacy codebases?',
+    answer:
+      'Yes, I’m comfortable working with legacy codebases and improving existing structures. I focus on understanding the original architecture to ensure that any updates I make are scalable and maintainable, and I always prioritize code quality and performance.',
+  },
+  {
+    question: 'How do you handle project feedback and revisions?',
+    answer:
+      'I see feedback as a valuable part of the development process. I encourage open communication and make sure to implement revisions that enhance the project’s quality. My goal is always to align the final product with the client’s vision, incorporating feedback efficiently while keeping the project timeline intact.',
+  },
+  {
+    question: 'Are you available for long-term projects?',
+    answer:
+      'Yes, I’m open to both short-term and long-term projects. For longer engagements, I establish a structured workflow with milestones and regular progress updates to ensure the project remains on track and meets the client’s evolving needs.',
+  },
+]
+
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
-
-  console.log(articles)
 
   return (
     <>
@@ -344,7 +394,9 @@ export default async function Home() {
           Experience and Skills
         </h2>
         <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          My professional journey and the technologies I master
+          <Balancer>
+            My professional journey and the technologies I master
+          </Balancer>
         </h3>
         <Resume />
         {/* <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
@@ -364,7 +416,7 @@ export default async function Home() {
           Remote Work, Global Vision
         </h2>
         <h3 className="mb-4 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          Discover how I manage work from vibrant cities around the world
+          <Balancer>Working seamlessly from vibrant cities worldwide</Balancer>
         </h3>
         <div className="mb-12 mt-6 space-y-7 text-center text-lg text-zinc-600 dark:text-zinc-400">
           <p>
@@ -384,7 +436,7 @@ export default async function Home() {
           My Projects
         </h2>
         <h3 className="mb-[64px] mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          Explore the projects I’ve worked on recently
+          <Balancer>Explore the projects I’ve worked on recently</Balancer>
         </h3>
         <div className="mb-[64px] flex flex-col gap-16">
           {articles.map((article) => (
@@ -394,16 +446,15 @@ export default async function Home() {
         <div className="text-center">
           <Button>View all case studies</Button>
         </div>
-        {/* <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
-          {useCases.map((useCase, index) => (
-            <UseCaseCard
-              key={index}
-              image={useCase.image}
-              title={useCase.title}
-              tags={useCase.tags}
-            />
-          ))}
-        </div> */}
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          FAQ
+        </h2>
+        <h3 className="mb-[64px] mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          Frequently Asked Questions
+        </h3>
+        <CustomAccordion questions={questions} />
       </Container>
     </>
   )
