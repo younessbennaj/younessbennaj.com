@@ -1,7 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { Briefcase, Book, Settings } from 'react-feather'
+import {
+  Code,
+  CheckCircle,
+  Smartphone,
+  Zap,
+  Cloud,
+  Link as LinkIcon,
+  Briefcase,
+  Book,
+  Settings,
+} from 'react-feather'
 import Balancer from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
@@ -354,6 +364,45 @@ const questions = [
   },
 ]
 
+const features = [
+  {
+    icon: <Code className="h-6 w-6" />,
+    title: 'Proficiency in HTML, CSS, and JavaScript',
+    description:
+      'A solid foundation in front-end essentials that powers responsive and interactive designs.',
+  },
+  {
+    icon: <CheckCircle className="h-6 w-6" />,
+    title: 'Expertise in React and TypeScript',
+    description:
+      'Advanced use of React and TypeScript for building scalable, dynamic web applications.',
+  },
+  {
+    icon: <Zap className="h-6 w-6" />,
+    title: 'CI/CD Process Implementation',
+    description:
+      'Experience in setting up CI/CD pipelines to streamline deployments and improve code quality.',
+  },
+  {
+    icon: <Smartphone className="h-6 w-6" />,
+    title: 'Responsive and Mobile-First Design',
+    description:
+      'Creating layouts that adapt seamlessly across devices to enhance user experience.',
+  },
+  {
+    icon: <Cloud className="h-6 w-6" />,
+    title: 'Web Performance Optimization',
+    description:
+      'Optimizing load times and responsiveness through efficient coding and asset management.',
+  },
+  {
+    icon: <LinkIcon className="h-6 w-6" />,
+    title: 'API Integration',
+    description:
+      'Skilled in integrating third-party APIs to extend functionality and improve interactivity.',
+  },
+]
+
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
@@ -415,7 +464,7 @@ export default async function Home() {
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Remote Work, Global Vision
         </h2>
-        <h3 className="mb-4 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           <Balancer>Working seamlessly from vibrant cities worldwide</Balancer>
         </h3>
         <div className="mb-12 mt-6 space-y-7 text-center text-lg text-zinc-600 dark:text-zinc-400">
@@ -429,6 +478,33 @@ export default async function Home() {
         </div>
         <div className="relative">
           <Globe />
+        </div>
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          My Front-End Expertise
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>
+            Core competencies for delivering great user experiences
+          </Balancer>
+        </h3>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              class="bg-card flex flex-col items-center overflow-hidden rounded-lg p-6 text-center"
+            >
+              <div className="rounded-lg bg-gradient-to-b from-zinc-200 to-zinc-100 p-2 text-white text-zinc-800 dark:from-zinc-700 dark:to-zinc-600 dark:text-white">
+                {feature.icon}
+              </div>
+
+              <h2 class="mb-4 mt-4 text-xl font-semibold">{feature.title}</h2>
+              <p class="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       </Container>
       <Container className="mt-24 md:mt-28">
