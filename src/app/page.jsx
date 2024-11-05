@@ -30,6 +30,10 @@ import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
+import fernandoLeetoImage from '@/images/testimonials/fernando-leeto.jpeg'
+import maximeLeetoImage from '@/images/testimonials/maxime-leeto.jpeg'
+import kevinLeetoImage from '@/images/testimonials/kevin-leeto.jpeg'
+import thomasLeetoImage from '@/images/testimonials/thomas-leeto.jpeg'
 
 function MailIcon(props) {
   return (
@@ -403,6 +407,41 @@ const features = [
   },
 ]
 
+const testimonials = [
+  {
+    name: 'Thomas',
+    position: 'Product Lead',
+    company: 'Leeto',
+    avatar: thomasLeetoImage,
+    testimonial:
+      'Youness consistently proved to be a key contributor to the success of numerous projects, thanks to his deep understanding of challenges, unwavering motivation, and boundless energy.',
+  },
+  {
+    name: 'Kévin',
+    position: 'Lead Front-End Developer',
+    company: 'Leeto',
+    avatar: kevinLeetoImage,
+    testimonial:
+      'His in-depth expertise in the React ecosystem is an invaluable asset, and his contagious enthusiasm motivates the team.',
+  },
+  {
+    name: 'Fernando',
+    position: 'Back-End Developer',
+    company: 'Leeto',
+    avatar: fernandoLeetoImage,
+    testimonial:
+      'Youness consistently delivers high-quality work with a proactive and positive attitude, making him an invaluable asset to any team.',
+  },
+  {
+    name: 'Maxime',
+    position: 'Product Designer',
+    company: 'Leeto',
+    avatar: maximeLeetoImage,
+    testimonial:
+      'He has a brilliant mind that allows him to understand and solve complex problems effectively, always prioritizing the best user experience.',
+  },
+]
+
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
 
@@ -489,22 +528,69 @@ export default async function Home() {
             Core competencies for delivering great user experiences
           </Balancer>
         </h3>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <div
               key={feature.title}
-              class="bg-card flex flex-col items-center overflow-hidden rounded-lg p-6 text-center"
+              className="bg-card flex flex-col items-center overflow-hidden rounded-lg p-6 text-center"
             >
               <div className="rounded-lg bg-gradient-to-b from-zinc-200 to-zinc-100 p-2 text-white text-zinc-800 dark:from-zinc-700 dark:to-zinc-600 dark:text-white">
                 {feature.icon}
               </div>
 
-              <h2 class="mb-4 mt-4 text-xl font-semibold">{feature.title}</h2>
-              <p class="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <h2 className="mb-4 mt-4 text-xl font-semibold">
+                {feature.title}
+              </h2>
+              <p className="mb-4 text-sm text-zinc-600 dark:text-zinc-400">
                 {feature.description}
               </p>
             </div>
           ))}
+        </div>
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Testimonials
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>What my collaborators say</Balancer>
+        </h3>
+        <div className="columns-1 gap-4 space-y-4 py-10 sm:columns-2 lg:columns-2 xl:columns-3">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.name}
+              className="flex h-fit flex-col overflow-hidden rounded-3xl bg-zinc-100/50 dark:bg-zinc-800/50"
+            >
+              <div className="flex-grow px-4 py-5 sm:p-6">
+                <div className="mb-4 flex items-center">
+                  <Image
+                    className="h-10 w-10 rounded-full object-cover"
+                    src={testimonial.avatar}
+                    alt=""
+                  />
+                  <div className="ml-3">
+                    <h3 className="text-foreground text-lg font-medium">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {testimonial.position} @{testimonial.company}
+                    </p>
+                  </div>
+                </div>
+                <p className="space-y-4 leading-relaxed">
+                  {testimonial.testimonial}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Button
+            href="https://www.linkedin.com/in/youness-bennaj/details/recommendations/"
+            target="_blank"
+          >
+            Read more on LinkedIn
+          </Button>
         </div>
       </Container>
       <Container className="mt-24 md:mt-28">
