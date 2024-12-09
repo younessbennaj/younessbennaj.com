@@ -20,11 +20,11 @@ const nextConfig = {
         destination: '/', // Redirige vers la page d'accueil
         permanent: false, // Indique que la redirection est temporaire
       },
-      {
-        source: '/articles',
-        destination: '/', // Redirige vers la page d'accueil
-        permanent: false,
-      },
+      // {
+      //   source: '/articles',
+      //   destination: '/', // Redirige vers la page d'accueil
+      //   permanent: false,
+      // },
       {
         source: '/projects',
         destination: '/', // Redirige vers la page d'accueil
