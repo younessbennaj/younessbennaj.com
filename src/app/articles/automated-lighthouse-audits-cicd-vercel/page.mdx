@@ -1,0 +1,447 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+import wireframeImage from './assets/pinsplash-masonry-layout.webp'
+
+export const article = {
+  author: 'Youness Bennaj',
+  date: '2024-11-25',
+  title:
+    'Automating Performance Audits in React CI/CD: Lighthouse Integration with Vercel Deployment',
+  description:
+    'Learn how to set up automated Lighthouse performance audits in a React CI/CD pipeline, leveraging Vercel for deployment. This case study explores a flexible and future-proof approach using the Pinsplash project as a practical example.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+As a developer striving for high-performance web applications, I recently found myself searching for resources on integrating Lighthouse audits into a CI/CD pipeline with Vercel. To my surprise, I couldn’t find any comprehensive guides or flexible, future-proof solutions addressing this specific need.
+
+This gap inspired me to document my approach in this case study, where I share a step-by-step process for setting up automated performance audits in a CI/CD pipeline. My goal is to provide a practical and reusable solution that ensures your web application maintains excellent performance metrics while seamlessly deploying to Vercel.
+
+## Introducing Pinsplash: The Foundation of This Case Study
+
+To demonstrate the process of integrating automated Lighthouse performance audits into a CI/CD pipeline, we will use Pinsplash as a case study. Pinsplash is a responsive and interactive image exploration application inspired by Pinterest, showcasing high-quality images fetched from the Unsplash API.
+
+### About Pinsplash
+
+<Image
+  src={wireframeImage}
+  alt="Wireframe representation of the masonry layout structure."
+/>
+
+Pinsplash is more than a simple portfolio project; it was designed to push boundaries in front-end development, focusing on:
+
+1. Masonry Layout with Infinite Scrolling: Presenting images in a visually engaging grid layout that adapts dynamically to screen sizes and content.
+2. Dynamic Search Functionality: Enabling users to search for images with seamless keyword-based suggestions.
+3. Detailed Image Information: Providing metadata such as upload date, views, and tags, with options for multi-resolution downloads. 4. Category Navigation: Allowing users to explore specific themes through dedicated category pages. 5. Unsplash API Integration: Handling image data efficiently through a robust API setup.
+
+This project encapsulates advanced concepts in responsiveness, performance optimization, and developer workflow automation.
+
+### Why Use Pinsplash for This Study?
+
+Pinsplash offers the perfect context for demonstrating the importance of performance audits:
+• Realistic Requirements: The project includes dynamic content loading, a key challenge in maintaining web performance.
+• Performance Optimization: Image-heavy applications like Pinsplash demand careful handling of network resources, lazy loading, and caching strategies.
+• Continuous Delivery: With its integration into Vercel for deployment, Pinsplash aligns seamlessly with modern CI/CD practices.
+
+Through this study, we will illustrate a step-by-step process for setting up automated Lighthouse audits, ensuring consistent performance monitoring and improvement throughout the development lifecycle.
+
+## **Setting Up the Project: Tools and Technologies**
+
+To kick off the project, it’s essential to establish a solid foundation with a well-thought-out stack of tools and technologies. Here’s how I approached it:
+
+### **Build Tool**
+
+I chose **Vite** as the build tool for its speed, simplicity, and developer-friendly features. Vite’s instant feedback loop during development ensures a smooth workflow, while its support for modern JavaScript and TypeScript makes it a perfect fit for this project.
+
+### **Front-End Technologies**
+
+The core of this project revolves around:
+
+- **React**: For building dynamic, interactive user interfaces.
+- **TypeScript**: To add type safety and improve code maintainability.
+- **TailwindCSS**: For rapidly designing a responsive and visually appealing UI using utility-first CSS. Additionally, the Figma designs for this project follow TailwindCSS’s naming conventions, making it an obvious choice to streamline the development process and ensure consistency between design and implementation.
+
+### **Development Enhancements**
+
+To maintain code quality and a seamless development experience:
+
+- **ESLint**: Ensures consistent coding standards by catching syntax issues and enforcing best practices.
+- **Prettier**: Takes care of code formatting, ensuring readability and uniformity across the project.
+- **Husky**: Automates pre-commit hooks to run ESLint and Prettier checks before every commit, preventing poorly formatted or buggy code from being pushed.
+
+### **Continuous Integration and Deployment**
+
+To streamline the CI/CD process:
+
+- **GitHub Actions**: Automatically runs linting and formatting checks on every pull request, ensuring the code meets the project’s standards.
+- **Vercel for Git**: Enables effortless deployment with every commit to the main branch. Vercel’s seamless integration with Vite ensures a fast and reliable production build. (Refer to [Vite’s deployment guide](https://vite.dev/guide/static-deploy.html#vercel-for-git) for more details.)
+
+By setting up this stack, I’ve created a strong starting point that supports efficient development, enforces quality, and enables quick deployment to production.
+
+### **Why Not Use a Meta Framework like Next.js?**
+
+In a real-world scenario, an application similar to Pinterest—where visual content and user interactivity are key—might benefit from a hybrid rendering approach. For instance:
+
+- **Server-Side Rendering (SSR):** Ideal for the landing page and other critical content to improve **SEO** and ensure a **fast initial load**.
+- **Client-Side Rendering (CSR):** Perfect for enabling rich interactivity as users browse through pins and boards.
+
+However, since this is primarily a **portfolio project**, the focus is on building my skillset and applying recent knowledge, rather than optimizing for production-level needs. A tool like Vite allows me to:
+
+- **Get started quickly** without being bogged
+- **Focus solely on front-end development** and implementing what I’ve recently learned, rather than managing the complexity of a meta-framework.
+
+By choosing Vite, I aim to streamline the development process and dive straight into creating a responsive and interactive user interface.
+
+## Ensuring Code Quality and Streamlining Developer Workflow
+
+A clean, maintainable codebase and a seamless developer experience (DX) are crucial for any project, even for a portfolio. This section outlines how I set up **code quality tools**, **CI/CD pipelines**, and a simple deployment workflow to maintain high standards and ensure an efficient development process.
+
+### Code Quality - Local Setup
+
+To enforce coding standards and formatting consistency during development, I integrated **ESLint**, **Prettier**, and **Husky** into the project:
+
+1. **Add ESLint and Prettier:**
+
+• Installed and configured ESLint for static code analysis and Prettier for code formatting.
+
+• These tools help catch potential issues and ensure uniform formatting across the codebase.
+
+2. **Pre-commit Hooks with Husky:**
+
+• Integrated Husky to add pre-commit hooks.
+
+• Every time I attempt to commit code, both **ESLint** and **Prettier** run automatically to prevent errors and enforce consistent style.
+
+3. **Command:**
+
+• Committing code with issues? Not anymore. The pre-commit hook will block non-compliant commits until the errors are resolved.
+
+### Code Quality - CI Pipeline
+
+To maintain consistency across the team or for every change pushed to the repository, I set up a GitHub Action to automate code quality checks:
+
+1. **Automated Linting and Prettier Checks:**
+
+• Every time a new push or pull request is created, the GitHub Action runs **ESLint** and **Prettier** to verify code quality.
+
+2. **Build Step:**
+
+• Ensures the code compiles successfully and is ready for deployment.
+
+• Any issues in the code or configuration are caught early in the pipeline.
+
+**Deployment Workflow**
+
+For deployment, I chose **Vercel** due to its seamless integration with Git and Vite. The process is straightforward:
+
+1. **Connect Repository:**
+
+• Linked the GitHub repository to Vercel.
+
+• Set up automatic deployments for every push to the main branch.
+
+2. **Steps Followed:**
+
+• Used [Vercel’s documentation for Vite deployment](https://vite.dev/guide/static-deploy.html#vercel-for-git).
+
+• Configured build settings (npm run build) and ensured the application works in production.
+
+**Why This Setup?**
+
+• **Local Enforcement:** Pre-commit hooks prevent poor-quality code from being added to the repository.
+
+• **Automated Validation:** CI ensures every team member adheres to the same standards.
+
+• **Seamless Deployment:** Vercel simplifies the process, enabling me to focus on building features.
+
+This setup not only ensures code quality but also reflects professional-grade workflows, showcasing my ability to maintain high standards in a real-world development environment.
+
+Here's the resulting workflow:
+
+```yaml
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint code with ESLint
+        run: yarn lint
+
+      - name: Check formatting with Prettier
+        run: yarn prettier --check "src/**/*.{ts,tsx,js,jsx,json}"
+
+      - name: Build the project
+        run: yarn build
+```
+
+## Performance: Lessons from Pinterest and Goals for This Project
+
+Performance is critical for image-heavy platforms like Pinterest, where fast load times and smooth interactions are essential to user retention. For this project, inspired by Pinterest, optimizing performance metrics will play a central role in delivering a seamless experience. Let’s examine Pinterest’s metrics, sourced from [MRS Digital](https://mrs.digital/cwv/), and how they influence the objectives for this project.
+
+### Pinterest’s Performance Metrics
+
+Pinterest provides an excellent benchmark for web performance optimization, achieving the following Core Web Vitals:
+
+• **Largest Contentful Paint (LCP):** 4.9s (above the ideal target of < 2.5s).
+
+• **First Input Delay (FID):** 66ms (within the ideal target of < 100ms).
+
+• **Cumulative Layout Shift (CLS):** 0.02 (well below the acceptable threshold of < 0.1).
+
+While Pinterest has room to improve its LCP, it excels in maintaining responsive interactions (FID) and stable layouts (CLS).
+
+## Implementing GitHub Actions for Preview Deployment and Performance Audits
+
+To ensure automated testing and performance auditing in the CI/CD pipeline, I designed a GitHub Actions workflow tailored for deploying a preview version of the application and running critical checks such as unit tests, Lighthouse audits, and bundle size validations. Here’s a breakdown of the approach and rationale behind each step.
+
+### **Workflow Overview: GitHub Actions for Vercel Preview Deployment**
+
+The workflow is triggered by a **pull request**, ensuring that every code change undergoes testing and performance checks before merging into the main branch. This helps maintain high-quality standards and prevents performance regressions from slipping into production.
+
+### **Environment Variables and Permissions**
+
+The workflow begins by defining essential environment variables for the Vercel deployment:
+
+- `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID`: These secrets are required to identify and authorize the project on Vercel.
+- The workflow grants `write` permissions for issues and pull requests, allowing it to leave comments with performance audit results.
+
+---
+
+### **Step 1: Unit Testing with Vitest**
+
+The `tests` job runs the unit tests for the project using **Vitest**, ensuring the functionality of individual components. This step includes:
+
+1. **Installing dependencies:** All required libraries are installed using `yarn install`.
+2. **Running tests with coverage:** The tests are executed with `yarn vitest run --coverage`.
+3. **Uploading test coverage reports:** The generated coverage is stored as an artifact to track test completeness.
+
+---
+
+### **Step 2: Deploying a Preview Version**
+
+The `deploy` job creates a live preview deployment of the application on Vercel. This step ensures that each pull request is linked to a working version of the application, providing developers with a preview environment to test changes. Here’s how it was implemented:
+
+1. **Installing Vercel CLI:**
+
+   - Instead of relying on the standard GitHub integration provided by Vercel's web interface, we opted to use the **Vercel CLI**.
+   - This decision was made to gain greater flexibility and control over the deployment process, such as programmatically managing deployment settings and extracting the deployed URL for use in subsequent jobs.
+   - Reference: [Vercel for GitHub Documentation](https://vercel.com/docs/deployments/git/vercel-for-github).
+
+2. **Pulling Vercel Environment Information:**
+
+   - By using `vercel pull`, we ensure that the correct environment variables and configurations are used for the preview deployment. This step ensures consistency with the production setup while testing.
+
+3. **Building and Deploying Artifacts:**
+
+   - The application is built locally using `vercel build`, ensuring that the build artifacts match those used in production.
+   - The deployment is handled using the `--prebuilt` flag for faster deployment times and to maintain alignment with production environments.
+
+4. **Extracting the Deployed URL:**
+
+   - The URL of the deployed preview version is captured from the output of the deployment process and stored as a workflow output.
+   - This URL is passed to subsequent jobs for performance audits and validations.
+
+By leveraging the Vercel CLI, we gained the ability to tightly integrate the deployment process into our CI/CD pipeline, ensuring a seamless and consistent experience across different environments. This approach also allows for programmatic control and integration with other tools like Lighthouse, providing a more robust and scalable solution.
+
+---
+
+### **Step 3: Lighthouse Performance Audits**
+
+The `lighthouse` job evaluates the performance of the deployed application using the **treosh/lighthouse-ci-action** GitHub Action. Here's how it works:
+
+1. **Running audits:** The deployed URL is analyzed against Lighthouse’s four key categories:
+   - **Performance**
+   - **Accessibility**
+   - **Best Practices**
+   - **SEO**
+2. **Uploading reports:** Lighthouse reports are uploaded to a public storage location for easy access.
+3. **Commenting on pull requests:** A detailed summary of the Lighthouse scores is posted as a comment on the pull request. The results are displayed in a table, with emojis representing the score range:
+   - 🟢 for excellent scores.
+   - 🟠 for moderate scores.
+   - 🔴 for low scores.
+
+This integration provides immediate feedback to developers about the impact of their changes on performance.
+
+---
+
+### **Step 4: Bundle Size Validation**
+
+The `bundlesize` job ensures the application’s assets remain lightweight and optimized:
+
+1. **Building the project:** The application is built to generate the production bundle.
+2. **Validating bundle size:** The **bundlesize** package checks whether the generated assets adhere to predefined size budgets.
+
+---
+
+### **Why These Choices?**
+
+#### **Performance Metrics Inspired by Pinterest**
+
+Pinterest’s Core Web Vitals serve as an aspirational benchmark:
+
+- **Largest Contentful Paint (LCP):** Measures the time to load the largest visible content on the page.
+- **First Input Delay (FID):** Tracks interactivity.
+- **Cumulative Layout Shift (CLS):** Assesses visual stability.
+
+For an image-heavy application like Pinsplash, these metrics are crucial. By incorporating Lighthouse audits and deploying a live preview, I ensure the app maintains performance standards aligned with real-world user expectations.
+
+---
+
+### **Challenges Addressed**
+
+- **Preventing Regressions:** Automated audits highlight performance bottlenecks early in the development process.
+- **Streamlined Feedback:** Developers receive actionable insights directly in their pull requests, fostering a culture of continuous improvement.
+- **Scalability:** The workflow is designed to evolve, accommodating new checks as the project grows.
+
+---
+
+Here is the complete GitHub Actions workflow:
+
+```yaml
+name: GitHub Actions Vercel Preview Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on: [pull_request]
+permissions:
+  issues: write
+  pull-requests: write
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install
+      - name: Run Unit Tests with Vitest
+        run: yarn vitest run --coverage
+      - name: Upload Test Coverage
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: ./coverage
+
+  deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      deployed_url: ${{ steps.deploy_step.outputs.deployed_url}}
+    environment:
+      name: Preview
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Vercel CLI
+        run: npm install --global vercel@canary
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy_step
+        run: |
+          URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} | grep -o 'https://.*\.vercel\.app')
+          echo "Deployed URL: $URL"
+          echo "deployed_url=$URL" >> "$GITHUB_OUTPUT"
+
+  lighthouse:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      URL: ${{needs.deploy.outputs.deployed_url}}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        id: lighthouse_audit
+        with:
+          urls: ${{needs.deploy.outputs.deployed_url}}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          budgetPath: './budget.json'
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const summary = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary;
+            const links = ${{ steps.lighthouse_audit.outputs.links }}
+            const getScoreColor = res => res >= 0.9 ? '🟢' : res >= 0.5 ? '🟠' : '🔴'
+            const getScorePercentage = res => res * 100 + '%'
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `⚡️ [Lighthouse report](${Object.values(links)[0]}) for the changes in this PR:
+              | Category | Score |
+              | --- | --- |
+              | **Performance** | ${getScoreColor(summary.performance)} ${getScorePercentage(summary.performance)} |
+              | **Accessibility** | ${getScoreColor(summary.accessibility)} ${getScorePercentage(summary.accessibility)} |
+              | **Best practices** | ${getScoreColor(summary['best-practices'])} ${getScorePercentage(summary['best-practices'])} |
+              | **SEO** | ${getScoreColor(summary.seo)} ${getScorePercentage(summary.seo)} |`
+            })
+
+  bundlesize:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: yarn install
+      - name: Build Project
+        run: yarn build
+      - name: Check Bundle Size
+        run: |
+          yarn add bundlesize --dev
+          npx bundlesize
+```
+
+## Next Steps: Addressing Variability in Lighthouse Audits
+
+### Addressing Variability in Lighthouse Audits
+
+While the workflow ensures an efficient and automated performance audit process, there is one critical area for improvement: reducing the variability of Lighthouse scores. Lighthouse audits can produce different results due to several factors, including network latency, server response time, and the availability of resources. This variability can sometimes make it challenging to accurately measure and compare performance improvements.
+
+### Why Variability Happens
+
+According to the Lighthouse Variability Guide, the following factors contribute to inconsistent scores:
+• Network Conditions: Variations in bandwidth or latency affect resource loading times.
+• Server Location and Load: The proximity of the client to the server and current server load can impact response times.
+• Device Resources: CPU, memory, and other resources on the testing machine influence render times.
+• Background Processes: Other processes running on the testing environment may interfere with audit results.
+
+### Proposed Improvements
+
+To address these challenges and ensure more consistent results, the following measures could be implemented:
+
+1. Run Audits Multiple Times: Performing the Lighthouse audit multiple times on the same deployment and averaging the scores reduces the impact of outliers caused by temporary fluctuations.
+2. Standardize Testing Environments: Use a controlled testing environment, such as a self-hosted Lighthouse server or GitHub-hosted runners with specific configurations, to minimize environmental variability.
+3. Test with Realistic Scenarios: Mimic real-world usage conditions by varying network speeds (e.g., simulating mobile devices on 3G) to evaluate how the application performs for diverse users.
+4. Separate Key Metrics:Focus on the most critical metrics, like LCP, FID, and CLS, instead of relying solely on the aggregated performance score. These metrics provide more actionable insights into user experience.
+5. Establish Baselines: Maintain a historical record of average scores from previous audits to track trends and identify regressions more effectively.
+
+By incorporating these strategies, we can enhance the reliability of the performance audits and gain deeper insights into the true user experience of the application. Implementing multiple runs and leveraging averages ensures the results are not overly influenced by one-off anomalies, paving the way for more informed decision-making in performance optimization.
+
+## **Conclusion**
+
+By implementing this comprehensive GitHub Actions workflow, I’ve established a robust foundation for maintaining the quality and performance of Pinsplash. The next step involves refining this setup to account for production-specific conditions, ensuring the app delivers an optimal user experience at scale.
+
+If you're looking to explore the workflow further, you can check out the full GitHub Actions configuration used in this project [here](https://github.com/treosh/lighthouse-ci-action).
