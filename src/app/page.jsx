@@ -606,7 +606,7 @@ export default async function Home() {
           ))}
         </div>
         <div className="text-center">
-          <Button>View all case studies</Button>
+          <Button href="/articles">View all case studies</Button>
         </div>
       </Container>
       <Container className="mt-24 md:mt-28">
