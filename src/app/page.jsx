@@ -148,12 +148,12 @@ function Newsletter() {
 
 function Role({ role }) {
   let startLabel =
-    typeof role.start === 'string' ? role.start : role.start.label
+    typeof role.start === 'string' ? role.start : role.start?.label
   let startDate =
-    typeof role.start === 'string' ? role.start : role.start.dateTime
+    typeof role.start === 'string' ? role.start : role.start?.dateTime
 
-  let endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
+  let endLabel = typeof role.end === 'string' ? role.end : role.end?.label
+  let endDate = typeof role.end === 'string' ? role.end : role.end?.dateTime
 
   return (
     <li className="flex gap-4">
@@ -169,15 +169,19 @@ function Role({ role }) {
         <dd className="text-xs text-zinc-500 dark:text-zinc-400">
           {role.title}
         </dd>
-        <dt className="sr-only">Date</dt>
-        <dd
-          className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
-          aria-label={`${startLabel} until ${endLabel}`}
-        >
-          <time dateTime={startDate}>{startLabel}</time>{' '}
-          <span aria-hidden="true">—</span>{' '}
-          <time dateTime={endDate}>{endLabel}</time>
-        </dd>
+        {startLabel ? (
+          <>
+            <dt className="sr-only">Date</dt>
+            <dd
+              className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+              aria-label={`${startLabel} until ${endLabel}`}
+            >
+              <time dateTime={startDate}>{startLabel}</time>{' '}
+              <span aria-hidden="true">—</span>{' '}
+              <time dateTime={endDate}>{endLabel}</time>
+            </dd>
+          </>
+        ) : null}
       </dl>
     </li>
   )
@@ -235,8 +239,8 @@ function Resume() {
             company: 'Epitech',
             title: 'Master Degree, Computer Science',
             logo: epitechLogo,
-            start: '2020',
-            end: '2022',
+            // start: '2020',
+            // end: '2022',
           }}
         />
       </ol>
