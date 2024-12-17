@@ -15,6 +15,7 @@ import {
 import Balancer from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
+
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
@@ -330,12 +331,23 @@ const questions = [
   {
     question: 'What makes you different from other front-end developers?',
     answer:
-      'I combine a strong technical foundation in React, TypeScript, and modern web development technologies with a unique, culturally rich perspective. My location-independent lifestyle inspires my work, allowing me to stay creatively energized while maintaining an organized, stable routine. I also have a proactive approach to continuous learning and skill enhancement, which I apply to all my projects.',
+      'I’m recognized for my proactive mindset, creative problem-solving, and focus on delivering efficient, effective solutions. My colleagues highlight my ability to deeply understand challenges and propose pragmatic, high-impact results. I approach each project with enthusiasm and a strong attention to detail, ensuring both technical excellence and alignment with user and business goals.',
   },
   {
-    question: 'Can you handle both large and small projects?',
+    question: 'What type of projects do you enjoy working on the most?',
     answer:
-      'Absolutely. I have experience working on a range of projects, from full-scale web applications to smaller feature-focused components like autocomplete and toast notifications. I tailor my approach to fit the unique needs and scope of each project, ensuring high-quality results regardless of size.',
+      'I’m open to all types of projects, regardless of their scope. I enjoy working on everything from building reusable components for a design system to developing features with complex business logic. In my previous experiences, I’ve delivered high-impact features and smaller components with the same level of precision and attention to detail. My goal is always to align with the project’s objectives, whether it’s enhancing user experience, improving performance, or driving business outcomes.',
+  },
+  {
+    question:
+      'How do you manage contracts and administrative processes for international clients?',
+    answer:
+      'I use tools like Remote.com to simplify contract management, payments, and compliance for international collaborations. These platforms ensure a smooth and legally compliant process for both parties. However, I’m also flexible and open to working with any custom processes or tools already in place within your company to make the collaboration as seamless as possible.',
+  },
+  {
+    question: 'How can we get started on a project?',
+    answer:
+      'Getting started is simple! You can reach out to me via LinkedIn or email with an overview of your project or needs. From there, we can schedule a quick call to discuss the scope, timeline, and goals. I’ll provide a tailored proposal and workflow to kick off our collaboration smoothly.',
   },
   {
     question:
@@ -345,15 +357,9 @@ const questions = [
   },
   {
     question:
-      'Do you offer any additional services beyond front-end development?',
-    answer:
-      'Yes! Along with front-end development, I provide guidance on project structure, performance optimization, and user experience. I also build custom UI components and am experienced in setting up CI/CD processes, ensuring seamless deployments and streamlined development workflows.',
-  },
-  {
-    question:
       'How do you ensure your work aligns with the latest industry trends?',
     answer:
-      'Staying current is a priority. I actively follow the latest advancements in React, TypeScript, and the broader tech ecosystem. Additionally, my time spent in various tech-forward cities like Tokyo and Kuala Lumpur allows me to stay tuned into global trends and apply fresh perspectives to my work.',
+      'Staying current is a priority. I actively follow the latest advancements in React, TypeScript, and the broader tech ecosystem. I enjoy experimenting with new tools, techniques, and best practices through small projects in my portfolio, ensuring I stay sharp and up-to-date.',
   },
   {
     question: 'Can you work with legacy codebases?',
@@ -621,6 +627,22 @@ export default async function Home() {
           Frequently Asked Questions
         </h3>
         <CustomAccordion questions={questions} />
+      </Container>
+      <Container className="mt-24 text-center md:mt-28">
+        <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          Let’s Build Something Great Together
+        </h2>
+        <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-400">
+          Ready to bring your ideas to life? Whether it&apos;s a small feature
+          or a big project, I’m here to help.
+        </p>
+        <Button
+          href="mailto:your.email@example.com"
+          className="mt-6"
+          target="_blank"
+        >
+          Contact Me
+        </Button>
       </Container>
     </>
   )
