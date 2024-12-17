@@ -25,6 +25,27 @@ const CITIES = [
     start_date: '2025-01-26',
     end_date: '2025-03-02',
   },
+  {
+    name: 'Bangkok',
+    lat: 13.7563,
+    long: 100.5018,
+    start_date: '2025-03-02',
+    end_date: '2025-04-15',
+  },
+  {
+    name: 'Tokyo',
+    lat: 35.6762,
+    long: 139.6503,
+    start_date: '2025-04-15',
+    end_date: '2025-07-15',
+  },
+  {
+    name: 'Bangkok',
+    lat: 13.7563,
+    long: 100.5018,
+    start_date: '2025-07-15',
+    end_date: '2025-09-15',
+  },
 ]
 
 export function Globe() {
