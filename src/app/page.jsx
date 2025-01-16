@@ -460,15 +460,16 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Front-end developer, freelancer, inspired by cultural discovery and
-            the world’s diversity.
+            Front-end developer, inspired by cultural discovery and the world’s
+            diversity.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Youness, a front-end developer with over 5 years of experience.
-            I help companies build user-friendly and feature-rich web
-            applications using React, TypeScript, and modern technologies. I
-            split my year between Tokyo, Bangkok, and Kuala Lumpur to draw
-            inspiration from these vibrant cities.
+            I’m Youness, a Front-End Developer specialized in React with 5 years
+            of experience. Passionate about the ever-evolving front-end
+            landscape, where new technologies, frameworks, and trends constantly
+            emerge, pushing you to continuously learn, adapt, and challenge
+            yourself. I split my year between Tokyo, Bangkok, and Kuala Lumpur
+            to draw inspiration from these vibrant cities.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -619,7 +620,7 @@ export default async function Home() {
           <Button href="/articles">View all case studies</Button>
         </div>
       </Container>
-      <Container className="mt-24 md:mt-28">
+      {/* <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           FAQ
         </h2>
@@ -627,7 +628,7 @@ export default async function Home() {
           Frequently Asked Questions
         </h3>
         <CustomAccordion questions={questions} />
-      </Container>
+      </Container> */}
       <Container className="mt-24 text-center md:mt-28">
         <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           Let’s Build Something Great Together

@@ -97,7 +97,7 @@ export default function Uses() {
             user interfaces.
           </Tool>
         </ToolsSection>
-        <ToolsSection title="Employer of Record (EOR) Tools">
+        {/* <ToolsSection title="Employer of Record (EOR) Tools">
           <Tool title="Remote.com">
             As a freelancer working with international clients, I use Remote.com
             to manage contracts, payments, and compliance seamlessly. It
@@ -110,7 +110,7 @@ export default function Uses() {
             tailored to a company’s workflow, ensuring smooth collaboration that
             fits your needs.
           </Tool>
-        </ToolsSection>
+        </ToolsSection> */}
       </div>
     </SimpleLayout>
   )
