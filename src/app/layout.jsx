@@ -7,10 +7,10 @@ export const metadata = {
   title: {
     // template: '%s - Spencer Sharp',
     default:
-      'Youness Bennaj - Front-end developer, freelancer, inspired by cultural discovery and the world’s diversity.',
+      'Youness Bennaj - Front-end developer, inspired by cultural discovery and the world’s diversity.',
   },
   description:
-    ' I’m Youness, a front-end developer with over 5 years of experience. I help companies build user-friendly and feature-rich web applications using React, TypeScript, and modern technologies. I split my year between Tokyo, Bangkok, and Kuala Lumpur to draw inspiration from these vibrant cities.',
+    'I’m Youness, a Front-End Developer specialized in React with 5 years of experience. Passionate about the ever-evolving front-end landscape, where new technologies, frameworks, and trends constantly emerge, pushing you to continuously learn, adapt, and challenge yourself. I split my year between Tokyo, Bangkok, and Kuala Lumpur to draw inspiration from these vibrant cities.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
