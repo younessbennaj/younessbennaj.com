@@ -18,6 +18,7 @@ import { Button } from '@/components/Button'
 
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { ServicesTabs } from '@/components/ServicesTabs'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import { CustomAccordion } from '@/components/CustomAccordion'
 import { Globe } from '@/components/Globe'
@@ -487,7 +488,37 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos />
+      {/* <Photos /> */}
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Services
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>How can I be impactful to your team ?</Balancer>
+        </h3>
+
+        <ServicesTabs />
+
+        {/* <div className="mx-auto my-12 grid h-full items-center gap-10 lg:grid-cols-2">
+          <div className="order-1 hidden justify-start lg:order-[0] lg:flex">
+            <div>
+              <div className="relative mb-8 mt-px overflow-hidden last:mb-0 focus-within:relative focus-within:z-10">
+                <div className="relative flex items-center">
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Blog
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>My latest articles</Balancer>
+        </h3>
+      </Container>
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Experience and Skills
@@ -606,10 +637,10 @@ export default async function Home() {
       </Container>
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
-          My Projects
+          Blog
         </h2>
-        <h3 className="mb-[64px] mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          <Balancer>Explore the projects I’ve worked on recently</Balancer>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>My latest articles</Balancer>
         </h3>
         <div className="mb-[64px] flex flex-col gap-16">
           {articles.map((article) => (
