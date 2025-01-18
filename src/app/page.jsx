@@ -15,9 +15,11 @@ import {
 import Balancer from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
+import { OrbitingCirclesDemo } from '@/components/OrbitingCirclesDemo'
 
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { ServicesTabs } from '@/components/ServicesTabs'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import { CustomAccordion } from '@/components/CustomAccordion'
 import { Globe } from '@/components/Globe'
@@ -464,12 +466,13 @@ export default async function Home() {
             diversity.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Youness, a Front-End Developer specialized in React with 5 years
-            of experience. Passionate about the ever-evolving front-end
-            landscape, where new technologies, frameworks, and trends constantly
-            emerge, pushing you to continuously learn, adapt, and challenge
-            yourself. I split my year between Tokyo, Bangkok, and Kuala Lumpur
-            to draw inspiration from these vibrant cities.
+            I’m Youness, a Front-End Developer specialized in React with{' '}
+            <b>over 5 years of experience</b>. Passionate about the
+            ever-evolving front-end landscape, where new technologies,
+            frameworks, and trends constantly emerge, pushing you to
+            continuously learn, adapt, and challenge yourself. I split my year
+            between Tokyo, Bangkok, and Kuala Lumpur to draw inspiration from
+            these vibrant cities.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -487,8 +490,27 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos />
+      {/* <Photos /> */}
       <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Services
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>How can I be impactful to your team ?</Balancer>
+        </h3>
+
+        <ServicesTabs />
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          My skills
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>The technologies ans tools I master</Balancer>
+        </h3>
+        <OrbitingCirclesDemo />
+      </Container>
+      {/* <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Experience and Skills
         </h2>
@@ -498,38 +520,8 @@ export default async function Home() {
           </Balancer>
         </h3>
         <Resume />
-        {/* <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))}
-          </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
-            <Resume />
-          </div>
-        </div> */}
-      </Container>
-      <Container className="mt-24 md:mt-28">
-        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
-          Remote Work, Global Vision
-        </h2>
-        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          <Balancer>Working seamlessly from vibrant cities worldwide</Balancer>
-        </h3>
-        <div className="mb-12 mt-6 space-y-7 text-center text-lg text-zinc-600 dark:text-zinc-400">
-          <p>
-            Embracing a full remote, location-independent lifestyle allows me to
-            fuel both my <b>creativity</b> and <b>productivity</b> as a
-            front-end developer. By working from vibrant cities like Tokyo,
-            Bangkok, and Kuala Lumpur, I stay connected with dynamic, fast-paced
-            environments that inspire my work.
-          </p>
-        </div>
-        <div className="relative">
-          <Globe />
-        </div>
-      </Container>
+      </Container> */}
+
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           My Front-End Expertise
@@ -606,10 +598,30 @@ export default async function Home() {
       </Container>
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
-          My Projects
+          Remote Work, Global Vision
         </h2>
-        <h3 className="mb-[64px] mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          <Balancer>Explore the projects I’ve worked on recently</Balancer>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>Working seamlessly from vibrant cities worldwide</Balancer>
+        </h3>
+        <div className="mb-12 mt-6 space-y-7 text-center text-lg text-zinc-600 dark:text-zinc-400">
+          <p>
+            Embracing a full remote, location-independent lifestyle allows me to
+            fuel both my <b>creativity</b> and <b>productivity</b> as a
+            front-end developer. By working from vibrant cities like Tokyo,
+            Bangkok, and Kuala Lumpur, I stay connected with dynamic, fast-paced
+            environments that inspire my work.
+          </p>
+        </div>
+        <div className="relative">
+          <Globe />
+        </div>
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Blog
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>My latest articles</Balancer>
         </h3>
         <div className="mb-[64px] flex flex-col gap-16">
           {articles.map((article) => (
@@ -620,7 +632,7 @@ export default async function Home() {
           <Button href="/articles">View all case studies</Button>
         </div>
       </Container>
-      {/* <Container className="mt-24 md:mt-28">
+      <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           FAQ
         </h2>
@@ -628,7 +640,7 @@ export default async function Home() {
           Frequently Asked Questions
         </h3>
         <CustomAccordion questions={questions} />
-      </Container> */}
+      </Container>
       <Container className="mt-24 text-center md:mt-28">
         <h2 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           Let’s Build Something Great Together
