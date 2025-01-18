@@ -506,7 +506,7 @@ export default async function Home() {
           My skills
         </h2>
         <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          <Balancer>The technologies ans tools I master</Balancer>
+          <Balancer>The technologies and tools I master</Balancer>
         </h3>
         <OrbitingCirclesDemo />
       </Container>
