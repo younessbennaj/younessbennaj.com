@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 import {
   Code,
   CheckCircle,
@@ -22,6 +23,7 @@ import { Container } from '@/components/Container'
 import { ServicesTabs } from '@/components/ServicesTabs'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import { CustomAccordion } from '@/components/CustomAccordion'
+import { DotPattern } from '@/components/DotPattern'
 import { Globe } from '@/components/Globe'
 import logoLeeto from '@/images/logos/leeto.svg'
 import epitechLogo from '@/images/logos/epitech.svg'
@@ -498,6 +500,22 @@ export default async function Home() {
         <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           <Balancer>How can I be impactful to your team ?</Balancer>
         </h3>
+        {/* <div className="bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
+          <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white">
+            Dot Pattern
+          </p>
+          <DotPattern
+            className={cn(
+              '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
+            )}
+          />
+        </div> */}
+
+        {/* <DotPattern
+          className={cn(
+            '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
+          )}
+        /> */}
 
         <ServicesTabs />
       </Container>
