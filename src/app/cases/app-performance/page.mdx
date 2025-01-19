@@ -1,0 +1,49 @@
+import { UseCaseLayout } from '@/components/UseCaseLayout'
+
+export const useCase = {
+  author: 'Youness Bennaj',
+  date: '2024-12-15',
+  title: 'Optimizing Performance for Better Retention',
+  description:
+    'Addressing critical performance issues at Leeto, I collaborated on a comprehensive optimization initiative. The result? Faster load times, smoother interactions, and improved satisfaction for over 30,000 monthly active users.',
+  priority: 'low',
+}
+
+export default (props) => <UseCaseLayout useCase={useCase} {...props} />
+
+<h3 className="mb-10 text-3xl">Challenge</h3>
+
+Leeto, a platform designed to help HR teams manage employee benefits and facilitate reimbursement requests, grew rapidly in usage, serving over 30,000 monthly active users. As the platform evolved, its performance became a critical issue due to technical debt and early architectural decisions. These challenges led to slow loading times, inefficient runtime interactions, and an overall suboptimal user experience.
+
+The performance issues not only frustrated users but also risked impacting user retention and satisfaction, particularly for a product competing in the enterprise SaaS space, where smooth and responsive interactions are key expectations.
+
+The need for a scalable, maintainable, and efficient email system was clear. The goal was to deliver a robust solution that enhanced email quality, improved developer efficiency, and met user expectations.
+
+<h3 className="mb-10 text-3xl">Solution</h3>
+
+To gain leadership support, we demonstrated the business value of under-the-hood improvements and aligned with stakeholders to allocate time for this initiative. The collaborative action plan included both short-term wins and long-term performance improvements.
+
+Key optimizations I contributed to included:
+
+- **Switching Build Tools:** Migrated from Webpack to Vite, reducing bundle size and leveraging Vite’s efficient production builds.
+- **Edge Optimization:** Partnered with the backend/infra team to integrate Cloudflare and enable optimization toggles for improved caching and content delivery.
+- **Perceived Performance Enhancements:** Used skeleton loaders, suspense patterns, blurhash images, and TanStack Query to minimize layout shifts and improve the visual feedback loop.
+- **Efficient Data Handling:** Implemented list virtualization with infinite scroll and pagination to optimize pages displaying large datasets.
+
+To maintain long-term performance:
+
+- Updated front-end team guidelines to include React performance best practices, such as memoization and caching unstable references.
+- Introduced a performance-focused code review checklist to ensure adherence to these standards.
+- Set up a CI performance budget check to notify the team if pull requests breached defined performance thresholds.
+- Conducted biannual dependency reviews to remove unnecessary libraries and streamline bundle size.
+
+<h3 className="mb-10 text-3xl">Results</h3>
+
+The performance optimization initiative delivered substantial improvements:
+
+- Increased Lighthouse scores across key metrics, showcasing enhanced loading and runtime performance.
+- Reduced unnecessary re-renders, improving responsiveness for critical interactions.
+- Enhanced perceived performance through visual feedback elements, reducing user frustration during loading periods.
+- Boosted user satisfaction and retention, aligning the product experience with the expectations of enterprise clients.
+
+The success of this initiative demonstrated how collaborative efforts and strategic prioritization could resolve deep-seated performance challenges, driving tangible improvements in both user experience and business outcomes.
