@@ -1,0 +1,83 @@
+import { UseCaseLayout } from '@/components/UseCaseLayout'
+
+export const useCase = {
+  author: 'Youness Bennaj',
+  date: '2024-12-15',
+  title:
+    'Leveraging AI-Powered Solutions to Solve Business Challenges and Reduce Rejection Rates',
+  description:
+    'A deep dive into how I collaborated with a cross-functional team to redesign Leeto’s reimbursement request feature. By integrating AI-driven image recognition, optimizing multi-step forms, and focusing on user-centric solutions, we reduced the rejection rate from 20% to under 5%, while improving workflows and enhancing the overall user experience.',
+  priority: 'high',
+}
+
+export default (props) => <UseCaseLayout useCase={useCase} {...props} />
+
+<h3 className="mb-10 text-3xl">Challenge</h3>
+
+Leeto, a platform designed to help HR teams provide tax-advantaged employee benefits, included a reimbursement request feature as part of its core offering. This feature allowed employees to submit reimbursement requests for purchases made outside of the Leeto marketplace, whether from online stores or physical shops, by uploading invoices as proof. The requests were then reviewed and approved or rejected by the moderation team.
+
+In 2023, we faced a critical challenge: the reimbursement request feature had a rejection rate of approximately 20%. This led to significant frustration for users whose requests were denied, often due to errors in their submissions. It also placed a heavy operational burden on the moderation team, who spent an average of five minutes reviewing each request. The process inefficiencies negatively impacted overall user satisfaction and retention, as well as the perception of Leeto as a reliable platform.
+
+The situation became increasingly urgent as the number of clients and features expanded, leading to a rise in reimbursement requests and amplifying these issues. The challenges were clear:
+
+- **High Rejection Rate**: Employees often made errors during the submission process due to unclear guidance and manual data entry.
+
+- **Inefficient Moderation Workflow**: The moderation team spent excessive time reviewing requests, causing bottlenecks and delays.
+
+- **User Dissatisfaction**: Frustrated employees and HR teams perceived the tool as unreliable and difficult to use.
+
+- **Scalability Concerns**: As the user base grew, the inefficiencies posed a threat to the platform’s ability to scale effectively.
+
+The goal was ambitious: to redesign the reimbursement feature to reduce rejection rates, streamline moderation workflows, and create a seamless experience for users and moderators alike.
+
+<h3 className="mb-10 text-3xl">Solution</h3>
+
+To tackle this challenge, I worked closely with a cross-functional team, including a product manager, a designer, and a back-end engineer. Together, we embarked on a comprehensive redesign of the reimbursement request feature. My contributions as the lead front-end developer focused on driving technical discussions, proposing solutions, and implementing critical front-end components.
+
+## **Phased Delivery Approach**
+
+Given the complexity of the redesign and the limited resources available, I proposed splitting the project into three distinct phases to ensure rapid delivery and iterative feedback:
+
+1. **Redesign of the UX/UI**: We completely revamped the user interface to make the reimbursement submission process intuitive. This included clear guidance for each step and validation to catch common errors before submission.
+
+2. **Introduction of Categorization**: A categorization system was added to allow users to classify their reimbursement requests. This helped the moderation team quickly understand the context of each request, reducing their review time.
+
+3. **AI-Powered Image Recognition Integration**: We partnered with Mindee, a third-party service specializing in image recognition, to automate the extraction of key data from uploaded invoices (e.g., dates, amounts, and vendor names). This data was used to pre-fill the reimbursement form, reducing manual input errors and speeding up the process.
+
+## **Technical Implementation**
+
+• **Multi-Step Form**: I implemented a multi-step form using **React Final Form**, ensuring smooth navigation between steps while maintaining validation and state consistency.
+
+• **Integration with Mindee API**: I worked on the front-end integration of the image recognition service, creating a seamless user experience for invoice uploads and ensuring accurate data mapping to the form fields.
+
+• **Performance Optimization**: To ensure the redesigned feature could handle increased usage as the platform scaled, I optimized rendering performance, reduced unnecessary re-renders, and implemented skeleton loaders to improve perceived performance during loading.
+
+• **CI/CD Pipeline**: A custom CI/CD pipeline was set up to automate deployment and testing of the reimbursement feature, ensuring reliable and quick updates to production.
+
+• **User Guidance and Analytics**: We integrated in-app guides using **Stonly** to assist users and implemented analytics tools to monitor feature usage and identify areas for further improvement.
+
+<h3 className="mb-10 text-3xl">Results</h3>
+
+The redesigned reimbursement request feature had a transformative impact on Leeto’s platform, addressing the key pain points for both users and the moderation team. The results included:
+
+• **Rejection Rate Reduction**: The rejection rate dropped from 20% to under 5-10%, depending on the period. This improvement significantly reduced user frustration and increased trust in the tool.
+
+• **Moderation Efficiency Gains**: The time spent by the moderation team on each request decreased from an average of 5 minutes to under 2 minutes, freeing up resources for other tasks.
+
+• **Improved First-Try Success Rate**: The success rate of first-try reimbursement requests increased by nearly 20%, demonstrating the effectiveness of the redesigned UX/UI and image recognition features.
+
+• **Scalability Achieved**: The improved process and optimized technical implementation ensured the feature could scale with the growing user base without additional operational strain.
+
+• **User Satisfaction Boost**: The combination of reduced errors, faster processing, and improved guidance led to a noticeable increase in user satisfaction, reflected in feedback from both employees and HR teams.
+
+## **Key Lessons and Takeaways**
+
+Reflecting on this project, several lessons stand out:
+
+1. **The Power of Phased Delivery**: Splitting the project into smaller, deliverable stages allowed us to gather early feedback, iterate on solutions, and deliver value to users faster.
+
+2. **Collaboration Across Teams**: Close collaboration with the product manager, designer, and back-end engineer ensured that each aspect of the feature was well-aligned and integrated seamlessly.
+
+3. **User-Centered Design and Feedback**: Involving users throughout the design process was crucial in addressing pain points effectively and ensuring the final solution met their needs.
+
+This project not only resolved immediate inefficiencies but also set a strong foundation for future enhancements, cementing Leeto’s reputation as a reliable and user-friendly platform.

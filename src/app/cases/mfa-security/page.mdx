@@ -1,0 +1,38 @@
+import { UseCaseLayout } from '@/components/UseCaseLayout'
+
+export const useCase = {
+  title:
+    'Strengthening Security with Multi-Factor Authentication and OTP Integration',
+  description:
+    'Enhanced authentication security for Leeto’s financial transactions platform by implementing Multi-Factor Authentication (MFA) with one-time passwords (OTP) and enforcing stronger password policies. Delivered a seamless, user-friendly experience while protecting sensitive data and ensuring system reliability through comprehensive testing.',
+  priority: 'high',
+}
+
+export default (props) => <UseCaseLayout useCase={useCase} {...props} />
+
+<h3 className="mb-10 text-3xl">Challenge</h3>
+
+Leeto is a platform designed to help HR teams provide tax-advantaged employee benefits while ensuring compliance with strict French regulations. One of its core features is a reimbursement request system, allowing employees to submit invoices for purchases made outside the Leeto marketplace. These requests, often involving financial transactions, are reviewed by the moderation team for approval or rejection.
+
+Given the financial nature of these operations, the platform needed robust security measures to maintain user trust and safeguard sensitive data. However, as with any platform managing financial transactions, there was an inherent risk of exploitation due to leaked credentials or phishing attempts. To mitigate these risks, the team identified a critical need to enhance authentication security, focusing on implementing Multi-Factor Authentication (MFA) with one-time passwords (OTP) and enforcing stronger password policies.
+
+<h3 className="mb-10 text-3xl">Solution</h3>
+
+The product team designed a new authentication flow aimed at strengthening the platform’s security:
+
+1. **Multi-Factor Authentication (MFA):** Users were required to authenticate with their credentials and a one-time password (OTP) sent via email or SMS. This added layer of security helped validate user identity before granting access. Users could also update their OTP delivery preferences in their profile settings.
+
+2. **Stronger Password Policies:** The system enforced stricter password rules, ensuring users created more secure credentials to prevent brute-force attacks and improve overall account security.
+
+As the front-end developer responsible for implementing these changes, I collaborated with the back-end team to integrate the new authentication mechanisms seamlessly. I ensured that the front-end experience was user-friendly while securely handling OTP delivery and verification.
+
+To validate the implementation, I developed comprehensive end-to-end (E2E) tests using Cypress. A key challenge was simulating real-world email-based OTP delivery in the testing environment. To solve this, I utilized Gmail’s API to fetch and parse OTPs from test email accounts, ensuring the reliability of both the front-end and back-end systems.
+
+<h3 className="mb-10 text-3xl">Results</h3>
+
+- Successfully implemented MFA, adding a critical security layer to protect sensitive data and financial transactions.
+- Enhanced password security, reducing the risk of unauthorized access.
+- Delivered a thoroughly tested, user-friendly authentication flow that ensured a seamless experience across email and SMS OTP methods.
+- Established reusable E2E testing tools for future authentication-related improvements.
+
+This project provided the platform with robust, scalable, and user-focused authentication solutions, reinforcing user trust and aligning with Leeto’s commitment to delivering secure and reliable service.

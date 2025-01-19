@@ -1,0 +1,61 @@
+import { UseCaseLayout } from '@/components/UseCaseLayout'
+
+export const useCase = {
+  author: 'Youness Bennaj',
+  date: '2024-12-15',
+  title: 'Transforming Transactional Email Workflows for Scalability.',
+  description:
+    'Redesigned a fragmented email system into a scalable, modular solution using Maizzle and Postmark. Improved email quality.',
+  priority: 'low',
+}
+
+export default (props) => <UseCaseLayout useCase={useCase} {...props} />
+
+<h3 className="mb-10 text-3xl">Challenge</h3>
+
+Transactional emails are a vital part of any SaaS product, shaping user perceptions and ensuring smooth communication. At Leeto, the email system was a persistent source of inefficiency and frustration:
+
+- **Developer Burden:** The email stack was managed in the back-end codebase using Ruby and static HTML templates. Back-end developers, lacking the expertise in email design, faced significant challenges in building pixel-perfect, cross-client-compatible emails. The reliance on <table />-based layouts for email compatibility further complicated their workflow.
+- **Quality Issues:** Clients frequently complained about broken assets, inconsistent formatting, and poor overall quality, damaging user trust.
+- **Scalability Concerns:** With the growing number of features and clients, maintaining and updating email templates became increasingly complex and time-consuming.
+- **Designer Frustration:** The design team’s vision often went unmet due to the technical limitations of the workflow, creating misalignment between design and execution.
+
+The need for a scalable, maintainable, and efficient email system was clear. The goal was to deliver a robust solution that enhanced email quality, improved developer efficiency, and met user expectations.
+
+<h3 className="mb-10 text-3xl">Solution</h3>
+
+To address these challenges, I led the transition to a modern, modular, and scalable email stack:
+
+1. **Research and Tool Selection:**
+
+   - Benchmarked existing email development tools and frameworks.
+   - Selected [Maizzle](https://maizzle.com/) for its TailwindCSS integration and modular design, enabling rapid development and reuse of components.
+
+2. **Dedicated Email Stack:**
+
+   - Decoupled the email stack from the back-end and created a dedicated repository for email templates.
+   - Introduced Postmark as the intermediary for template management and email delivery.
+
+3. **Optimized Asset Management:**
+
+   - Collaborated with the back-end and infrastructure teams to integrate AWS for secure and reliable asset storage.
+
+4. **Custom CI/CD Pipeline:**
+
+   - Designed and implemented a CI/CD pipeline to automate the testing, staging, and deployment of email templates. This ensured smooth updates and seamless integration with the back-end.
+
+5. **Streamlined Workflow:**
+   - Inventoried existing templates and created detailed documentation for better traceability.
+   - Worked closely with designers to align template implementation with design specifications, ensuring pixel-perfect results.
+
+<h3 className="mb-10 text-3xl">Results</h3>
+
+The revamped email system delivered impactful results across key areas:
+
+- **Improved Quality:** Emails became pixel-perfect, fully functional, and compatible with major email clients like Gmail and Outlook, significantly enhancing the user experience.
+- **Developer Efficiency:** By removing the back-end dependency and introducing modular components, developers could build and update templates faster, freeing time for other critical tasks.
+- **Scalability and Maintainability:** The modular system allowed for rapid creation of new templates and seamless updates during major initiatives like Leeto’s rebranding.
+- **Streamlined Deployment:** The CI/CD pipeline automated QA and deployment processes, reducing errors and ensuring smooth production rollouts.
+- **Higher User Satisfaction:** Clients reported a dramatic improvement in email quality, with assets loading correctly and designs meeting expectations.
+
+This project not only addressed immediate challenges but also future-proofed Leeto’s email system, enabling the team to scale efficiently as the platform grew.

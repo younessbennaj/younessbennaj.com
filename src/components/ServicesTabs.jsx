@@ -1,7 +1,6 @@
 'use client'
 
 import * as Tabs from '@radix-ui/react-tabs'
-import { useEffect, useState } from 'react'
 import { DotPattern } from './DotPattern'
 import { cn } from '@/lib/utils'
 const tabs = [
@@ -12,8 +11,7 @@ const tabs = [
   },
   {
     title: 'Seamless Integration',
-    description:
-      'Adapting to your team’s workflows and delivering impactful solutions from day one.',
+    description: 'Adapting to your team’s workflows, tools and rituals.',
   },
   {
     title: 'Sharing Knowledge',
@@ -27,17 +25,17 @@ export function ServicesTabs() {
     <Tabs.Root
       activationMode="manual"
       orientation="vertical"
-      className="grid text-left md:grid-cols-2"
+      className="grid h-auto text-left md:h-[540px] md:grid-cols-2"
       defaultValue="tab1"
     >
-      <Tabs.List className="flex max-w-full gap-6 overflow-x-auto px-0 py-4 md:flex-col md:py-4">
+      <Tabs.List className="flex max-w-full flex-row gap-6 overflow-x-auto px-0 py-4 md:flex-col md:py-4">
         {tabs.map((tab, index) => (
           <Tabs.Trigger
-            className="h-full w-64 rounded-xl hover:bg-zinc-50/50 data-[state=active]:bg-zinc-200/50 md:h-auto md:w-full hover:dark:bg-zinc-800/20 data-[state=active]:dark:bg-zinc-800/50"
+            className="flex h-full w-64 grow rounded-xl border border-zinc-100 shadow-sm transition-all duration-100 hover:bg-zinc-100/30 data-[state=active]:bg-zinc-100/50 md:w-full dark:border-zinc-800/50 hover:dark:bg-zinc-800/20 data-[state=active]:dark:bg-zinc-800/50"
             key={index}
             value={`tab${index + 1}`}
           >
-            <div className="hover:bg-sinc-100/50 h-full w-64 rounded-xl border border-zinc-200 p-6 text-left md:h-auto md:w-full dark:border-zinc-700/40">
+            <div className="hover:bg-sinc-100/50 w-64 grow rounded-xl p-6 text-left md:w-full dark:border-zinc-700/40">
               <h3 className="mb-1 text-base font-semibold md:text-lg">
                 {tab.title}
               </h3>

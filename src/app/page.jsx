@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { cn } from '@/lib/utils'
+
 import {
   Code,
   CheckCircle,
@@ -17,13 +17,13 @@ import Balancer from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
 import { OrbitingCirclesDemo } from '@/components/OrbitingCirclesDemo'
-
+import { BentoGrid, BentoCard } from '@/components/BentoGrid'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { ServicesTabs } from '@/components/ServicesTabs'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import { CustomAccordion } from '@/components/CustomAccordion'
-import { DotPattern } from '@/components/DotPattern'
+
 import { Globe } from '@/components/Globe'
 import logoLeeto from '@/images/logos/leeto.svg'
 import epitechLogo from '@/images/logos/epitech.svg'
@@ -34,6 +34,7 @@ import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import { getAllArticles } from '@/lib/articles'
+import { getAllUseCases } from '@/lib/useCases'
 import { formatDate } from '@/lib/formatDate'
 import fernandoLeetoImage from '@/images/testimonials/fernando-leeto.jpeg'
 import maximeLeetoImage from '@/images/testimonials/maxime-leeto.jpeg'
@@ -109,7 +110,7 @@ function Article({ article }) {
         {formatDate(article.date)}
       </Card.Eyebrow>
       <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read use case</Card.Cta>
+      <Card.Cta>Read article</Card.Cta>
     </Card>
   )
 }
@@ -458,6 +459,9 @@ const testimonials = [
 
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4)
+  let useCases = await getAllUseCases()
+
+  console.log(useCases)
 
   return (
     <>
@@ -498,7 +502,7 @@ export default async function Home() {
           Services
         </h2>
         <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          <Balancer>How can I be impactful to your team ?</Balancer>
+          <Balancer>How can I be impactful to your team?</Balancer>
         </h3>
         {/* <div className="bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
           <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white">
@@ -518,6 +522,53 @@ export default async function Home() {
         /> */}
 
         <ServicesTabs />
+      </Container>
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Cases
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>How do I solve business problems?</Balancer>
+        </h3>
+        <BentoGrid>
+          {useCases.map((useCase) => {
+            return (
+              <BentoCard
+                key={useCase.slug}
+                className={`col-span-2 lg:col-span-${useCase.priority === 'high' ? 4 : 2}`}
+                description={useCase.description}
+                name={useCase.title}
+                cta="Learn more"
+                href={`/cases/${useCase.slug}`}
+              ></BentoCard>
+            )
+          })}
+          {/* <BentoCard
+            className="col-span-3 lg:col-span-2"
+            description="At Leeto, You need a clear and actionable strategy for tackling bottlenecks or streamlining development workflows. Ideal for teams looking to boost efficiency without compromising quality."
+            name="Publish PWA on store"
+            cta="Learn more"
+          ></BentoCard>
+          <BentoCard
+            className="col-span-3 lg:col-span-4"
+            cta="Learn more"
+            name="Leveraging AI-Powered Solutions to Solve Business Challenges and Reduce Rejection Rates"
+            description="A deep dive into how I collaborated with a cross-functional team to redesign Leeto’s reimbursement request feature. By integrating AI-driven image recognition, optimizing multi-step forms, and focusing on user-centric solutions, we reduced the rejection rate from 20% to under 5%, while improving workflows and enhancing the overall user experience."
+          />
+
+          <BentoCard
+            className="col-span-3 lg:col-span-4"
+            description="At Leeto, I gained valuable experience designing, developing, and maintaining key product features that met both business needs and user demands. By collaborating closely with Design and Product Management, I delivered high-fidelity interfaces and implemented a cohesive design system to ensure a consistent user experience. I prioritized quality through robust testing and by contributing to the CI/CD pipeline for seamless deployments."
+            name="Participated in building solutions trusted by more than 1000 of enterprise companies and used by over 30000 monthly active users"
+            cta="Learn more"
+          ></BentoCard>
+          <BentoCard
+            className="col-span-3 lg:col-span-2"
+            description="I also carried out the complete refactoring of a front-end based on Ruby on Rails to AngularJS, a demanding project that allowed me to develop a particular rigor for this type of migration and tackle the challenges associated with such refactorings."
+            name="Migrating a front-end from Ruby on Rails to AngularJS"
+            cta="Learn more"
+          ></BentoCard> */}
+        </BentoGrid>
       </Container>
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
@@ -580,7 +631,7 @@ export default async function Home() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
-              className="flex h-fit flex-col overflow-hidden rounded-3xl bg-zinc-100/50 dark:bg-zinc-800/50"
+              className="flex h-fit flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800/80"
             >
               <div className="flex-grow px-4 py-5 sm:p-6">
                 <div className="mb-4 flex items-center">
@@ -593,12 +644,12 @@ export default async function Home() {
                     <h3 className="text-foreground text-lg font-medium">
                       {testimonial.name}
                     </h3>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground te text-xs text-zinc-600 dark:text-zinc-400">
                       {testimonial.position} @{testimonial.company}
                     </p>
                   </div>
                 </div>
-                <p className="space-y-4 leading-relaxed">
+                <p className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {testimonial.testimonial}
                 </p>
               </div>
@@ -614,7 +665,7 @@ export default async function Home() {
           </Button>
         </div>
       </Container>
-      <Container className="mt-24 md:mt-28">
+      {/* <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Remote Work, Global Vision
         </h2>
@@ -633,13 +684,13 @@ export default async function Home() {
         <div className="relative">
           <Globe />
         </div>
-      </Container>
+      </Container> */}
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Blog
         </h2>
         <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-          <Balancer>My latest articles</Balancer>
+          <Balancer>My latest articles and guides</Balancer>
         </h3>
         <div className="mb-[64px] flex flex-col gap-16">
           {articles.map((article) => (
@@ -647,7 +698,7 @@ export default async function Home() {
           ))}
         </div>
         <div className="text-center">
-          <Button href="/articles">View all case studies</Button>
+          <Button href="/articles">View more</Button>
         </div>
       </Container>
       <Container className="mt-24 md:mt-28">
