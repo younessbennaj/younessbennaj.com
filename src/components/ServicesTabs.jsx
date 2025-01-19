@@ -84,8 +84,7 @@ export function ServicesTabs() {
           <p className="mb-4">
             Onboarding consultation to get up to speed on your tools and
             processes, followed by immediate hands-on contributions. Weekly
-            updates and retrospectives to ensure alignment and continuous
-            progress.
+            updates and retrospectives.
           </p>
         </Tabs.Content>
         <Tabs.Content className="p-4" value="tab3">
