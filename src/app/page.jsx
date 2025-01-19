@@ -491,7 +491,7 @@ export default async function Home() {
         </div>
       </Container>
       {/* <Photos /> */}
-      <Container className="mt-24 md:mt-28">
+      {/* <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Services
         </h2>
@@ -500,7 +500,7 @@ export default async function Home() {
         </h3>
 
         <ServicesTabs />
-      </Container>
+      </Container> */}
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           My skills
