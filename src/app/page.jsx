@@ -245,8 +245,6 @@ function Resume() {
             company: 'Epitech',
             title: 'Master Degree, Computer Science',
             logo: epitechLogo,
-            // start: '2020',
-            // end: '2022',
           }}
         />
       </ol>
@@ -476,9 +474,7 @@ export default async function Home() {
             <b>over 5 years of experience</b>. Passionate about the
             ever-evolving front-end landscape, where new technologies,
             frameworks, and trends constantly emerge, pushing you to
-            continuously learn, adapt, and challenge yourself. I split my year
-            between Tokyo, Bangkok, and Kuala Lumpur to draw inspiration from
-            these vibrant cities.
+            continuously learn, adapt, and challenge yourself.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
