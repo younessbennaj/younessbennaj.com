@@ -1,4 +1,3 @@
-'use-client'
 import { cn } from '@/lib/utils'
 import React from 'react'
 
@@ -42,7 +41,7 @@ export function OrbitingCircles({
               '--icon-size': `${iconSize}px`,
             }}
             className={cn(
-              `animate-orbit absolute flex size-[var(--icon-size)] transform-gpu items-center justify-center rounded-full`,
+              `absolute flex size-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full`,
               { '[animation-direction:reverse]': reverse },
               className,
             )}
