@@ -23,6 +23,7 @@ import { Container } from '@/components/Container'
 import { ServicesTabs } from '@/components/ServicesTabs'
 import { GitHubIcon, LinkedInIcon } from '@/components/SocialIcons'
 import { CustomAccordion } from '@/components/CustomAccordion'
+import { Showcase } from '@/components/Showcase'
 
 import { Globe } from '@/components/Globe'
 import logoLeeto from '@/images/logos/leeto.svg'
@@ -341,23 +342,23 @@ const questions = [
     answer:
       'I’m open to all types of projects, regardless of their scope. I enjoy working on everything from building reusable components for a design system to developing features with complex business logic. In my previous experiences, I’ve delivered high-impact features and smaller components with the same level of precision and attention to detail. My goal is always to align with the project’s objectives, whether it’s enhancing user experience, improving performance, or driving business outcomes.',
   },
-  {
-    question:
-      'How do you manage contracts and administrative processes for international clients?',
-    answer:
-      'I use tools like Remote.com to simplify contract management, payments, and compliance for international collaborations. These platforms ensure a smooth and legally compliant process for both parties. However, I’m also flexible and open to working with any custom processes or tools already in place within your company to make the collaboration as seamless as possible.',
-  },
+  // {
+  //   question:
+  //     'How do you manage contracts and administrative processes for international clients?',
+  //   answer:
+  //     'I use tools like Remote.com to simplify contract management, payments, and compliance for international collaborations. These platforms ensure a smooth and legally compliant process for both parties. However, I’m also flexible and open to working with any custom processes or tools already in place within your company to make the collaboration as seamless as possible.',
+  // },
   {
     question: 'How can we get started on a project?',
     answer:
       'Getting started is simple! You can reach out to me via LinkedIn or email with an overview of your project or needs. From there, we can schedule a quick call to discuss the scope, timeline, and goals. I’ll provide a tailored proposal and workflow to kick off our collaboration smoothly.',
   },
-  {
-    question:
-      'How do you manage project timelines and client communication in different time zones?',
-    answer:
-      'I structure my day around a stable routine and keep clients updated on progress through regular check-ins, adapting my schedule as needed to sync with their time zones. Whether through asynchronous communication or scheduled meetings, I ensure that all parties are aligned, regardless of location.',
-  },
+  // {
+  //   question:
+  //     'How do you manage project timelines and client communication in different time zones?',
+  //   answer:
+  //     'I structure my day around a stable routine and keep clients updated on progress through regular check-ins, adapting my schedule as needed to sync with their time zones. Whether through asynchronous communication or scheduled meetings, I ensure that all parties are aligned, regardless of location.',
+  // },
   {
     question:
       'How do you ensure your work aligns with the latest industry trends?',
@@ -369,16 +370,16 @@ const questions = [
     answer:
       'Yes, I’m comfortable working with legacy codebases and improving existing structures. I focus on understanding the original architecture to ensure that any updates I make are scalable and maintainable, and I always prioritize code quality and performance.',
   },
-  {
-    question: 'How do you handle project feedback and revisions?',
-    answer:
-      'I see feedback as a valuable part of the development process. I encourage open communication and make sure to implement revisions that enhance the project’s quality. My goal is always to align the final product with the client’s vision, incorporating feedback efficiently while keeping the project timeline intact.',
-  },
-  {
-    question: 'Are you available for long-term projects?',
-    answer:
-      'Yes, I’m open to both short-term and long-term projects. For longer engagements, I establish a structured workflow with milestones and regular progress updates to ensure the project remains on track and meets the client’s evolving needs.',
-  },
+  // {
+  //   question: 'How do you handle project feedback and revisions?',
+  //   answer:
+  //     'I see feedback as a valuable part of the development process. I encourage open communication and make sure to implement revisions that enhance the project’s quality. My goal is always to align the final product with the client’s vision, incorporating feedback efficiently while keeping the project timeline intact.',
+  // },
+  // {
+  //   question: 'Are you available for long-term projects?',
+  //   answer:
+  //     'Yes, I’m open to both short-term and long-term projects. For longer engagements, I establish a structured workflow with milestones and regular progress updates to ensure the project remains on track and meets the client’s evolving needs.',
+  // },
 ]
 
 const features = [
@@ -493,32 +494,15 @@ export default async function Home() {
         </div>
       </Container>
       {/* <Photos /> */}
-      <Container className="mt-24 md:mt-28">
+      {/* <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Services
         </h2>
         <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
           <Balancer>How can I be impactful to your team?</Balancer>
         </h3>
-        {/* <div className="bg-background relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
-          <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white">
-            Dot Pattern
-          </p>
-          <DotPattern
-            className={cn(
-              '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
-            )}
-          />
-        </div> */}
-
-        {/* <DotPattern
-          className={cn(
-            '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
-          )}
-        /> */}
-
         <ServicesTabs />
-      </Container>
+      </Container> */}
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Cases
@@ -531,7 +515,11 @@ export default async function Home() {
             return (
               <BentoCard
                 key={useCase.slug}
-                className={`col-span-2 lg:col-span-${useCase.priority === 'high' ? 4 : 2}`}
+                className={
+                  useCase.priority === 'high'
+                    ? 'col-span-2 md:col-span-4'
+                    : 'col-span-2 md:col-span-2'
+                }
                 description={useCase.description}
                 name={useCase.title}
                 cta="Learn more"
@@ -539,31 +527,6 @@ export default async function Home() {
               ></BentoCard>
             )
           })}
-          {/* <BentoCard
-            className="col-span-3 lg:col-span-2"
-            description="At Leeto, You need a clear and actionable strategy for tackling bottlenecks or streamlining development workflows. Ideal for teams looking to boost efficiency without compromising quality."
-            name="Publish PWA on store"
-            cta="Learn more"
-          ></BentoCard>
-          <BentoCard
-            className="col-span-3 lg:col-span-4"
-            cta="Learn more"
-            name="Leveraging AI-Powered Solutions to Solve Business Challenges and Reduce Rejection Rates"
-            description="A deep dive into how I collaborated with a cross-functional team to redesign Leeto’s reimbursement request feature. By integrating AI-driven image recognition, optimizing multi-step forms, and focusing on user-centric solutions, we reduced the rejection rate from 20% to under 5%, while improving workflows and enhancing the overall user experience."
-          />
-
-          <BentoCard
-            className="col-span-3 lg:col-span-4"
-            description="At Leeto, I gained valuable experience designing, developing, and maintaining key product features that met both business needs and user demands. By collaborating closely with Design and Product Management, I delivered high-fidelity interfaces and implemented a cohesive design system to ensure a consistent user experience. I prioritized quality through robust testing and by contributing to the CI/CD pipeline for seamless deployments."
-            name="Participated in building solutions trusted by more than 1000 of enterprise companies and used by over 30000 monthly active users"
-            cta="Learn more"
-          ></BentoCard>
-          <BentoCard
-            className="col-span-3 lg:col-span-2"
-            description="I also carried out the complete refactoring of a front-end based on Ruby on Rails to AngularJS, a demanding project that allowed me to develop a particular rigor for this type of migration and tackle the challenges associated with such refactorings."
-            name="Migrating a front-end from Ruby on Rails to AngularJS"
-            cta="Learn more"
-          ></BentoCard> */}
         </BentoGrid>
       </Container>
       <Container className="mt-24 md:mt-28">
@@ -586,7 +549,15 @@ export default async function Home() {
         </h3>
         <Resume />
       </Container> */}
-
+      <Container className="mt-24 md:mt-28">
+        <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
+          Showcase
+        </h2>
+        <h3 className="mb-12 mt-2 text-center text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+          <Balancer>My latest projects</Balancer>
+        </h3>
+        <Showcase />
+      </Container>
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           My Front-End Expertise
@@ -661,6 +632,7 @@ export default async function Home() {
           </Button>
         </div>
       </Container>
+
       {/* <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Remote Work, Global Vision
@@ -697,6 +669,7 @@ export default async function Home() {
           <Button href="/articles">View more</Button>
         </div>
       </Container>
+
       <Container className="mt-24 md:mt-28">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           FAQ
