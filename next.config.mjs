@@ -16,12 +16,12 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/projects',
+        source: '/speaking',
         destination: '/', // Redirige vers la page d'accueil
         permanent: false,
       },
       {
-        source: '/speaking',
+        source: '/about',
         destination: '/', // Redirige vers la page d'accueil
         permanent: false,
       },
