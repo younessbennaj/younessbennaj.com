@@ -122,7 +122,8 @@ export default function Projects() {
             description={project.description}
             status={project.status}
             images={project.images}
-            href={project.githubLink}
+            githubLink={project.githubLink}
+            liveLink={project.liveLink}
           />
         ))}
       </ul>
