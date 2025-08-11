@@ -83,10 +83,10 @@ module.exports = function typographyStyles({ theme }) {
           fontWeight: theme('fontWeight.semibold'),
         },
         h2: {
-          fontSize: theme('fontSize.xl')[0],
-          lineHeight: theme('lineHeight.7'),
-          marginTop: theme('spacing.20'),
-          marginBottom: theme('spacing.4'),
+          fontSize: theme('fontSize.3xl')[0],
+          lineHeight: theme('lineHeight.10'),
+          marginTop: theme('spacing.14'),
+          marginBottom: theme('spacing.10'),
         },
         h3: {
           fontSize: theme('fontSize.base')[0],
@@ -168,9 +168,9 @@ module.exports = function typographyStyles({ theme }) {
           paddingLeft: theme('spacing.6'),
         },
         li: {
-          marginTop: theme('spacing.6'),
-          marginBottom: theme('spacing.6'),
-          paddingLeft: theme('spacing[3.5]'),
+          marginTop: theme('spacing.4'),
+          marginBottom: theme('spacing.4'),
+          paddingLeft: theme('spacing[2.5]'),
         },
         'li::marker': {
           fontSize: theme('fontSize.sm')[0],
