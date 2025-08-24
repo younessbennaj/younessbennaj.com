@@ -8,6 +8,7 @@ export const TableOfContents = memo(function TableOfContents({
   if (!toc.length) return null
 
   const scrollToHeading = (e, id) => {
+    console.log(id)
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
@@ -22,23 +23,25 @@ export const TableOfContents = memo(function TableOfContents({
   return (
     <nav
       aria-labelledby="toc-heading"
-      className="max-h-[calc(100vh-8rem)] overflow-y-auto rounded border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-700 dark:bg-zinc-900"
+      className="max-h-[calc(100vh-8rem)] overflow-y-auto rounded bg-zinc-50 p-6 dark:bg-zinc-900"
       role="navigation"
     >
       <h2
         id="toc-heading"
-        className="mb-4 text-sm font-semibold text-zinc-900 dark:text-zinc-300"
+        className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-300"
       >
         Sommaire
       </h2>
+      {/* add separator */}
+      <hr className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
       <ol className="space-y-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
         {toc.map(({ id, text, level }) => (
-          <li key={id} className={level === 3 ? 'ml-4' : undefined}>
+          <li key={id} className={level === 3 ? 'ml-4 text-sm' : 'text-md'}>
             <a
               href={`#${id}`}
               onClick={(e) => scrollToHeading(e, id)}
               aria-current={activeId === id ? 'location' : undefined}
-              className={`block rounded px-2 py-1 transition-colors hover:bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:bg-zinc-800 ${
+              className={`text-md block rounded-lg px-4 py-2 transition-colors hover:text-blue-400 hover:underline focus:outline-none ${
                 activeId === id
                   ? 'bg-zinc-200 font-semibold text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
                   : ''

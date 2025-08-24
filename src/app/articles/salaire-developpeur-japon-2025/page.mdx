@@ -1,9 +1,15 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import { SalaryTable } from '@/components/SalaryTable'
+import { Alert } from '@/components/Alert'
+import { SalarySwitcher } from '@/components/SalarySwitcher'
 
 export const article = {
   author: 'Youness Bennaj',
-  date: '2025-07-04',
+  createdAt: '2025-07-04',
+  category: 'expatriation',
   title: 'Salaire développeur au Japon : à quoi s’attendre en 2025 ?',
+  image:
+    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop',
   description:
     'Une vue d’ensemble des salaires pour les développeurs au Japon, avec repères sur le coût de la vie, le pouvoir d’achat et les fourchettes réalistes selon l’expérience.',
 }
@@ -15,30 +21,259 @@ export const metadata = {
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
-# Salaire développeur au Japon : à quoi s’attendre en 2025 ?
+## Introduction
 
-Partir travailler au Japon en tant que développeur soulève une question essentielle : combien peut-on espérer gagner ?
+Le Japon attire de plus en plus de développeurs francophones, séduits par l’idée de travailler dans un environnement différent, tout en profitant d’un cadre de vie unique.
 
-Entre idées reçues sur des salaires bas, fascination pour le Japon et réalité du terrain, il est souvent difficile d’y voir clair.
+Mais lorsqu’il s’agit de parler **salaire**, beaucoup tombent dans le piège d’une **conversion brute en euros**.
+Le problème ? Un salaire en yens ne se compare pas directement à un salaire en euros sans prendre en compte **le coût de la vie**, **les avantages liés au contrat** et **les pratiques locales**.
 
-Dans cet article, je propose une vue d’ensemble pour comparer les salaires tech au Japon avec ceux en France, en tenant compte du coût de la vie, des types d’entreprises, du niveau d’expérience, et des attentes locales.
+Dans cet article, nous allons voir **à quoi s’attendre en 2025**, avec des données concrètes et une touche de retour d’expérience personnelle.
 
-## Comprendre les bases
+Et surtout, nous avons intégré des **tableaux interactifs** : un **toggle** permet de voir chaque salaire en “équivalent pouvoir d’achat Paris” (calcul maison basé sur données réelles + vécu terrain).
 
-À Tokyo, un développeur junior peut espérer entre ¥4M et ¥6M annuels (environ 25k€ à 40k€). Un développeur senior dans une entreprise internationale peut viser jusqu’à ¥10M voire plus, selon son expertise et le rôle occupé.
+---
 
-## Coût de la vie vs pouvoir d’achat
+## 1. Pourquoi une conversion brute ne suffit pas
 
-Le coût de la vie à Tokyo n’est pas aussi élevé qu’à Paris sur certains postes (alimentation, santé, transports), mais les logements peuvent être chers. Une bonne compréhension du budget local est essentielle pour bien négocier.
+Un salaire de 6M¥ (~34 800€) à Tokyo **ne vaut pas** un salaire de 34 800€ à Paris.
 
-## Conseils pour se positionner
+Le coût du logement, des transports, de l’alimentation ou encore des assurances est différent.  
+Et pourtant, beaucoup (moi le premier à mes débuts) tombent dans ce piège de la **conversion brute en euros**.
 
-- Comparez avec des offres similaires (Glassdoor, forums, groupes Slack/Discord).
-- Préparez une argumentation solide basée sur votre valeur ajoutée.
-- Tenez compte de votre visa, de la langue, et de vos objectifs de vie sur place.
+### Retour d’expérience
 
-## À suivre
+Au moment de mes premiers entretiens au Japon, les salaires proposés m’ont semblé étonnamment bas. Par réflexe, j’avais simplement converti les montants de yens en euros, ce qui donnait une impression de stagnation, voire de recul par rapport à ce que j’aurais pu obtenir en changeant de poste à Paris.
 
-Cet article est une introduction. J’y reviendrai plus en détail avec des comparatifs chiffrés, des témoignages et des outils d’aide à la négociation.
+En creusant davantage et en comparant le coût de la vie locale, j’ai réalisé que cette approche était trompeuse. Un salaire affiché en yens ne peut pas être jugé uniquement à travers une conversion brute : il faut le mettre en perspective avec les réalités économiques et culturelles de Tokyo.
 
-Vous pouvez aussi découvrir mon accompagnement personnalisé pour vous aider à préparer votre projet d’expatriation dans de bonnes conditions.
+Voici quelques exemples concrets :
+
+➤ **Logement** : des solutions accessibles, notamment via les sharehouses modernes et bien situées  
+➤ **Nourriture** : manger à l’extérieur est courant et souvent bien moins coûteux qu’en France  
+➤ **Loisirs** : escapades nature ou culturelles faciles et abordables  
+➤ **Santé** : un système efficace et rassurant  
+➤ **Consommation** : un mode de vie qui incite à dépenser différemment, et souvent moins
+
+En pratique, cela signifie qu’un salaire qui paraît faible une fois converti en euros peut offrir à Tokyo un **pouvoir d’achat réel supérieur** à celui que l’on aurait anticipé.
+
+---
+
+### Visualiser concrètement
+
+C’est exactement pour ça que nous avons ajouté un **toggle interactif** dans les tableaux ci-dessous.  
+Il permet de basculer entre :
+
+- le **salaire brut en yens**,
+- et son **équivalent en pouvoir d’achat “Paris”**,  
+  pour comparer sur des bases plus réalistes.
+
+<SalarySwitcher
+  title="Exemple : 6,000,000 JPY ↔ équivalent Paris"
+  from={{ value: 6_000_000, currency: 'JPY', label: 'yens', locale: 'ja-JP' }}
+  to={{ value: 34_400, currency: 'EUR', label: 'euros', locale: 'fr-FR' }}
+  initial="from"
+  locale="ja-JP"
+/>
+
+---
+
+## 2. Salaire moyen par ancienneté
+
+Le niveau d’expérience reste le facteur principal influençant le salaire.
+
+Voici les chiffres moyens observés en 2025 :
+
+<SalaryTable
+  title="Salaires moyens par ancienneté"
+  columns={[
+    { key: 'level', label: 'Niveau d’expérience' },
+    { key: 'avg', label: 'Salaire moyen annuel', align: 'right' },
+    { key: 'low', label: 'Fourchette basse', align: 'right' },
+    { key: 'high', label: 'Fourchette haute', align: 'right' },
+  ]}
+  rows={[
+    {
+      level: 'Junior (0–2 ans)',
+      avg: 4_000_000,
+      low: 3_000_000,
+      high: 5_000_000,
+    },
+    {
+      level: 'Intermédiaire (3–5 ans)',
+      avg: 6_000_000,
+      low: 4_500_000,
+      high: 7_500_000,
+    },
+    {
+      level: 'Senior (6–9 ans)',
+      avg: 8_000_000,
+      low: 6_000_000,
+      high: 10_000_000,
+    },
+    {
+      level: 'Expert (10+ ans)',
+      avg: 10_000_000,
+      low: 8_000_000,
+      high: 13_000_000,
+    },
+  ]}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="info"
+  description="Les salaires au Japon peuvent varier considérablement en fonction de l'expérience et de la spécialité."
+  details={
+    <>
+      <p>
+        Les salaires peuvent varier en fonction de plusieurs facteurs, notamment
+        la spécialité technique et la demande sur le marché. Voici quelques
+        exemples :
+      </p>
+      <ul>
+        <li>Développeurs front-end vs back-end</li>
+        <li>Profils Data et Intelligence Artificielle</li>
+        <li>Développeurs mobiles</li>
+      </ul>
+    </>
+  }
+/>
+
+---
+
+## 3. Salaire moyen par spécialité
+
+Certaines spécialités sont nettement mieux rémunérées que d’autres, surtout si elles sont en tension sur le marché japonais.
+
+<SalaryTable
+  title="Salaires moyens par spécialité"
+  columns={[
+    { key: 'spec', label: 'Spécialité' },
+    { key: 'avg', label: 'Salaire moyen annuel', align: 'right' },
+    { key: 'low', label: 'Fourchette basse', align: 'right' },
+    { key: 'high', label: 'Fourchette haute', align: 'right' },
+  ]}
+  rows={[
+    {
+      spec: 'Front‑end Developer',
+      avg: 6_500_000,
+      low: 5_000_000,
+      high: 8_000_000,
+    },
+    {
+      spec: 'Back‑end Developer',
+      avg: 7_000_000,
+      low: 5_500_000,
+      high: 9_000_000,
+    },
+    {
+      spec: 'Full‑stack Developer',
+      avg: 6_800_000,
+      low: 5_200_000,
+      high: 8_500_000,
+    },
+    {
+      spec: 'Mobile Developer',
+      avg: 6_700_000,
+      low: 5_000_000,
+      high: 8_200_000,
+    },
+    {
+      spec: 'Data Engineer / Scientist',
+      avg: 8_500_000,
+      low: 7_000_000,
+      high: 11_000_000,
+    },
+    {
+      spec: 'DevOps / Cloud Engineer',
+      avg: 8_000_000,
+      low: 6_500_000,
+      high: 10_500_000,
+    },
+  ]}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="info"
+  description="Les profils Data et Cloud sont particulièrement recherchés et bénéficient d’une prime à l’embauche."
+/>
+
+---
+
+## 4. Salaire par ville (hubs technologiques)
+
+Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équilibre entre salaire et coût de la vie.
+
+<SalaryTable
+  title="Salaires moyens par ville"
+  columns={[
+    { key: 'city', label: 'Ville' },
+    { key: 'avg', label: 'Salaire moyen annuel (JPY)', align: 'right' },
+    { key: 'low', label: 'Fourchette basse (JPY)', align: 'right' },
+    { key: 'high', label: 'Fourchette haute (JPY)', align: 'right' },
+  ]}
+  rows={[
+    { city: 'Tokyo', avg: 7_000_000, low: 5_500_000, high: 9_000_000 },
+    { city: 'Osaka', avg: 6_200_000, low: 5_000_000, high: 7_500_000 },
+    { city: 'Fukuoka', avg: 5_800_000, low: 4_800_000, high: 7_000_000 },
+  ]}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="info"
+  description="Tokyo paie mieux, mais le coût de la vie est aussi plus élevé. Osaka et Fukuoka offrent un meilleur rapport salaire / qualité de vie pour certains profils."
+/>
+
+---
+
+## 5. Salaire annuel par type de contrat (exemple concret)
+
+Prenons le cas d’un **développeur back‑end avec 7 ans d’expérience**. Voici comment son salaire annuel peut varier selon le type de contrat :
+
+<SalaryTable
+  title="Impact du type de contrat (exemple : back‑end, 7 ans d’expérience)"
+  columns={[
+    { key: 'type', label: 'Type de contrat' },
+    { key: 'brut', label: 'Salaire brut annuel (JPY)', align: 'right' },
+    { key: 'notes', label: 'Notes' },
+  ]}
+  rows={[
+    {
+      type: 'CDI direct avec l’entreprise',
+      brut: 8_000_000,
+      notes: 'Prime annuelle souvent incluse, stabilité',
+    },
+    {
+      type: 'Placement via cabinet de recrutement',
+      brut: 6_700_000,
+      notes: 'Cabinet prend une marge, salaire plus bas',
+    },
+    {
+      type: 'Freelance / Sous‑traitance',
+      brut: 9_000_000,
+      notes:
+        'Peut dépasser 9M selon le TJM ; moins d’avantages, plus de variabilité',
+    },
+  ]}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="warning"
+  description="Le mode de recrutement a un impact direct sur le salaire. En CDI direct, on gagne souvent plus qu’en passant par un cabinet, et le freelance peut dépasser ces montants… mais avec plus d’incertitude."
+/>

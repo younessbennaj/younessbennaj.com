@@ -22,15 +22,18 @@ export function ArticleLayout({ article, children }) {
 
   // Custom hooks for better separation of concerns
   const { toc, activeId } = useTableOfContents(children)
+  console.log('toc', toc)
   const readingTime = useReadingTime(article, children)
   const currentUrl = useCurrentUrl()
   const normalizedTags = useNormalizedTags(article?.tags)
 
-  const handleBackClick = () => {
-    if (previousPathname) {
-      router.back()
-    } else {
-      router.push('/articles')
+  const handleArticlesClick = () => {
+    router.push('/articles')
+  }
+
+  const handleCategoryClick = () => {
+    if (article.category) {
+      router.push(`/articles/${article.category}`)
     }
   }
 
@@ -40,16 +43,34 @@ export function ArticleLayout({ article, children }) {
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-zinc-600 dark:text-zinc-400">
+            {/* Articles Link */}
             <li>
               <button
-                onClick={handleBackClick}
+                onClick={handleArticlesClick}
                 className="rounded transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
-                aria-label="Go back to previous page"
+                aria-label="Go to articles page"
               >
-                ← Back
+                Articles
               </button>
             </li>
-            <li className="before:mx-2 before:content-['/']">
+
+            {/* Category Link (if exists) */}
+            {article.category && (
+              <>
+                <li className="before:mx-2 before:content-['>']">
+                  <button
+                    onClick={handleCategoryClick}
+                    className="rounded capitalize transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
+                    aria-label={`Go to ${article.category} articles`}
+                  >
+                    {article.category}
+                  </button>
+                </li>
+              </>
+            )}
+
+            {/* Current Article Title */}
+            <li className="before:mx-2 before:content-['>']">
               <span
                 aria-current="page"
                 className="font-medium text-zinc-900 dark:text-zinc-100"
@@ -67,11 +88,12 @@ export function ArticleLayout({ article, children }) {
 
             {/* Article Metadata */}
             <div
-              className="my-10 flex flex-wrap items-center gap-4"
+              className="my-10 flex flex-wrap items-center justify-between gap-4"
               role="group"
               aria-label="Article metadata"
             >
               <TagList tags={normalizedTags} />
+
               <ShareLinks url={currentUrl} title={article.title} />
             </div>
 
