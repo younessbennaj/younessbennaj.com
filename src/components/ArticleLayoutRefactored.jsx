@@ -48,7 +48,6 @@ export function ArticleLayout({ article, children }) {
               currentUrl={currentUrl}
             />
           </article>
-
           <TableOfContents toc={toc} activeId={activeId} />
         </div>
       </div>

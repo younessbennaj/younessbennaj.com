@@ -6,7 +6,7 @@ import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   LightBulbIcon,
-} from '@heroicons/react/24/solid'
+} from '@heroicons/react/24/outline'
 
 function cx(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -64,6 +64,15 @@ export function Alert({
       label: 'Astuce',
       divider: 'border-sky-200/60 dark:border-sky-900',
       link: 'text-sky-800 hover:text-sky-900 dark:text-sky-200 dark:hover:text-sky-100',
+    },
+    experience: {
+      bg: 'bg-zinc-50 dark:bg-zinc-900/60',
+      text: 'text-zinc-800 dark:text-zinc-200',
+      Icon: InformationCircleIcon, // tu peux changer pour un autre icône plus narratif si tu veux
+      role: 'status',
+      label: 'Retour d’expérience',
+      divider: 'border-zinc-200/60 dark:border-zinc-700',
+      link: 'text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white',
     },
   }
 
@@ -190,25 +199,30 @@ export function Alert({
       role={v.role}
       aria-label={ariaLabel || v.label}
       className={cx(
-        'rounded-xl px-4 py-3 shadow-sm sm:px-5 sm:py-4',
+        'rounded-xl px-3 py-5 shadow-sm sm:px-5 sm:py-4 md:px-4 md:py-3',
         v.bg,
         className,
       )}
     >
-      <div className="flex items-start gap-2">
+      <div className="flex items-start gap-2 md:gap-2">
         <Icon
-          className={cx('mt-0.5 h-5 w-5 shrink-0', v.text)}
+          className={cx('mt-0.5 size-5 w-5 shrink-0', v.text)}
           aria-hidden="true"
         />
         <div className="flex-1">
           {(title || v.label) && (
-            <h4 className={cx('mb-1 text-sm font-semibold leading-6', v.text)}>
+            <h4
+              className={cx(
+                'text-md mb-1 font-semibold leading-6 md:mb-2',
+                v.text,
+              )}
+            >
               {title || v.label}
             </h4>
           )}
 
           {description && (
-            <div className="prose-sm prose max-w-none dark:prose-invert">
+            <div className="prose-sm prose max-w-none pr-2 text-sm dark:prose-invert">
               {description}
             </div>
           )}

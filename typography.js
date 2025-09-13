@@ -89,10 +89,10 @@ module.exports = function typographyStyles({ theme }) {
           marginBottom: theme('spacing.10'),
         },
         h3: {
-          fontSize: theme('fontSize.base')[0],
+          fontSize: theme('fontSize.xl')[0],
           lineHeight: theme('lineHeight.7'),
-          marginTop: theme('spacing.16'),
-          marginBottom: theme('spacing.4'),
+          marginTop: theme('spacing.4'),
+          marginBottom: theme('spacing.6'),
         },
         ':is(h2, h3) + *': {
           marginTop: 0,
@@ -118,7 +118,6 @@ module.exports = function typographyStyles({ theme }) {
           textDecorationColor: 'var(--tw-prose-underline-hover)',
         },
         strong: {
-          color: 'var(--tw-prose-bold)',
           fontWeight: theme('fontWeight.semibold'),
         },
         code: {
@@ -137,15 +136,19 @@ module.exports = function typographyStyles({ theme }) {
         ':is(h2, h3) code': {
           fontWeight: theme('fontWeight.bold'),
         },
-
         // Quotes
         blockquote: {
-          paddingLeft: theme('spacing.6'),
+          paddingLeft: theme('spacing.4'),
+          paddingRight: theme('spacing.4'),
+          paddingTop: theme('spacing.1'),
+          paddingBottom: theme('spacing.1'),
           borderLeftWidth: theme('borderWidth.2'),
           borderLeftColor: 'var(--tw-prose-quote-borders)',
           fontStyle: 'italic',
+          backgroundColor: theme('colors.zinc.100 / 0.5'),
+          borderTopRightRadius: theme('borderRadius.lg'),
+          borderBottomRightRadius: theme('borderRadius.lg'),
         },
-
         // Figures
         figcaption: {
           color: 'var(--tw-prose-captions)',

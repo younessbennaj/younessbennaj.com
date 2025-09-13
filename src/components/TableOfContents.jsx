@@ -1,14 +1,17 @@
 import { memo } from 'react'
 import { smoothScrollTo } from '@/lib/performanceUtils'
+import classNames from 'classnames'
+import { ShareLinks } from '@/components/ShareLinks'
 
 export const TableOfContents = memo(function TableOfContents({
   toc,
   activeId,
+  currentUrl,
+  title,
 }) {
   if (!toc.length) return null
 
   const scrollToHeading = (e, id) => {
-    console.log(id)
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
@@ -21,38 +24,50 @@ export const TableOfContents = memo(function TableOfContents({
   }
 
   return (
-    <nav
-      aria-labelledby="toc-heading"
-      className="max-h-[calc(100vh-8rem)] overflow-y-auto rounded bg-zinc-50 p-6 dark:bg-zinc-900"
-      role="navigation"
-    >
-      <h2
-        id="toc-heading"
-        className="mb-4 text-lg font-semibold text-zinc-900 dark:text-zinc-300"
+    <div className="flex flex-col gap-8 bg-zinc-50 p-6 dark:bg-zinc-900">
+      <nav
+        aria-labelledby="toc-heading"
+        className="max-h-[calc(100vh-8rem)] overflow-y-auto rounded-lg"
+        role="navigation"
       >
-        Sommaire
-      </h2>
-      {/* add separator */}
-      <hr className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
-      <ol className="space-y-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-        {toc.map(({ id, text, level }) => (
-          <li key={id} className={level === 3 ? 'ml-4 text-sm' : 'text-md'}>
-            <a
-              href={`#${id}`}
-              onClick={(e) => scrollToHeading(e, id)}
-              aria-current={activeId === id ? 'location' : undefined}
-              className={`text-md block rounded-lg px-4 py-2 transition-colors hover:text-blue-400 hover:underline focus:outline-none ${
-                activeId === id
-                  ? 'bg-zinc-200 font-semibold text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
-                  : ''
-              }`}
-              aria-label={`Go to section: ${text}`}
-            >
-              {text}
-            </a>
-          </li>
-        ))}
-      </ol>
-    </nav>
+        <h2
+          id="toc-heading"
+          className="text-md mb-4 pl-4 font-semibold text-zinc-900 dark:text-zinc-300"
+        >
+          Sommaire
+        </h2>
+        {/* add separator */}
+        <hr className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
+        <ol className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+          {toc.map(({ id, text, level }) => (
+            <li key={id} className={level === 3 ? 'ml-6 text-sm' : 'text-md'}>
+              <a
+                href={`#${id}`}
+                onClick={(e) => scrollToHeading(e, id)}
+                aria-current={activeId === id ? 'location' : undefined}
+                className={classNames(
+                  'block rounded-lg transition-colors focus:outline-none',
+                  {
+                    'text-blue-600 hover:text-blue-600': activeId === id,
+                    'text-zinc-500 hover:text-zinc-900': activeId !== id,
+                    'text-md px-4 py-2': level === 2,
+                    'px-1 py-1 text-xs': level === 3,
+                  },
+                )}
+                aria-label={`Go to section: ${text}`}
+              >
+                {text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <div className="flex flex-col gap-2 pl-4">
+        <span className="text-xs text-zinc-500 dark:text-zinc-400">
+          Partager cet article
+        </span>
+        <ShareLinks url={currentUrl} title={title} />
+      </div>
+    </div>
   )
 })

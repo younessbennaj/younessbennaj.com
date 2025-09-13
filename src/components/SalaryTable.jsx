@@ -101,7 +101,7 @@ function Toggle({ checked, onChange, label, className = '' }) {
         role="switch"
         aria-checked={checked}
         aria-label={label}
-        className={`group flex h-[40px] w-[60px] rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition-all duration-200 hover:shadow-xl dark:bg-zinc-800/90 dark:ring-white/10 ${
+        className={`group flex h-[40px] w-[60px] rounded-full bg-zinc-100 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition-all duration-200 dark:bg-zinc-800/90 dark:ring-white/10 ${
           checked ? 'justify-end' : 'justify-start'
         }`}
         onClick={() => onChange(!checked)}
@@ -127,22 +127,11 @@ export function SalaryTable({
   title,
   columns = [],
   rows = [],
-
-  // Contexte de conversion
-  city = 'paris',
   adjustmentFactor = 0.82, // facteur coût de la vie vers Paris
   exchangeRate = 0.0058, // 1 JPY = 0.0058 EUR (exemple)
   locale = 'fr-FR',
-
-  // UI
-  showEquivalentToggle = true,
   initialEquivalent = false, // false = JPY, true = EUR (équivalent Paris)
-
-  // Personnalisation tooltip (optionnel)
-  tooltipFormatter,
-
   // Afficher la note même en mode JPY
-  showFootnoteAlways = false,
 }) {
   const [equivalent, setEquivalent] = useState(Boolean(initialEquivalent))
   useId() // (réservé si tu veux rattacher un id ARIA plus tard)
@@ -160,34 +149,6 @@ export function SalaryTable({
     })
   }, [columns])
 
-  const unitBadge = equivalent
-    ? 'EUR – équivalent pouvoir d’achat Paris'
-    : 'JPY – valeurs originales'
-
-  // Tooltip par défaut (texte simple, standardisé)
-  const defaultTooltipFormatter = (value) => {
-    const original = formatCurrency(value, 'JPY', locale)
-    const eur = value * exchangeRate
-    const eurFmt = formatCurrency(eur, 'EUR', locale)
-    const ppp = eur * adjustmentFactor
-    const pppFmt = formatCurrency(ppp, 'EUR', locale)
-
-    return [
-      `Original : ${original}`,
-      `EUR (conversion) : ${eurFmt}`,
-      `Équiv. Paris : ${pppFmt}`,
-      `Méthode : JPY × taux EUR, puis × facteur coût de la vie (Paris).`,
-      `Hypothèses : 1 JPY = ${exchangeRate} EUR ; facteur = ${adjustmentFactor}`,
-    ].join('\n')
-  }
-
-  const getTooltipText = (val) => {
-    if (!isNumeric(val)) return null
-    const num = Number(String(val).replace(/[ ,]/g, ''))
-    const formatter = tooltipFormatter || defaultTooltipFormatter
-    return formatter(num, { city, adjustmentFactor, exchangeRate, locale })
-  }
-
   // Rendu cellule (appliqué via Table.render)
   const renderCell = (val) => {
     if (!isNumeric(val)) return val
@@ -200,79 +161,51 @@ export function SalaryTable({
     return formatCurrency(num, 'JPY', locale)
   }
 
-  const footerNote =
-    equivalent || showFootnoteAlways ? (
-      <>
-        * Équivalent pouvoir d’achat basé sur la conversion devise (1 JPY ={' '}
-        {exchangeRate} EUR) et un ajustement de coût de la vie vers Paris
-        (facteur : {adjustmentFactor}). Estimation indicative de pouvoir
-        d’achat, pas un salaire contractuel.
-      </>
-    ) : null
-
   return (
-    <Tooltip.Provider>
-      <div className="w-full">
-        {/* En-tête + toggle */}
-        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          {title ? (
-            <h3 className="m-0 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-              {title}
-            </h3>
-          ) : (
-            <span />
-          )}
+    <div className="hidden w-full md:block">
+      {/* En-tête + toggle */}
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        {title ? (
+          <div className="m-0 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            {title}
+          </div>
+        ) : (
+          <span />
+        )}
 
-          {showEquivalentToggle && (
-            <Tooltip.Root>
-              <Tooltip.Trigger asChild>
-                <div>
-                  <Toggle
-                    checked={equivalent}
-                    onChange={setEquivalent}
-                    label={
-                      equivalent
-                        ? 'Afficher les valeurs originales (JPY)'
-                        : 'Afficher l’équivalent Paris (€)'
-                    }
-                  />
-                </div>
-              </Tooltip.Trigger>
-              <Tooltip.Portal>
-                <Tooltip.Content
-                  className="z-50 max-w-xs rounded-md bg-zinc-900 px-3 py-2 text-xs leading-5 text-white shadow-xl dark:bg-zinc-100 dark:text-zinc-900"
-                  sideOffset={8}
-                >
-                  Bascule entre les montants originaux en yens et l’équivalent
-                  en euros ajusté au coût de la vie à Paris.
-                  <Tooltip.Arrow className="fill-zinc-900 dark:fill-zinc-100" />
-                </Tooltip.Content>
-              </Tooltip.Portal>
-            </Tooltip.Root>
-          )}
+        <div>
+          <Toggle
+            checked={equivalent}
+            onChange={setEquivalent}
+            label={
+              equivalent
+                ? 'Afficher les valeurs originales (JPY)'
+                : 'Afficher l’équivalent Paris (€)'
+            }
+          />
         </div>
-
-        {/* Tableau générique */}
-        <Table
-          className="overflow-hidden rounded-md shadow-lg ring-1 ring-zinc-900/5"
-          columns={computedColumns.map((c) => ({
-            ...c,
-            render: (raw) => {
-              const formatted = renderCell(raw) // ta fonction existante qui formate (JPY/EUR)
-              const numeric = isNumeric(raw)
-
-              return (
-                <AnimatedCellValue
-                  value={formatted}
-                  className={numeric ? 'font-medium tabular-nums' : undefined}
-                />
-              )
-            },
-          }))}
-          rows={rows}
-          // footerNote={footerNote}
-        />
       </div>
-    </Tooltip.Provider>
+
+      {/* Tableau générique */}
+      <Table
+        className="overflow-hidden rounded-md shadow-lg ring-1 ring-zinc-900/5"
+        columns={computedColumns.map((c) => ({
+          ...c,
+          render: (raw) => {
+            const formatted = renderCell(raw) // ta fonction existante qui formate (JPY/EUR)
+            const numeric = isNumeric(raw)
+
+            return (
+              <AnimatedCellValue
+                value={formatted}
+                className={numeric ? 'font-medium tabular-nums' : undefined}
+              />
+            )
+          },
+        }))}
+        rows={rows}
+        // footerNote={footerNote}
+      />
+    </div>
   )
 }

@@ -22,63 +22,45 @@ export function ArticleLayout({ article, children }) {
 
   // Custom hooks for better separation of concerns
   const { toc, activeId } = useTableOfContents(children)
-  console.log('toc', toc)
   const readingTime = useReadingTime(article, children)
   const currentUrl = useCurrentUrl()
   const normalizedTags = useNormalizedTags(article?.tags)
-
-  const handleArticlesClick = () => {
-    router.push('/articles')
-  }
-
-  const handleCategoryClick = () => {
-    if (article.category) {
-      router.push(`/articles/${article.category}`)
-    }
-  }
 
   return (
     <Container className="mt-16 lg:mt-32">
       <div className="xl:relative">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center space-x-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {/* Articles Link */}
-            <li>
-              <button
-                onClick={handleArticlesClick}
+          <div className="text-sm text-zinc-600 dark:text-zinc-400">
+            <span>
+              <a
                 className="rounded transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
                 aria-label="Go to articles page"
+                href="/articles"
               >
                 Articles
-              </button>
-            </li>
-
-            {/* Category Link (if exists) */}
+              </a>
+            </span>
             {article.category && (
-              <>
-                <li className="before:mx-2 before:content-['>']">
-                  <button
-                    onClick={handleCategoryClick}
-                    className="rounded capitalize transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
-                    aria-label={`Go to ${article.category} articles`}
-                  >
-                    {article.category}
-                  </button>
-                </li>
-              </>
+              <span className="before:mx-2 before:content-['/']">
+                <a
+                  className="rounded capitalize transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
+                  aria-label={`Go to ${article.category} articles`}
+                  href={`/articles/${article.category}`}
+                >
+                  {article.category}
+                </a>
+              </span>
             )}
-
-            {/* Current Article Title */}
-            <li className="before:mx-2 before:content-['>']">
-              <span
+            <span className="before:mx-2 before:content-['/']">
+              <a
                 aria-current="page"
                 className="font-medium text-zinc-900 dark:text-zinc-100"
               >
                 {article.title}
-              </span>
-            </li>
-          </ol>
+              </a>
+            </span>
+          </div>
         </nav>
 
         {/* Main Article Content */}
@@ -94,7 +76,9 @@ export function ArticleLayout({ article, children }) {
             >
               <TagList tags={normalizedTags} />
 
-              <ShareLinks url={currentUrl} title={article.title} />
+              <div className="block md:hidden">
+                <ShareLinks url={currentUrl} title={article.title} />
+              </div>
             </div>
 
             <div className="mx-auto max-w-5xl lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-12">
@@ -118,12 +102,19 @@ export function ArticleLayout({ article, children }) {
               </div>
 
               {/* Table of Contents Sidebar */}
-              <aside
-                aria-label="Table of contents"
-                className="hidden lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:self-start lg:overflow-y-auto"
-              >
-                <TableOfContents toc={toc} activeId={activeId} />
-              </aside>
+              {toc && toc.length > 0 && (
+                <aside
+                  aria-label="Table of contents"
+                  className="hidden rounded-lg border border-zinc-100 shadow-sm lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:self-start lg:overflow-y-auto"
+                >
+                  <TableOfContents
+                    currentUrl={currentUrl}
+                    toc={toc}
+                    activeId={activeId}
+                    title={article.title}
+                  />
+                </aside>
+              )}
             </div>
           </article>
         </main>

@@ -8,9 +8,9 @@ export function useTableOfContents(children) {
   useEffect(() => {
     if (!document) return
 
-    // Only select H2 headings
+    // Select both H2 and H3 headings
     const headings = Array.from(
-      document.querySelectorAll('[data-mdx-content] h2'),
+      document.querySelectorAll('[data-mdx-content] h2, [data-mdx-content] h3'),
     )
 
     const tocItems = headings.map((heading) => {
@@ -20,7 +20,7 @@ export function useTableOfContents(children) {
       return {
         id: heading.id,
         text: heading.textContent,
-        level: 2, // Always level 2 since we only select H2
+        level: parseInt(heading.tagName.charAt(1)), // Extract level from H2/H3 tag
       }
     })
 

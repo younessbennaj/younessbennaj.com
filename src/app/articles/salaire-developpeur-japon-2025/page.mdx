@@ -2,6 +2,21 @@ import { ArticleLayout } from '@/components/ArticleLayout'
 import { SalaryTable } from '@/components/SalaryTable'
 import { Alert } from '@/components/Alert'
 import { SalarySwitcher } from '@/components/SalarySwitcher'
+import {
+  Index100Chart,
+  HorizontalIndex100Chart,
+} from '@/components/CostOfLivingCharts'
+import { ExpenseCompare } from '@/components/ExpenseCompare'
+import {
+  parisTokyoLivingIndex,
+  exampleExpenses,
+  salariesByExperience,
+  salariesBySpecialization,
+  salariesByCity,
+  horizontalComparisonIndex,
+} from './data'
+import { SalaryCard } from '@/components/SalaryCard'
+import { SalaryCardGroup } from '@/components/SalaryCardGroup'
 
 export const article = {
   author: 'Youness Bennaj',
@@ -34,14 +49,15 @@ Et surtout, nous avons intégré des **tableaux interactifs** : un **toggle** pe
 
 ---
 
-## 1. Pourquoi une conversion brute ne suffit pas
+## Pourquoi une conversion brute ne suffit pas
 
 Un salaire de 6M¥ (~34 800€) à Tokyo **ne vaut pas** un salaire de 34 800€ à Paris.
 
 Le coût du logement, des transports, de l’alimentation ou encore des assurances est différent.  
 Et pourtant, beaucoup (moi le premier à mes débuts) tombent dans ce piège de la **conversion brute en euros**.
 
-### Retour d’expérience
+ <blockquote>
+📝 **Retour d’expérience**
 
 Au moment de mes premiers entretiens au Japon, les salaires proposés m’ont semblé étonnamment bas. Par réflexe, j’avais simplement converti les montants de yens en euros, ce qui donnait une impression de stagnation, voire de recul par rapport à ce que j’aurais pu obtenir en changeant de poste à Paris.
 
@@ -57,7 +73,43 @@ Voici quelques exemples concrets :
 
 En pratique, cela signifie qu’un salaire qui paraît faible une fois converti en euros peut offrir à Tokyo un **pouvoir d’achat réel supérieur** à celui que l’on aurait anticipé.
 
----
+</blockquote>
+
+### Comparatif Tokyo vs Paris : une vue d’ensemble
+
+Maintenant que le constat est posé, voyons ce que cela donne **chiffres à l’appui**. En comparant Paris et Tokyo à travers les principaux postes de dépenses, le graphique ci-dessous illustre pourquoi la **conversion brute en euros ne suffit pas** et met en évidence l’**écart réel de coût de la vie** entre les deux villes.
+
+Chaque barre représente un poste de dépense, avec **Paris fixé à 100 comme référence**. Lorsque la barre de Tokyo descend sous cette valeur, cela signifie que le **coût est plus faible qu’à Paris** pour la même catégorie. Autrement dit, **logement, restaurants ou transports pèsent moins lourd** dans le budget quotidien à Tokyo, ce qui explique un **pouvoir d’achat plus intéressant** que ne le laisserait penser une simple conversion monétaire.
+
+<Index100Chart data={parisTokyoLivingIndex} />
+
+<Alert
+  type="success"
+  description="Tokyo affiche des indices inférieurs à 100 sur la plupart des postes de dépense. Concrètement, cela signifie qu’à niveau de vie comparable, vos dépenses mensuelles sont moins élevées qu’à Paris. Une bonne nouvelle pour le pouvoir d’achat !"
+/>
+
+### Tokyo vs Paris: Dépenses totales mensuelles
+
+Voici ce que ça représente concrètement en terme d'argent. En un coup d’œil, voyez quelle ville est la plus chère et sur quelles catégories les différences se jouent. Utilisez le bouton pour basculer entre euros (€) et yens (¥).
+
+<Alert
+  type="info"
+  title="Comment lire ce comparateur"
+  description="Chaque cercle montre la répartition des dépenses mensuelles par catégorie (logement, transports, alimentation, loisirs, etc.). Le total est affiché en bas pour comparer le coût global de chaque ville."
+/>
+
+<ExpenseCompare
+  data={exampleExpenses}
+  cityA="Paris"
+  cityB="Tokyo"
+  defaultCurrency="EUR"
+  exchangeRate={0.0058}
+/>
+
+<Alert
+  type="success"
+  description="Même une fois convertis en yens, les totaux mensuels à Tokyo restent significativement inférieurs à ceux de Paris. C’est un indicateur fort : vivre à Tokyo peut coûter moins cher qu’en Europe, tout en offrant un cadre de vie attractif."
+/>
 
 ### Visualiser concrètement
 
@@ -78,11 +130,15 @@ Il permet de basculer entre :
 
 ---
 
-## 2. Salaire moyen par ancienneté
+## Les salaires des développeurs au Japon en 2025
+
+### Salaire moyen par ancienneté
 
 Le niveau d’expérience reste le facteur principal influençant le salaire.
 
 Voici les chiffres moyens observés en 2025 :
+
+<SalaryCardGroup items={salariesByExperience} titleKey="level" />
 
 <SalaryTable
   title="Salaires moyens par ancienneté"
@@ -92,32 +148,7 @@ Voici les chiffres moyens observés en 2025 :
     { key: 'low', label: 'Fourchette basse', align: 'right' },
     { key: 'high', label: 'Fourchette haute', align: 'right' },
   ]}
-  rows={[
-    {
-      level: 'Junior (0–2 ans)',
-      avg: 4_000_000,
-      low: 3_000_000,
-      high: 5_000_000,
-    },
-    {
-      level: 'Intermédiaire (3–5 ans)',
-      avg: 6_000_000,
-      low: 4_500_000,
-      high: 7_500_000,
-    },
-    {
-      level: 'Senior (6–9 ans)',
-      avg: 8_000_000,
-      low: 6_000_000,
-      high: 10_000_000,
-    },
-    {
-      level: 'Expert (10+ ans)',
-      avg: 10_000_000,
-      low: 8_000_000,
-      high: 13_000_000,
-    },
-  ]}
+  rows={salariesByExperience}
   city="paris"
   adjustmentFactor={1.22}
   exchangeRate={0.0058}
@@ -145,56 +176,20 @@ Voici les chiffres moyens observés en 2025 :
 
 ---
 
-## 3. Salaire moyen par spécialité
+### Salaire moyen par spécialité
 
 Certaines spécialités sont nettement mieux rémunérées que d’autres, surtout si elles sont en tension sur le marché japonais.
 
+<SalaryCardGroup items={salariesBySpecialization} titleKey="spec" />
+
 <SalaryTable
-  title="Salaires moyens par spécialité"
   columns={[
     { key: 'spec', label: 'Spécialité' },
     { key: 'avg', label: 'Salaire moyen annuel', align: 'right' },
     { key: 'low', label: 'Fourchette basse', align: 'right' },
     { key: 'high', label: 'Fourchette haute', align: 'right' },
   ]}
-  rows={[
-    {
-      spec: 'Front‑end Developer',
-      avg: 6_500_000,
-      low: 5_000_000,
-      high: 8_000_000,
-    },
-    {
-      spec: 'Back‑end Developer',
-      avg: 7_000_000,
-      low: 5_500_000,
-      high: 9_000_000,
-    },
-    {
-      spec: 'Full‑stack Developer',
-      avg: 6_800_000,
-      low: 5_200_000,
-      high: 8_500_000,
-    },
-    {
-      spec: 'Mobile Developer',
-      avg: 6_700_000,
-      low: 5_000_000,
-      high: 8_200_000,
-    },
-    {
-      spec: 'Data Engineer / Scientist',
-      avg: 8_500_000,
-      low: 7_000_000,
-      high: 11_000_000,
-    },
-    {
-      spec: 'DevOps / Cloud Engineer',
-      avg: 8_000_000,
-      low: 6_500_000,
-      high: 10_500_000,
-    },
-  ]}
+  rows={salariesBySpecialization}
   city="paris"
   adjustmentFactor={1.22}
   exchangeRate={0.0058}
@@ -208,9 +203,11 @@ Certaines spécialités sont nettement mieux rémunérées que d’autres, surto
 
 ---
 
-## 4. Salaire par ville (hubs technologiques)
+### Salaire par ville (hubs technologiques)
 
 Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équilibre entre salaire et coût de la vie.
+
+<SalaryCardGroup items={salariesByCity} titleKey="city" />
 
 <SalaryTable
   title="Salaires moyens par ville"
@@ -220,11 +217,7 @@ Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équili
     { key: 'low', label: 'Fourchette basse (JPY)', align: 'right' },
     { key: 'high', label: 'Fourchette haute (JPY)', align: 'right' },
   ]}
-  rows={[
-    { city: 'Tokyo', avg: 7_000_000, low: 5_500_000, high: 9_000_000 },
-    { city: 'Osaka', avg: 6_200_000, low: 5_000_000, high: 7_500_000 },
-    { city: 'Fukuoka', avg: 5_800_000, low: 4_800_000, high: 7_000_000 },
-  ]}
+  rows={salariesByCity}
   city="paris"
   adjustmentFactor={1.22}
   exchangeRate={0.0058}
@@ -238,7 +231,7 @@ Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équili
 
 ---
 
-## 5. Salaire annuel par type de contrat (exemple concret)
+### Salaire annuel par type de contrat (exemple concret)
 
 Prenons le cas d’un **développeur back‑end avec 7 ans d’expérience**. Voici comment son salaire annuel peut varier selon le type de contrat :
 

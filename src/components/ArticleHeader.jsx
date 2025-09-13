@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import Image from 'next/image'
 import { formatDate } from '@/lib/formatDate'
+import { ClockIcon, CalendarIcon, UserIcon } from '@heroicons/react/24/outline'
 
 export const ArticleHeader = memo(function ArticleHeader({
   article,
@@ -15,42 +16,6 @@ export const ArticleHeader = memo(function ArticleHeader({
       >
         {article.title}
       </h1>
-
-      {/* Article Metadata */}
-      <div className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500">
-        <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-
-        <time
-          dateTime={article.createdAt}
-          className="ml-3"
-          itemProp="datePublished"
-        >
-          {formatDate(article.createdAt)}
-        </time>
-
-        {article.author && (
-          <>
-            <span className="mx-3 text-zinc-300 dark:text-zinc-600">•</span>
-            <address
-              className="not-italic"
-              itemProp="author"
-              itemScope
-              itemType="https://schema.org/Person"
-            >
-              <span itemProp="name">{article.author}</span>
-            </address>
-          </>
-        )}
-
-        {readingTime && (
-          <>
-            <span className="mx-3 text-zinc-300 dark:text-zinc-600">•</span>
-            <span aria-label="Temps de lecture estimé">
-              {readingTime} min de lecture
-            </span>
-          </>
-        )}
-      </div>
 
       {/* Article Description */}
       {article.description && (
@@ -82,6 +47,53 @@ export const ArticleHeader = memo(function ArticleHeader({
           )}
         </figure>
       )}
+
+      {/* Article Metadata */}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-zinc-400 dark:text-zinc-500">
+        <span className="hidden h-6 w-0.5 rounded-full bg-zinc-200 md:inline dark:bg-zinc-500" />
+
+        <div className="flex items-center gap-1">
+          <CalendarIcon className="inline size-4" />
+          <time
+            dateTime={article.createdAt}
+            // className="ml-3"
+            itemProp="datePublished"
+          >
+            {formatDate(article.createdAt)}
+          </time>
+        </div>
+
+        <span className="hidden text-zinc-300 md:inline dark:text-zinc-600">
+          •
+        </span>
+
+        {readingTime && (
+          <div className="flex items-center gap-1">
+            <ClockIcon className="inline size-4" />
+            <span className="align-middle" aria-label="Temps de lecture estimé">
+              {readingTime} min de lecture
+            </span>
+          </div>
+        )}
+
+        <span className="hidden text-zinc-300 md:inline dark:text-zinc-600">
+          •
+        </span>
+
+        {article.author && (
+          <div className="flex items-center gap-1">
+            <UserIcon className="inline size-4" />
+            <address
+              className="not-italic"
+              itemProp="author"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
+              <span itemProp="name">{article.author}</span>
+            </address>
+          </div>
+        )}
+      </div>
     </header>
   )
 })
