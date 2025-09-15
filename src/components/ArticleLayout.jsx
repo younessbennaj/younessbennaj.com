@@ -42,9 +42,11 @@ export function ArticleLayout({ article, children }) {
               </a>
             </span>
             {article.category && (
-              <span className="before:mx-2 before:content-['/']">
+              <span className="pointer-events-none before:mx-2 before:content-['/']">
                 <a
-                  className="rounded capitalize transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
+                  // TODO: Create a category page and enable this link
+                  aria-disabled="true"
+                  className="pointer-events-none rounded capitalize transition-colors hover:text-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:hover:text-zinc-100"
                   aria-label={`Go to ${article.category} articles`}
                   href={`/articles/${article.category}`}
                 >

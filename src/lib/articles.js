@@ -16,5 +16,8 @@ export async function getAllArticles() {
 
   let articles = await Promise.all(articleFilenames.map(importArticle))
 
+  // exclude articles with disabled: true
+  articles = articles.filter((article) => !article.disabled)
+
   return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date))
 }

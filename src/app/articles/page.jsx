@@ -12,11 +12,11 @@ function Article({ article }) {
         </Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={article.date}
+          dateTime={article.createdAt}
           className="md:hidden"
           decorate
         >
-          {formatDate(article.date)}
+          {formatDate(article.createdAt)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
         <Card.Cta>Lire l&apos;article</Card.Cta>

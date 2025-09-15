@@ -6,6 +6,8 @@ import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   LightBulbIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
 } from '@heroicons/react/24/outline'
 
 function cx(...classes) {
@@ -232,7 +234,7 @@ export function Alert({
               <button
                 type="button"
                 className={cx(
-                  'inline-flex items-center rounded px-1.5 py-0.5 text-xs font-medium underline underline-offset-2',
+                  'px0 inline-flex items-center gap-1 rounded py-0.5 text-xs font-medium hover:text-blue-900',
                   v.link,
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20 focus-visible:ring-offset-2 dark:focus-visible:ring-white/30',
                 )}
@@ -240,6 +242,12 @@ export function Alert({
                 aria-controls={regionId}
                 onClick={() => setExpanded(!isExpanded)}
               >
+                {/* Add icons arrow up and down */}
+                {isExpanded ? (
+                  <ChevronUpIcon className="size-4" />
+                ) : (
+                  <ChevronDownIcon className="size-4" />
+                )}
                 {isExpanded ? detailsLabelExpanded : detailsLabelCollapsed}
               </button>
             </div>
@@ -250,15 +258,11 @@ export function Alert({
               id={regionId}
               role="region"
               aria-hidden={!isExpanded}
-              className={cx('mt-3 border-t pt-3', v.divider)}
+              className={cx('mt-0.5 pt-1', v.divider)}
               ref={detailsRef}
               style={inlineStyle}
             >
-              {details && (
-                <div className="prose-sm prose max-w-none dark:prose-invert">
-                  {details}
-                </div>
-              )}
+              {details && <div className="text-sm">{details}</div>}
             </div>
           )}
         </div>
