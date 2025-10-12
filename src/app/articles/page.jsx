@@ -19,14 +19,14 @@ function Article({ article }) {
           {formatDate(article.createdAt)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Lire l&apos;article</Card.Cta>
+        <Card.Cta>Lire l&apos;article test</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
         dateTime={article.date}
         className="mt-1 hidden md:block"
       >
-        {formatDate(article.date)}
+        {formatDate(article.createdAt)}
       </Card.Eyebrow>
     </article>
   )

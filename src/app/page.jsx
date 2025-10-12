@@ -10,6 +10,14 @@ import image5 from '@/images/photos/image-5.jpg'
 
 import Balancer from 'react-wrap-balancer'
 
+import {
+  FireIcon,
+  CurrencyYenIcon,
+  ArrowTrendingUpIcon,
+  PlusIcon,
+  MinusIcon,
+} from '@heroicons/react/24/outline'
+
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
@@ -17,6 +25,7 @@ import { LinkedInIcon, XIcon } from '@/components/SocialIcons'
 
 import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
+import { Icon } from '@radix-ui/react-select'
 
 function Photos() {
   // let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
@@ -106,7 +115,89 @@ export default async function Home() {
 
       {/* <Photos /> */}
 
-      <Container className="mt-24 md:mt-28">
+      <div className="sm:px-8">
+        <div className="mx-auto mt-16 w-full max-w-7xl lg:px-8">
+          <div className="relative overflow-hidden rounded-lg px-4 py-16 sm:px-8 lg:px-12">
+            <div className="flex">
+              <h2 className="text-balance text-4xl font-semibold tracking-tight text-zinc-800">
+                Un accompagnement complet pour concrétiser votre projet au Japon
+              </h2>
+              <div>
+                {/* // grid 2 * 2 */}
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+                  <div className="rounded-lg bg-white">
+                    <div className="mb-4 flex size-12 items-center justify-center rounded-md bg-slate-900 p-2">
+                      <FireIcon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                      Articles et contenus approfondis
+                    </h3>
+                    <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                      Des décryptages complets sur les salaires, visas,
+                      conditions de travail, modes de vie, etc.
+                    </p>
+                  </div>
+                  <div className="rounded-lg bg-white">
+                    <div className="mb-4 flex size-12 items-center justify-center rounded-md bg-slate-900 p-2">
+                      <FireIcon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                      Coaching et accompagnement
+                    </h3>
+                    <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                      Des sessions personnalisées pour définir une stratégie
+                      efficace, éviter les pièges et accélérer vos démarches.
+                    </p>
+                  </div>
+                  <div className="rounded-lg bg-white">
+                    <div className="mb-4 flex size-12 items-center justify-center rounded-md bg-slate-900 p-2">
+                      <FireIcon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                      Curation de ressources clés
+                    </h3>
+                    <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                      Des outils, documents, et recommandations pratiques
+                      sélectionnés pour vous.
+                    </p>
+                  </div>
+                  <div className="rounded-lg bg-white">
+                    <div className="mb-4 flex size-12 items-center justify-center rounded-md bg-slate-900 p-2">
+                      <FireIcon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                      Guides pratiques pour l’expatriation
+                    </h3>
+                    <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                      Des checklists, tutoriels et conseils concrets pour gérer
+                      l’installation, la vie quotidienne et l’administratif.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="sm:px-8">
+        <div className="mx-auto mt-16 w-full max-w-7xl lg:px-8">
+          <div className="relative overflow-hidden rounded-lg bg-gradient-to-r from-slate-900 via-gray-900 to-indigo-950 px-4 py-16 sm:px-8 lg:px-12">
+            <h2 className="text-balance text-4xl font-semibold tracking-tight text-white">
+              Estime ton futur salaire au Japon
+            </h2>
+            <p className="mt-6 text-lg text-white">
+              Un simulateur gratuit basé sur ton profil et les données du marché
+              2025. 2 minutes suffisent pour savoir où tu te situes.
+            </p>
+            <Button href="/simulateur" variant="dark" className="mt-6">
+              Estimer mon salaire
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <Container className="mt-24 md:mt-28" foo="bar">
         <h2 className="text-center text-sm font-bold uppercase tracking-tight text-zinc-800 dark:text-zinc-100">
           Blog
         </h2>
@@ -121,21 +212,6 @@ export default async function Home() {
         <div className="text-center">
           <Button href="/articles">Voir tous les articles</Button>
         </div>
-      </Container>
-
-      <Container className="mt-12 py-12 text-center" variant="dark">
-        <h2 className="text-3xl font-bold tracking-tight">
-          Découvrez mes services d’accompagnement
-        </h2>
-        <p className="mt-6 text-lg text-zinc-300 dark:text-zinc-600">
-          Vous rêvez de vivre et travailler au Japon, mais vous ne savez pas par
-          où commencer ? Je propose un accompagnement sur mesure pour les pros
-          de la tech francophones, afin de vous guider efficacement dans chaque
-          étape, du projet à l’installation.
-        </p>
-        <Button href="/services" variant="dark" className="mt-6">
-          En savoir plus
-        </Button>
       </Container>
     </>
   )
