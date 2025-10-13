@@ -83,7 +83,11 @@ function MobileNavItem({ href, children }) {
   return (
     <li>
       <PopoverButton as={Link} href={href} className="block py-2">
-        {children}
+        {href === '/simulateur' ? (
+          <AnimatedGradientText speed={2}>{children}</AnimatedGradientText>
+        ) : (
+          children
+        )}
       </PopoverButton>
     </li>
   )

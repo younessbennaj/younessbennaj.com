@@ -734,7 +734,7 @@ export default function ResultatPage() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Experience Level Card */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
             <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
               Niveau d&apos;expérience
               <span className="ml-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
@@ -757,7 +757,7 @@ export default function ResultatPage() {
             </div>
           </div>
           {/* Role Complexity Card */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
             <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
               Complexité du rôle
               <span className="ml-2 inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
@@ -780,7 +780,7 @@ export default function ResultatPage() {
           </div>
 
           {/* Sector Demand Card */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
             <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
               Demande sectorielle
               <span className="ml-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
@@ -813,7 +813,7 @@ export default function ResultatPage() {
           </div>
 
           {/* Education Level Card */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
             <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
               Niveau d&apos;études
               <span className="ml-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900 dark:text-orange-200">
