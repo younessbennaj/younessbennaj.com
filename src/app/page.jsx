@@ -8,7 +8,6 @@ import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
 import hero from '@/images/hero.png'
-// import tokyoNight from '@/images/tokyo-night.jpg'
 
 import Balancer from 'react-wrap-balancer'
 

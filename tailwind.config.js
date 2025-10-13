@@ -11,8 +11,14 @@ module.exports = {
     extend: {
       animation: {
         orbit: 'orbit calc(var(--duration)*1s) linear infinite',
+        gradient: 'gradient 8s linear infinite',
       },
       keyframes: {
+        gradient: {
+          to: {
+            'background-position': '300% 0',
+          },
+        },
         orbit: {
           '0%': {
             transform:
