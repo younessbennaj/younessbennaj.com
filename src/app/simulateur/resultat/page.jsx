@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import { cn } from '@/lib/utils'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
@@ -427,7 +427,7 @@ const getEducationLabel = (educationId) => {
   )
 }
 
-export default function ResultatPage() {
+function ResultatPageContent() {
   const searchParams = useSearchParams()
   const [formData, setFormData] = React.useState(null)
   const [error, setError] = React.useState(null)
@@ -487,36 +487,6 @@ export default function ResultatPage() {
     }
   }, [searchParams])
 
-  // React.useEffect(() => {
-  //   try {
-  //     const encodedData = searchParams.get('data')
-
-  //     if (!encodedData) {
-  //       setError('Aucune donnée trouvée')
-  //       return
-  //     }
-
-  //     // Decode base64 token (Unicode safe)
-  //     const decodedData = atob(encodedData)
-  //     const jsonString = decodeURIComponent(decodedData)
-  //     const parsedData = JSON.parse(jsonString)
-
-  //     setFormData(parsedData)
-
-  //     // Calculate salary
-  //     const salary = calculateSalary(
-  //       parsedData.role,
-  //       parsedData.experience,
-  //       parsedData.industry,
-  //     )
-
-  //     setSalaryResult(salary)
-  //   } catch (err) {
-  //     setError('Erreur lors du décodage des données')
-  //     console.error('Decode error:', err)
-  //   }
-  // }, [searchParams])
-
   // Effect pour recalculer automatiquement le salaire quand les paramètres changent
   React.useEffect(() => {
     if (!formData) return
@@ -571,11 +541,6 @@ export default function ResultatPage() {
           <div className="relative flex h-full overflow-hidden lg:col-span-5">
             {salaryResult && (
               <div className="relative w-full p-6 dark:from-blue-900/20 dark:to-indigo-900/20">
-                {/* <DotPattern
-                  className={cn(
-                    '[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]',
-                  )}
-                /> */}
                 <h2 className="mb-6 text-xl font-semibold text-zinc-900 dark:text-white">
                   Voici l&apos;estimation pour un(e){' '}
                   <span className="whitespace-nowrap rounded-sm bg-blue-200 px-1">
@@ -623,7 +588,7 @@ export default function ResultatPage() {
                       <span className="ml-2">€</span>
                     </div>
                     <div className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                      Équivalent en euros d’un salaire brut annuel à Paris
+                      Équivalent en euros d&apos;un salaire brut annuel à Paris
                     </div>
                   </div>
                 </div>
@@ -864,5 +829,21 @@ export default function ResultatPage() {
         </div>
       </div>
     </SimpleLayout>
+  )
+}
+
+export default function ResultatPage() {
+  return (
+    <Suspense
+      fallback={
+        <SimpleLayout>
+          <div className="text-center">
+            <p className="text-zinc-600">Chargement...</p>
+          </div>
+        </SimpleLayout>
+      }
+    >
+      <ResultatPageContent />
+    </Suspense>
   )
 }
