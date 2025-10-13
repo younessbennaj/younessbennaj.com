@@ -12,9 +12,9 @@ function SocialLink({ className, href, children, icon: Icon, ...delegated }) {
       <Link
         {...delegated}
         href={href}
-        className="hover: dark:hover: group flex text-sm font-medium text-sky-600 text-zinc-800 transition dark:text-zinc-200"
+        className="hover: dark:hover: group flex text-sm font-medium text-zinc-800 transition dark:text-zinc-200"
       >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-sky-500" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>

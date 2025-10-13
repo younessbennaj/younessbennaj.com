@@ -26,12 +26,12 @@ export default function SimulationPage() {
   }
 
   return (
-    <SimpleLayout>
+    <div className="mt-0 overflow-hidden rounded-xl border-zinc-200 p-0 sm:px-6 md:mx-auto md:mt-24 md:max-w-3xl md:border md:px-4 md:shadow-xl lg:max-w-6xl lg:px-8">
       <div className="space-y-6">
-        <div className="grid grid-cols-1 gap-8 overflow-hidden rounded-xl border border-zinc-200 px-6 py-10 shadow-xl lg:grid-cols-10">
+        <div className="grid grid-cols-1 gap-8 overflow-hidden rounded-xl px-6 py-10 lg:grid-cols-10">
           {/* Left section */}
-          <div className="col-span-5">
-            <h2 className="mb-6 mt-1 text-2xl font-semibold text-zinc-900 dark:text-white">
+          <div className="order-2 col-span-5 lg:order-1">
+            <h2 className="mb-6 mt-1 hidden text-2xl font-semibold text-zinc-900 md:block dark:text-white">
               Envie de travailler au Japon mais difficile d&apos;y voir clair
               sur les salaires ?
             </h2>
@@ -58,7 +58,11 @@ export default function SimulationPage() {
           </div>
 
           {/* Right section - contenu conditionnel */}
-          <div className="col-span-5">
+          <div className="order-1 col-span-5 lg:order-2">
+            <h2 className="mb-6 mt-1 block text-2xl font-semibold text-zinc-900 md:hidden dark:text-white">
+              Envie de travailler au Japon mais difficile d&apos;y voir clair
+              sur les salaires ?
+            </h2>
             {/* Question de qualification */}
             {isEligible === undefined && (
               <div className="space-y-6">
@@ -135,6 +139,6 @@ export default function SimulationPage() {
           </div>
         </div>
       </div>
-    </SimpleLayout>
+    </div>
   )
 }
