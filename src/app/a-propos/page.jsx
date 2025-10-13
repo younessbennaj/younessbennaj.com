@@ -12,7 +12,7 @@ function SocialLink({ className, href, children, icon: Icon, ...delegated }) {
       <Link
         {...delegated}
         href={href}
-        className="hover: dark:hover: group flex text-sm font-medium text-indigo-500 text-zinc-800 transition dark:text-zinc-200"
+        className="hover: dark:hover: group flex text-sm font-medium text-sky-600 text-zinc-800 transition dark:text-zinc-200"
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
         <span className="ml-4">{children}</span>
@@ -70,7 +70,7 @@ export default function About() {
               En m’installant à Tokyo, j’ai voulu confronter mes idées à la
               réalité. Découvrir le Japon au quotidien, au-delà des images et
               des clichés. J’ai appris à m’adapter, à naviguer les différences,
-              à mieux comprendre ce pays — et un peu mieux me comprendre moi
+              à mieux comprendre ce pays, et un peu mieux me comprendre moi
               aussi. Ce parcours m’a transformé, sur le plan personnel comme
               professionnel, et m’a confirmé que cette expérience méritait
               d’être partagée.

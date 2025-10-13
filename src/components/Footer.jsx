@@ -6,7 +6,7 @@ function NavLink({ href, children }) {
   return (
     <Link
       href={href}
-      className="hover: dark:hover: text-indigo-400 text-indigo-500 transition"
+      className="hover: dark:hover: text-indigo-400 text-sky-600 transition"
     >
       {children}
     </Link>
@@ -27,8 +27,8 @@ export function Footer() {
                 <NavLink href="/uses">Uses</NavLink> */}
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                &copy; {new Date().getFullYear()} Youness Bennaj. All rights
-                reserved.
+                &copy; {new Date().getFullYear()} Youness Bennaj. Tout droits
+                réservés.
               </p>
             </div>
           </ContainerInner>

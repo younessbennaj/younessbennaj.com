@@ -12,12 +12,12 @@ export function CustomAccordion({ questions }) {
           value={`item-${index}`}
         >
           <h3 className="flex">
-            <Accordion.Trigger className="flex flex-1 items-center justify-between py-4 text-left font-medium transition-all hover:no-underline [&[data-state=open]>svg]:rotate-180">
+            <Accordion.Trigger className="flex flex-1 items-center justify-between py-4 text-left font-medium text-zinc-900 transition-all hover:no-underline [&[data-state=open]>svg]:rotate-180">
               <span>{q.question}</span>
               <ChevronDown size={16} />
             </Accordion.Trigger>
           </h3>
-          <Accordion.Content className="pb-4 pt-0 text-xs">
+          <Accordion.Content className="pb-4 pt-0 text-xs text-zinc-900">
             {q.answer}
           </Accordion.Content>
         </Accordion.Item>
