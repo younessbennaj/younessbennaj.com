@@ -136,7 +136,7 @@ export function SalarySwitcher({
             key={`percentage-${active.currency}-suffix`}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: !isPrefix ? 1 : 0, y: !isPrefix ? 0 : -6 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 1 }}
             aria-hidden={isPrefix}
             className={cn(
               'select-none self-center text-xl font-normal leading-none text-green-500 dark:text-zinc-400',

@@ -38,6 +38,7 @@ const renderActiveShape = ({
   payload,
   percent,
   value,
+  currency,
 }) => {
   const RADIAN = Math.PI / 180
   const sin = Math.sin(-RADIAN * (midAngle ?? 1))
@@ -56,7 +57,8 @@ const renderActiveShape = ({
         {payload.label}
       </text>
       <text x={cx} y={cy + 12} dy={8} textAnchor="middle" fill={fill}>
-        {percent < 0.01 ? '< 1%' : `${(percent * 100).toFixed(0)}%`}
+        {/* {percent < 0.01 ? '< 1%' : `${(percent * 100).toFixed(0)}%`} */}
+        {formatMoney(value, currency)}
       </text>
       <Sector
         cx={cx}
@@ -162,7 +164,7 @@ function StraightAngleCityDonut({
             /> */}
             {isVisible && (
               <Pie
-                activeShape={renderActiveShape}
+                // activeShape={renderActiveShape}
                 data={displayData}
                 dataKey="value"
                 nameKey="label"
@@ -277,7 +279,9 @@ function CityDonut({ title, data, mode, exchangeRate }) {
           <PieChart>
             {isVisible && (
               <Pie
-                activeShape={renderActiveShape}
+                activeShape={(props) =>
+                  renderActiveShape({ ...props, currency })
+                }
                 data={displayData}
                 dataKey="value"
                 nameKey="label"
