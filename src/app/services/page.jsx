@@ -24,7 +24,7 @@ const questions = [
   {
     question: "Qui peut bénéficier de vos services d'accompagnement ?",
     answer:
-      "Mes services s'adressent principalement aux développeurs et professionnels de la tech qui souhaitent s'expatrier au Japon. Que vous soyez débutant ou expérimenté, en CDI ou freelance, l'important est d'avoir une motivation claire et un projet concret. Je travaille avec des profils variés : développeurs web, data scientists, DevOps, product managers, etc.",
+      "Mes services s'adressent principalement aux développeurs et professionnels de la tech avec un diplôme Bac+3 minimum qui souhaitent s'expatrier au Japon. Cette condition de diplôme est requise pour l'obtention d'un visa de travail japonais. Que vous soyez développeur web, data scientist, DevOps, product manager, etc., l'important est d'avoir une motivation claire et un projet concret d'expatriation.",
   },
   {
     question:

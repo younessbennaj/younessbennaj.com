@@ -4,7 +4,7 @@ import { ChevronDown } from 'react-feather'
 
 export function CustomAccordion({ questions }) {
   return (
-    <Accordion.Root type="single" defaultValue="item-2" collapsible>
+    <Accordion.Root type="single" defaultValue="item-0" collapsible>
       {questions.map((q, index) => (
         <Accordion.Item
           className="border-b border-zinc-200 px-6 py-2 dark:rounded-lg dark:border-none dark:data-[state=open]:bg-zinc-800/50 dark:data-[state=open]:text-white"
