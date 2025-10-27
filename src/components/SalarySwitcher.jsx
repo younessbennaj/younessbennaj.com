@@ -41,6 +41,7 @@ export function SalarySwitcher({
   initial = 'from',
   onChange,
   className,
+  percentage,
 }) {
   const [mode, setMode] = React.useState(initial)
 
@@ -129,6 +130,22 @@ export function SalarySwitcher({
         >
           {activeMeta.symbol}
         </motion.span>
+
+        {percentage && (
+          <motion.span
+            key={`percentage-${active.currency}-suffix`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: !isPrefix ? 1 : 0, y: !isPrefix ? 0 : -6 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            aria-hidden={isPrefix}
+            className={cn(
+              'select-none self-center text-xl font-normal leading-none text-green-500 dark:text-zinc-400',
+              !isPrefix ? 'order-2 pl-2' : 'hidden',
+            )}
+          >
+            + {percentage * 100}%
+          </motion.span>
+        )}
       </div>
 
       <SegmentedSalaryToggle

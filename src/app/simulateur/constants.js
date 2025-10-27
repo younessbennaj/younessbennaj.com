@@ -36,7 +36,7 @@ export const EDUCATION_LEVELS = [
   },
   {
     id: 'engineering',
-    label: 'Diplôme d’ingénieur ou équivalent grande école (Bac +5 et plus)',
+    label: 'Ecole d’ingénieur / informatique',
   },
 ]
 

@@ -632,6 +632,16 @@ function ResultatPageContent() {
                     />
                   ))}
                 </div>
+                <button
+                  className="mt-4 inline text-xs font-medium text-sky-600 underline decoration-sky-600 underline-offset-2 transition-colors hover:text-sky-700 hover:decoration-sky-700 focus:outline-none"
+                  onClick={() =>
+                    document
+                      .getElementById('salary-breakdown')
+                      ?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                >
+                  Qu&apos;est-ce que cela signifie ?
+                </button>
               </div>
               <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
                 Personnalisez votre estimation
@@ -685,7 +695,10 @@ function ResultatPageContent() {
         </div>
 
         {/* Categories */}
-        <div className="mx-auto max-w-[800px] pb-[50px] pt-10 text-center">
+        <div
+          id="salary-breakdown"
+          className="mx-auto max-w-[800px] pb-[50px] pt-10 text-center"
+        >
           <h2 className="mb-6 text-3xl font-medium text-zinc-900 dark:text-white">
             Comprenez ce qui compose votre estimation salariale
           </h2>
@@ -700,9 +713,9 @@ function ResultatPageContent() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Experience Level Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
-              Niveau d&apos;expérience
-              <span className="ml-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+              <span>Niveau d&apos;expérience</span>
+              <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                 {getExperienceLabel(formData.experience)}
               </span>
             </h3>
@@ -723,9 +736,9 @@ function ResultatPageContent() {
           </div>
           {/* Role Complexity Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
-              Complexité du rôle
-              <span className="ml-2 inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
+            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+              <span>Complexité du rôle</span>
+              <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
                 {getRoleLabel(formData.role)}
               </span>
             </h3>
@@ -746,9 +759,9 @@ function ResultatPageContent() {
 
           {/* Sector Demand Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
-              Demande sectorielle
-              <span className="ml-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+              <span>Demande sectorielle</span>
+              <span className="inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
                 {modularizationData.sector
                   ? getIndustryLabel(modularizationData.sector)
                   : formData.industry
@@ -779,9 +792,9 @@ function ResultatPageContent() {
 
           {/* Education Level Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 text-lg font-semibold text-zinc-900 dark:text-white">
-              Niveau d&apos;études
-              <span className="ml-2 inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900 dark:text-orange-200">
+            <h3 className="mb-4 flex flex-wrap items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+              <span>Niveau d&apos;études</span>
+              <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 dark:bg-orange-900 dark:text-orange-200">
                 {formData.education
                   ? getEducationLabel(formData.education)
                   : 'Non spécifié'}

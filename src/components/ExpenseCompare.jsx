@@ -360,13 +360,6 @@ export function ExpenseCompare({
     }))
   }, [data, cityA, cityB])
 
-  console.log('responsive', {
-    isSmallDevice,
-    isMediumDevice,
-    isLargeDevice,
-    isExtraLargeDevice,
-  })
-
   return (
     <section className="w-full">
       {/* Handle response here by hide or not each type of pie chart */}

@@ -237,6 +237,29 @@ export default function Services() {
           de quelqu’un qui est déjà passé par là.
         </p>
 
+        <div className="mb-10 rounded-lg border border-zinc-300 bg-zinc-100 p-6 dark:border-zinc-600 dark:bg-zinc-800">
+          <h4 className="mb-3 font-semibold text-zinc-900 dark:text-zinc-200">
+            Ces services sont-ils faits pour vous ?
+          </h4>
+          <p className="mb-3 text-zinc-700 dark:text-zinc-300">
+            Mes accompagnements s&apos;adressent spécifiquement aux
+            professionnels tech avec :
+          </p>
+          <ul className="space-y-1 text-sm text-zinc-700 dark:text-zinc-300">
+            <li>
+              • <strong>Diplôme Bac+3 minimum</strong> (condition visa)
+            </li>
+            <li>
+              • <strong>Expérience dans la tech</strong> (dev, data, DevOps,
+              product...)
+            </li>
+            <li>
+              • <strong>Projet concret</strong> d&apos;expatriation (pas
+              seulement curiosité)
+            </li>
+          </ul>
+        </div>
+
         <h3 className="text-center text-3xl font-semibold text-zinc-900 dark:text-white">
           Deux formats d’accompagnement selon vos besoins
         </h3>

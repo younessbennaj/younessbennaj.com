@@ -29,7 +29,7 @@ export const ArticleHeader = memo(function ArticleHeader({
 
       {/* Hero Image Section */}
       {article.image && (
-        <figure className="mb-8 overflow-hidden rounded-2xl bg-zinc-50 dark:bg-zinc-800/50">
+        <figure className="mb-8 overflow-hidden rounded-md bg-zinc-50 dark:bg-zinc-800/50">
           <Image
             src={article.image}
             alt={article.imageAlt || `Illustration for ${article.title}`}

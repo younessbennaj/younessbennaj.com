@@ -1,11 +1,21 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import { ArticleImage } from '@/components/ArticleImage'
+import clsx from 'clsx'
+import banner from '@/images/banner-3.jpg'
+import photo1 from '@/images/japon-entre-tradition-et-modernite.jpeg'
+import photo2 from '@/images/otaku.png'
+import gto from '@/images/gto.jpg'
+import child from '@/images/child.jpg'
+import tokyoNightStreet from '@/images/tokyo-night-street.jpg'
+import river from '@/images/river.jpg'
+import countryside from '@/images/country-side.jpg'
+import plane from '@/images/plane.jpg'
 
 export const article = {
   author: 'Youness Bennaj',
   createdAt: '2025-06-30',
   category: 'expatriation',
-  image:
-    'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop',
+  image: banner,
   title: "Pourquoi j'ai choisi de m'expatrier au Japon",
   description:
     "Dans cet article, je partage les raisons personnelles et professionnelles qui m'ont poussé à faire le grand saut vers le Japon, et ce que cela signifie de s’expatrier dans un pays aussi fascinant que complexe.",
@@ -30,13 +40,56 @@ Si tu envisages toi aussi de t’installer au Japon, ou si ce sujet t’intrigue
   Pourquoi le Japon m’attirait depuis l’enfance
 </h2>
 
-Comme beaucoup d’enfants de ma génération, j’ai grandi avec le soft power japonais en toile de fond. D’abord au travers des récits issues des séries d’animation puis plus largement au travers de toute la pop culture japonaise: musique, cinéma, et autres produits culturels. Ces premiers émois ont éveillé ma curiosité d’enfant qui s’est par la suite peu à peu transformée en un sincère intérêt pour le pays et sa culture. Ce sentiment m’a toujours suivi.
+<Image src={child} alt="summer wars" className="mb-2" />
+
+Trop jeune pour avoir grandi avec le Club Dorothée, j’ai pourtant été profondément marqué par ce qu’il a laissé derrière lui. Au tournant des années 2000, une première vague de japanimation continuait de circuler sur les chaînes françaises, souvent sans filtre, encore épargnée par la censure ou les adaptations édulcorées. Un jour, par hasard, je suis tombé sur un épisode de <a href="https://www.youtube.com/watch?v=gIekHd6Tp4o" target="_blank">Vision d’Escaflowne</a> diffusé sur Canal+. Ce fut une révélation. L’anime se démarquait par sa maturité, sa gravité, sa richesse émotionnelle. Guerre, romance, introspection, destin : tout s’entremêlait dans un univers qui ne cherchait pas à simplifier ses récits pour les rendre accessibles aux enfants. Bien au contraire. Pour la première fois, je me sentais considéré en tant que jeune spectateur. Loin de me distraire, ces histoires me nourrissaient.
+
+Car ce qui circulait à travers ces animés, ce n’était pas seulement des histoires ou des dessins : c’était une culture, transmise par des passionnés. Contrairement aux générations précédentes, abreuvées de versions doublées et remodelées à l’excès, nous avons eu la chance, au début des années 2000, de découvrir des œuvres plus fidèles au matériau d’origine. Les génériques japonais n’étaient plus systématiquement remplacés, les voix originales devenaient accessibles. Et avec elles, c’est toute une scène musicale que j’ai découverte, souvent par accident, toujours avec fascination. Ces premiers contacts avec la J-pop et le rock japonais m’ont marqué à vie. Certains artistes découverts dans ces génériques, je les écoute encore aujourd’hui. J’ai même eu la chance de les voir sur scène, ici, au Japon. À l’époque, c’était presque clandestin : je téléchargeais les morceaux sur des sites obscurs, je passais des heures sur les forums de fans, je convertissais des vidéos en MP3, et je glissais le tout dans mon petit baladeur. Je me souviens parfaitement de ces retours du collège, seul dans la rue, la musique japonaise dans les oreilles, comme une bande-son secrète de mon adolescence.
+
+<ArticleImage
+  src={gto}
+  redirectUrl="https://www.youtube.com/watch?v=2JGl6UzfPkE"
+  redirectDescription="Driver's High"
+  alt="générique japonais du dessin animé Great Teacher Onizuka"
+  description="Claque visuelle et sonore lors ma première découverte de GTO et du groupe de rock japonais l'Arc-En-Ciel: l'animé et le groupe qui ont bercé mon adolescence."
+/>
+
+Et puis il y a eu les produits culturels. Les jouets, les consoles, les jeux vidéo japonais qui débarquaient dans les rayons français comme des éclats d’un autre monde. J’ai reçu Pokémon Argent avec une Game Boy Color pour mes 9 ans. Je n’en avais pas conscience à l’époque, mais cette version du jeu, inspirée de la région de Kansai avec ses temples, ses rizières et ses festivals. Animal Crossing, avec ses événements saisonniers et ses nuits d’été où résonnaient les grillons sur ma Nintendo DS, distillait dans chaque geste anodin une forme de contemplation. Ramasser un coquillage, écouter le vent dans les arbres, arroser ses fleurs… autant de tâches simples qui devenaient, sans que je m’en rende compte, une initiation à un rapport au monde apaisé, attentif, profondément japonais. Tous ces produits culturels m’ont façonné en douceur, année après année. Ils ont infusé dans mon imaginaire, nourri ma sensibilité, et tissé un lien intime avec un pays que je ne connaissais pas encore. C’était une lente imprégnation. Une présence discrète, constante, familière.
+
+<h2
+  id="
+  le-japon-entre-tradition-et-modernite"
+>
+  "Le Japon: entre tradition et modernité"
+</h2>
+
+<Image
+  src={photo1}
+  alt="Le Japon: entre tradition et modernité"
+  className="mb-2"
+/>
+<figcaption className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
+  L'ancètre de tous les documentaires sur le Japon en France : [1964 : Le Japon,
+  entre tradition et
+  modernité](https://www.ina.fr/ina-eclaire-actu/1964-le-japon-entre-tradition-et-modernite)
+</figcaption>
 
 Au fil des années, la fascination s’est nourrie des rares documentaires diffusés à la télévision française dans les années 90 et 2000. La formule était toujours la même : “Entre tradition et modernité.” Le ton se voulait émerveillé, presque exalté. On découvrait un Japon à l’avant-garde, saturé de gadgets, où l’automatisation semblait avoir déjà conquis le quotidien. L’obsession du pratique, du gain de place, de l’efficacité jusqu’à l’absurde, servait de décor à une société décrite comme un laboratoire du futur. Parmi ces images, certaines ont laissé une trace. Les premiers pas du robot ASIMO, présenté comme le symbole d’un pays vieillissant mais résolument tourné vers l’innovation, faisaient figure de prouesse. On assistait aux prémices d’un monde robotisé, avec ce mélange de fascination technologique et d’étrangeté, propre au regard occidental.
 
 Venaient ensuite, comme un second acte savamment orchestré, les images d’un Japon à l’opposé du premier. Celui des temples silencieux, des kimonos aux couleurs sobres, des cérémonies du thé où chaque geste compte. Un pays empreint de spiritualité, attaché à ses rituels, semblant vivre en équilibre avec un passé préservé. On y montrait les gestes précis des artisans, le raffinement des plats, cette attention au détail qui traduisait un certain culte du travail bien fait. Ce qui, en France, ferait vite penser à un repli identitaire ou à une nostalgie d’un passé idéalisé semblait, au Japon, tout à fait naturel. L’attachement aux traditions y était vécu sans crispation, sans discours. Juste comme une continuité tranquille, intégrée au quotidien, sans chercher à s’opposer à quoi que ce soit.
 
 Ces documentaires posaient souvent un regard extérieur, parfois un peu pressé, sur la société japonaise. Ils l’effleurent plus qu’ils ne la racontent vraiment. Et lorsqu’ils tentaient d’en dire davantage, c’était souvent avec une certaine maladresse, en réduisant le pays à une série de bizarreries ou d’habitudes jugées étranges. On y parlait des hikikomori, ces adultes reclus qui vivent coupés du monde, enfermés dans leur chambre. On évoquait la chute de la natalité, les salarymen endormis au bureau après de longues heures de travail, ou encore les host clubs et maid cafés comme autant de signes d’un mal-être social difficile à cerner. Avec le recul, ces productions me semblent relever d’une forme moderne de japonisme : une vision à la fois fascinée et simplifiée, entre fantasme exotique et caricature.
+
+<Image
+  src={photo2}
+  alt="Le Japon: entre tradition et modernité"
+  className="mb-2"
+/>
+<figcaption className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
+  Quand les médias ne se contentaient pas de caricaturer le Japon, mais aussi
+  ceux qui s’enthousiasmaient pour sa pop culture. : [Sébastien est un otaku
+  absolu](https://www.youtube.com/watch?v=SDWGWfSL8Hw)
+</figcaption>
 
 À partir des années 2010, une nouvelle génération de vidéastes francophones a commencé à publier sur YouTube, animée par l’envie de combler un vide : montrer le Japon tel qu’ils auraient aimé le découvrir eux-mêmes. Leurs vidéos, souvent simples et spontanées, avaient une qualité précieuse : l’authenticité. Pas de voix off lissée, ni de mise en scène spectaculaire, encore moins de discours sensationnaliste. Juste des fragments de quotidien captés au fil de leurs balades et de leurs expériences. Grâce à eux, on accédait enfin à une image plus directe, plus humaine du Japon. On les suivait dans les rues de Tokyo, dans des régions moins connues, ou au cœur de scènes banales qui, pour nous, avaient un parfum d’ailleurs. C’était une manière nouvelle d’approcher le pays, presque de l’intérieur.
 
@@ -46,52 +99,28 @@ Au fil des années, toutes ces influences ont nourri une curiosité grandissante
   De l’envie à l’action : ce qui m’a poussé à franchir le pas vers le Japon
 </h2>
 
+<Image src={plane} alt="La vent se lève" className="mb-2" />
+
 Pendant longtemps, ce projet de partir vivre au Japon est resté à l’état d’envie. Un de ces rêves qu’on met de côté, qu’on n’ose pas trop partager, et qu’on ne confronte jamais vraiment à la réalité. Pourtant, ma situation était plutôt agréable : un poste intéressant, une super équipe, la liberté du 100 % télétravail. Et malgré tout, je sentais que quelque chose manquait. J’avais coché pas mal de cases, mais la routine s’installait, sans surprise, sans relief. Pas de crise, pas de ras-le-bol, juste une forme de lassitude. Un fond diffus qui, peu à peu, a pris plus de place. Jusqu’au moment où plusieurs éléments sont venus me bousculer. Rien de spectaculaire, mais assez pour me faire dire : “et si c’était le moment ?” Le Japon est alors revenu dans mon esprit, plus fort, plus net. Cette fois, je n’avais plus d’excuse. J’avais mis de l’argent de côté, aucune contrainte personnelle, et la liberté de partir trois mois sans visa. Alors j’ai commencé à regarder les options. Et j’ai pris un billet.
 
 Ce voyage n’avait rien d’un départ définitif. Mon objectif était clair : tester. Voir si la vie au Japon pouvait réellement me plaire au quotidien, en dehors de l’imaginaire et des projections. Une immersion de trois mois pour sentir le rythme, observer, ressentir. Et pourtant, malgré cette posture ouverte, ma plus grande crainte n’était pas liée à l’administratif ou au coût de la vie. Ce qui m’inquiétait vraiment, c’était de perdre ce lien que j’avais avec le Japon. J’avais peur que la réalité ne soit pas à la hauteur de l’attente. Que l’image que je m’en faisais depuis l’enfance, même enrichie par le temps, ne résiste pas à l’épreuve du quotidien. C’est un risque, quand on transforme un objectif de longue date en expérience concrète : celui d’abîmer quelque chose qu’on chérit. Et je redoutais que cette immersion me laisse sur ma faim.
 
 Mais dès les premiers jours à Tokyo, ces doutes ont commencé à s’effacer. J’avais imaginé un pays difficile à appréhender, presque fermé, mais je me suis senti étonnamment à l’aise. La ville m’a semblé accueillante, fluide, pensée pour le quotidien. Mon point de chute, un quartier résidentiel dans le sud de Tokyo, m’a permis de m’ancrer loin de l’agitation touristique. J’ai pris le temps de me perdre dans les rues, de m’arrêter au hasard dans des cafés, de me laisser surprendre par les découvertes culinaires du soir. Ce qui m’a le plus frappé, c’est la tranquillité ambiante. Malgré la densité et le mouvement constant, Tokyo n’oppresse jamais. D’une rue à l’autre, l’atmosphère peut changer du tout au tout : Un carrefour animé peut se transformer, en quelques pas, en ruelle calme. On passe d’un quartier vivant à un coin tranquille sans que ça ne choque jamais. On peut y vivre à son rythme, seul ou entouré.
 
+<Image src={river} alt="Rivière au Japon" className="mb-2" />
+
 Petit à petit, les rencontres ont joué un rôle essentiel pour que Tokyo ne soit pas seulement un décor, mais un lieu où je me sentais véritablement présent. J’avais peur, au début, de rester spectateur, de traverser ces trois mois dans une forme de solitude subie. Alors j’ai provoqué les choses. J’ai utilisé quelques apps pour échanger et pour élargir mon cercle sur place, participé à des meet-ups, saisi les opportunités quand elles se présentaient, même les plus simples : un verre partagé, une discussion de fin de soirée, un conseil glané au hasard. Ces moments m’ont permis de m’inscrire, peu à peu, dans le rythme de la ville.
 
 La ville est devenue un cadre de vie possible. Et ce projet, que je portais depuis longtemps sans y croire vraiment, je venais de commencer à le rendre réel. Même mes croyances sur le coût de la vie ont été bousculées. Je m’attendais à des dépenses élevées ; j’ai découvert une réalité plus nuancée. Manger dehors est non seulement courant, mais souvent plus pratique et moins cher qu’en France. Et pour les week-ends, les possibilités sont nombreuses : randonnées, plages, montagnes ou villes voisines, autant d’escapades faciles d’accès et peu onéreuses. Tokyo m’a semblé offrir un équilibre rare : une ville-monde où l’on peut respirer, avec du calme, de la sécurité, un quotidien confortable, et la nature à portée de train.
 
-<h2 id="travailler-au-japon-entre-fantasmes-et-realite-du-marche-tech">
-  Travailler au Japon : entre fantasmes et réalité du marché tech
-</h2>
+<Image src={countryside} alt="Campagne japonaise" className="mb-2" />
 
-Après quelques semaines sur place, une question a commencé à s’imposer : serait-il possible de trouver un emploi ici, en tant que développeur ?
+<h2 id="conclusion">Conclusion</h2>
 
-Avant de partir, je n’avais pas creusé le sujet. Pas sérieusement. Je savais que ce serait difficile, mais je n’avais aucune idée concrète de ce que cela impliquait. Alors j’ai commencé à chercher. J’ai exploré les job boards spécialisés, ajusté ma localisation sur LinkedIn pour recevoir des offres compatibles avec mon profil et ma présence au Japon. Je me disais que le fait d’être déjà sur place, sur le même fuseau horaire, disponible pour des entretiens en personne si nécessaire, pourrait jouer en ma faveur.
+Aujourd’hui, en écrivant ces lignes depuis Tokyo, je mesure le chemin parcouru. Ce rêve d’enfance, longtemps nourri par l’imaginaire et la distance, a fini par devenir réalité. Mais le passage du fantasme à l’expérience concrète ne s’est pas fait en ligne droite. Il a fallu du temps, des ajustements, des hésitations aussi, pour que l’envie se transforme en projet, puis en décision assumée. Cette maturation lente m’a permis d’aborder l’expatriation avec plus de lucidité. Je n’ai pas tout idéalisé, mais j’ai su préserver cette fascination initiale, désormais éclairée par le réel.
 
-Ma première surprise a été plutôt positive : il y avait plus d’offres sans exigence de japonais que je ne l’imaginais. Ce n’était pas la majorité, mais ce n’était pas négligeable non plus. Deuxième surprise : la culture du télétravail. Contrairement à l’image figée qu’on se fait souvent du Japon, beaucoup d’entreprises proposaient des politiques remote très souples, parfois même en full remote. À ce moment-là, Paris semblait déjà refermer la parenthèse du travail à distance, alors qu’à Tokyo, le télétravail semblait rester bien ancré. Ces découvertes ont commencé à ébranler plusieurs croyances que je traînais depuis longtemps. Celles issues des clichés sur le pays avaient figées en moi. Les discussions avec des Japonais de mon âge ont beaucoup compté. En parlant de leur rapport au travail, de leur équilibre de vie, j’ai découvert un regard bien plus apaisé que je ne l’aurais cru. Un désir de préserver son bien-être, de ne pas tout sacrifier à l’entreprise. Rien de révolutionnaire, mais suffisamment net pour nuancer l’image que j’avais du pays et me rassurer sur ma décision.
+Mais entre le désir d’expatriation et sa réalisation, un ensemble de démarches bien réelles s’est imposé. Comprendre les codes du marché de l’emploi tech japonais, adapter sa stratégie de candidature, choisir le bon visa, organiser son installation : autant d’étapes souvent méconnues ou mal expliquées, qui peuvent freiner les candidats les plus motivés.
 
-Alors j’ai commencé à postuler. Quelques recruteurs m’ont contacté, j’ai passé des entretiens, et peu à peu, la mécanique réelle du marché s’est révélée. Si tu veux rester au Japon, il te faut un visa. Pour obtenir ce visa, il te faut une entreprise. Mais dans les faits, beaucoup d’entreprises ne s’engagent qu’avec des candidats… qui ont déjà un visa. Et même lorsque le processus démarre, il suffit qu’un autre candidat, déjà sponsorisé, entre en jeu pour que les chances s’effondrent. Je découvre aussi que le visa ne peut pas être obtenu depuis le Japon : il faut retourner dans son pays d’origine, faire les démarches administratives, patienter. Ce que je n’avais pas anticipé. À cela s’ajoutent les coûts, les délais, les imprévus. Le marché du recrutement tech est également très encadré par quelques cabinets spécialisés, qui centralisent les profils étrangers. Les entreprises japonaises qui recrutent uniquement en anglais existent, mais elles sont peu nombreuses, très sélectives, et souvent déjà bien rodées à un certain type de parcours. Certaines proposent des contrats courts pour tester, d’autres des postes permanents mais réservés à ceux qui cochent toutes les cases dès le départ.
+C’est précisément ce que je me propose de partager dans un prochain article : un retour d’expérience détaillé, du premier contact avec les entreprises japonaises à mon installation effective à Tokyo, en passant par les négociations, les démarches administratives et les premières semaines sur place.
 
-Rien d’insurmontable. Mais il devenait clair que ce ne serait pas simple. Les opportunités existaient. Encore fallait-il adopter une posture active, structurée, et se donner les moyens d’y accéder.
-
-<h2 id="comment-j-ai-adapte-ma-strategie-pour-decrocher-un-job-au-japon">
-  Comment j’ai adapté ma stratégie pour décrocher un job au Japon
-</h2>
-
-Très vite, j’ai compris qu’il ne s’agissait pas seulement de convaincre sur mes compétences techniques. Comme partout, bien sûr, il fallait montrer qu’on savait faire le travail. Mais ici, un autre critère entrait en jeu : la capacité à s’expatrier et à s’intégrer durablement au Japon. Beaucoup d’entreprises avaient connu des expériences décevantes avec des candidats étrangers. Un désistement de dernière minute, un départ précipité au bout de quelques mois, ou simplement une incompréhension du quotidien ici. Pour l’entreprise, cela représente un risque réel, parfois coûteux. Le sponsoring d’un visa demande du temps, de l’argent, et de l’engagement. Il fallait donc rassurer, prouver que ma décision était réfléchie. J’ai choisi d’axer ma stratégie là-dessus. Expliquer que ce voyage n’était pas un coup de tête, mais une démarche volontaire. Montrer que j’avais testé ma vie ici, que je m’y projetais, sans forcer le trait. J’en parlais comme d’un chapitre de vie, au moins cinq ans, dans un pays qui comptait pour moi, avec l’envie d’y construire une vraie expérience professionnelle à l’international.
-
-J’avais aussi un autre atout : j’étais déjà sur place. J’avais passé plusieurs mois à Tokyo, j’y avais trouvé mes repères, j’avais une vie sociale, des habitudes. Je pouvais évoquer des expériences concrètes, dire ce que j’aimais, ce que j’avais découvert. Cela me permettait de sortir du discours général pour parler de mon vécu. La crédibilité passait aussi par la conscience des démarches. Je savais ce que représentait un sponsoring de visa, le poids administratif, l’effort demandé à l’entreprise. J’avais aussi pris le temps de me positionner sur le marché. Les premiers entretiens m’ont permis de mieux comprendre les fourchettes de salaire, les types de contrats, et les attentes locales. Être payé à sa juste valeur, ce n’est pas une question d’ego, c’est une condition pour vivre son expatriation sereinement. Il faut trouver un équilibre : ne pas calquer les standards parisiens, mais ne pas se brader non plus. Certains recruteurs n’hésitent pas à jouer sur l’enthousiasme des candidats pour tirer les conditions vers le bas. Il faut arriver préparé.
-
-Pour mettre toutes les chances de mon côté, j’ai aussi investi. Cours d’anglais pour être à l’aise à l’oral dans tous les contextes. Et surtout, accompagnement technique avec un mentor expérimenté, développeur senior habitué aux environnements internationaux. Ensemble, on a travaillé mes entretiens, mes tests techniques, les points faibles de mon discours. J’ai enchaîné les entretiens, les phases de test, les relances, les déceptions. Parfois, le niveau d’anglais de chacun compliquait l’échange. Parfois, c’était juste une question de timing. Et puis, après plusieurs semaines d’efforts, la bonne nouvelle est arrivée : une entreprise me faisait une offre, avec sponsoring de visa. C’était fait. Il ne restait plus qu’à rentrer en France quelques semaines pour les démarches et préparer mon installation à Tokyo (un sujet que je développerai dans un autre article).
-
-<h2 id="pourquoi-s-expatrier-au-japon-etait-possible-aujourd-hui-et-pas-avant">
-  Pourquoi s’expatrier au Japon était possible aujourd’hui (et pas avant)
-</h2>
-
-Avec le recul, je me dis souvent que ce projet n’aurait pas pu voir le jour plus tôt. Pas parce que je n’en avais pas envie, ou pas les compétences. Mais simplement parce que ce n’était pas encore le bon moment. Il y a quelques années, je n’aurais pas eu la même stabilité intérieure, ni la même clarté sur mes priorités. J’aurais peut-être été trop pressé, trop idéaliste, ou au contraire trop frileux. Cette fois, j’étais prêt. J’avais suffisamment de recul sur mon parcours, assez d’expériences derrière moi pour savoir ce que je voulais, et ce que je ne voulais plus. Une forme de maturité tranquille s’était installée, qui me permettait de prendre ce virage sans tout remettre en cause. Pas une fuite, pas une crise, juste une étape logique.
-
-De l’autre côté, le contexte avait changé lui aussi. Le Japon restait un pays avec ses codes, ses lenteurs, ses résistances, mais il s’ouvrait. Lentement, mais sûrement. Le remote s’était installé, les profils internationaux étaient mieux intégrés dans certains secteurs, notamment la tech. Des plateformes spécialisées facilitaient la mise en relation, les recruteurs étaient plus habitués à gérer des dossiers complexes, les entreprises plus conscientes des bénéfices à diversifier leurs équipes. C’est comme si les verrous, des deux côtés, s’étaient desserrés. Rien de spectaculaire. Mais assez pour que ce qui paraissait irréaliste il y a quelques années devienne soudain envisageable. Pas simple, mais faisable.
-
-<h2 id="vivre-au-japon-ce-que-cette-expatriation-a-change-pour-moi">
-  Vivre au Japon : ce que cette expatriation a changé pour moi
-</h2>
-
-Aujourd’hui, quelques mois après mon arrivée, je repense à cette crainte que j’avais en préparant ce voyage : celle de perdre le lien que j’entretenais avec le Japon depuis l’enfance. Je ne saurais pas dire si la réalité est meilleure ou moins bonne que ce que j’avais imaginé. C’est juste différent. Et c’est précisément pour ça que ça en valait la peine. Je découvre enfin ce pays pour ce qu’il est, au-delà des images, des récits, des projections. Avec ses forces, ses contradictions, ses subtilités. J’apprends à mon rythme, je m’adapte. Ce projet m’a permis d’évoluer, autant sur le plan personnel que professionnel. Au fond, c’est juste un vieux rêve qui a fini par se concrétiser. Un projet que j’avais longtemps gardé en tête, sans trop savoir s’il arriverait un jour. Le vivre aujourd’hui me laisse une sensation nouvelle, discrète mais profonde. Une forme de calme que je n’avais encore jamais connue.
-
-Et aujourd’hui, j’ai envie de partager ce que j’apprends. Non pas comme vérité générale, mais comme regard personnel. Ce blog, c’est un espace pour transmettre ce que j’aurais aimé lire quand j’étais à ta place. Si tu envisages de venir au Japon, de travailler ici, ou simplement de mieux comprendre ce que cela implique, tu es au bon endroit. J’espère que mes retours t’aideront à y voir plus clair. Et si tu as des questions, des projets, ou simplement besoin d’un échange, tu peux toujours me contacter. La suite commence ici.
+Et si vous envisagez vous aussi une expatriation au Japon, je propose des services d’accompagnement personnalisés pour transformer cette envie en projet concret. Vous trouverez tous les détails sur la page [services](/services).
