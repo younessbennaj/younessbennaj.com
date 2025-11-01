@@ -285,7 +285,7 @@ export default function Services() {
           </div>
           <Button
             variant="secondary"
-            href="https://calendly.com/youness-bennaj/60min"
+            href="https://calendly.com/youness-bennaj/session-kickoff-japon"
             className="mb-6 w-full"
             target="_blank"
           >
@@ -321,7 +321,7 @@ export default function Services() {
           </div>
           <Button
             variant="primary"
-            href="https://calendly.com/youness-bennaj/15min"
+            href="https://calendly.com/youness-bennaj/appel-decouverte-accompagnement-sur-mesure-japon"
             className="mb-6 w-full"
             target="_blank"
           >

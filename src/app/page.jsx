@@ -28,6 +28,17 @@ import { getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { Icon } from '@radix-ui/react-select'
 
+function MailIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
+      />
+    </svg>
+  )
+}
+
 function Photos() {
   // let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
 
@@ -70,11 +81,28 @@ function Article({ article }) {
   )
 }
 
-function SocialLink({ icon: Icon, ...props }) {
+// function SocialLink({ icon: Icon, ...props }) {
+//   return (
+//     <Link className="group -m-1 p-1" {...props}>
+//       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+//     </Link>
+//   )
+// }
+
+function SocialLink({ className, href, children, icon: Icon, ...delegated }) {
   return (
-    <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
-    </Link>
+    <li className={clsx(className, 'flex')}>
+      <Link
+        {...delegated}
+        href={href}
+        className="hover: dark:hover: group flex text-sm font-medium text-zinc-800 transition dark:text-zinc-200"
+      >
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-sky-500" />
+        <span className="ml-2 transition group-hover:text-sky-500">
+          {children}
+        </span>
+      </Link>
+    </li>
   )
 }
 
@@ -110,13 +138,16 @@ export default async function Home() {
                     aria-label="Follow on LinkedIn"
                     icon={LinkedInIcon}
                     target="_blank"
-                  />
-                  <SocialLink
-                    href="https://twitter.com/younessbennaj"
-                    aria-label="Follow on X"
-                    icon={XIcon}
+                  >
+                    Rejoignez-moi sur LinkedIn
+                  </SocialLink>
+                  {/* <SocialLink
+                    href="mailto:youness.bennaj@gmail.com"
+                    icon={MailIcon}
                     target="_blank"
-                  />
+                  >
+                    youness.bennaj@gmail.com
+                  </SocialLink> */}
                 </div>
               </div>
               <div className="hidden md:block">

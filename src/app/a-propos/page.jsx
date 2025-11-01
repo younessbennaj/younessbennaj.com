@@ -96,14 +96,14 @@ export default function About() {
             >
               Suivre sur LinkedIn
             </SocialLink>
-            <SocialLink
+            {/* <SocialLink
               href="https://twitter.com/younessbennaj"
               icon={XIcon}
               className="mt-4"
               target="_blank"
             >
               Suivre sur Twitter
-            </SocialLink>
+            </SocialLink> */}
 
             <SocialLink
               href="mailto:youness.bennaj@gmail.com"

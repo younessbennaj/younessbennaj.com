@@ -121,17 +121,11 @@ export default function SimulationPage() {
                   <div className="space-y-3">
                     <Button
                       variant="primary"
-                      href="/faq#bac3"
+                      href="/articles"
                       className="w-full"
                     >
-                      FAQ – Je n’ai pas minimum Bac+3, que faire ?
-                    </Button>
-                    <button
-                      onClick={() => setIsEligible(undefined)}
-                      className="w-full text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
-                    >
                       Lire les articles
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
