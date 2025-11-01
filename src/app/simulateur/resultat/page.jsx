@@ -206,7 +206,23 @@ const PROFILE_TAGS_BY_LEVEL = {
       icon: <CurrencyYenIcon className="size-4" />,
     },
   ],
-  basic: [], // Aucun tag affiché
+  basic: [
+    {
+      variant: 'green20',
+      text: 'Top 30% des profils',
+      icon: <ArrowTrendingUpIcon className="size-4" />,
+    },
+    {
+      variant: 'yellow',
+      text: 'Spécialité en progression',
+      icon: <FireIcon className="size-4" />,
+    },
+    {
+      variant: 'blueLight',
+      text: 'Bon potentiel de rémunération',
+      icon: <CurrencyYenIcon className="size-4" />,
+    },
+  ],
 }
 
 function ProfilTag({ variant = 'green', text, icon = null }) {
@@ -352,7 +368,7 @@ const calculateSalary = (
 
 // Convert JPY to EUR (approximate rate: 1 EUR = 160 JPY)
 const convertToEuro = (salaryYen) => {
-  return Math.round(salaryYen / 160)
+  return Math.round(salaryYen * 0.0058 * 1.22)
 }
 
 // Format salary for display (in millions of yen)
@@ -713,7 +729,7 @@ function ResultatPageContent() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Experience Level Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+            <h3 className="mb-4 flex flex-wrap items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
               <span>Niveau d&apos;expérience</span>
               <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                 {getExperienceLabel(formData.experience)}
@@ -736,7 +752,7 @@ function ResultatPageContent() {
           </div>
           {/* Role Complexity Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+            <h3 className="mb-4 flex flex-wrap items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
               <span>Complexité du rôle</span>
               <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 dark:bg-green-900 dark:text-green-200">
                 {getRoleLabel(formData.role)}
@@ -759,7 +775,7 @@ function ResultatPageContent() {
 
           {/* Sector Demand Card */}
           <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
-            <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
+            <h3 className="mb-4 flex flex-wrap items-center gap-2 text-lg font-semibold text-zinc-900 dark:text-white">
               <span>Demande sectorielle</span>
               <span className="inline-block rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 dark:bg-purple-900 dark:text-purple-200">
                 {modularizationData.sector

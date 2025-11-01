@@ -150,16 +150,19 @@ export function Index100Chart({
                 fontSize: isSmallDevice ? 12 : 16,
               }}
             />
-            <Tooltip
-              cursor={{ fill: 'rgba(0,0,0,0.04)' }}
-              content={
-                <CustomTooltip
-                  leftKey={leftKey}
-                  rightKey={rightKey}
-                  baseLabel={baseLabel}
-                />
-              }
-            />
+            {!isSmallDevice && (
+              <Tooltip
+                cursor={{ fill: 'rgba(0,0,0,0.04)' }}
+                content={
+                  <CustomTooltip
+                    leftKey={leftKey}
+                    rightKey={rightKey}
+                    baseLabel={baseLabel}
+                  />
+                }
+              />
+            )}
+
             {/* <Legend /> */}
             <Bar dataKey={leftKey} name={leftKey} fill={leftBarColor} />
             <Bar dataKey={rightKey} name={rightKey} fill={rightBarColor} />
@@ -168,8 +171,8 @@ export function Index100Chart({
       </div>
 
       <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
-        Lecture rapide : si {rightKey} = 70 sur « Logement », cela signifie que
-        c&#39;est ≈30% moins cher que {baseLabel}.
+        Lecture rapide : si {rightKey} = 60 sur « Logement », cela signifie que
+        c&#39;est ≈40% moins cher que {baseLabel}.
       </p>
     </div>
   )
