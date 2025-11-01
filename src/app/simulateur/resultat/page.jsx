@@ -604,7 +604,15 @@ function ResultatPageContent() {
                       <span className="ml-2">€</span>
                     </div>
                     <div className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-                      Équivalent en euros d&apos;un salaire brut annuel à Paris
+                      Équivalent pouvoir d&apos;achat à Paris en euros.{' '}
+                      <Link
+                        href="/articles/salaire-developpeur-japon-2026"
+                        target="_blank"
+                        className="text-sky-600 underline"
+                      >
+                        En savoir plus
+                      </Link>
+                      .
                     </div>
                   </div>
                 </div>
