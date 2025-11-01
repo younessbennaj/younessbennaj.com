@@ -116,7 +116,7 @@ export const SalarySimulatorForm = ({ onSubmit }) => {
             value={formData.management}
             onValueChange={(value) => handleValueChange('management', value)}
             options={MANAGEMENT}
-            placeholder="Sélectionner votre expérience en management"
+            placeholder="Sélectionner votre expérience"
             label="Expérience en management"
             required
             hasError={errors.management}
