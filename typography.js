@@ -27,10 +27,10 @@ module.exports = function typographyStyles({ theme }) {
       css: {
         '--tw-prose-body': theme('colors.zinc.600'),
         '--tw-prose-headings': theme('colors.zinc.900'),
-        '--tw-prose-links': theme('colors.teal.500'),
-        '--tw-prose-links-hover': theme('colors.teal.600'),
-        '--tw-prose-underline': theme('colors.teal.500 / 0.2'),
-        '--tw-prose-underline-hover': theme('colors.teal.500'),
+        '--tw-prose-links': theme('colors.sky.500'),
+        '--tw-prose-links-hover': theme('colors.sky.600'),
+        '--tw-prose-underline': theme('colors.sky.500 / 0.2'),
+        '--tw-prose-underline-hover': theme('colors.sky.500'),
         '--tw-prose-bold': theme('colors.zinc.900'),
         '--tw-prose-counters': theme('colors.zinc.900'),
         '--tw-prose-bullets': theme('colors.zinc.900'),
@@ -47,10 +47,10 @@ module.exports = function typographyStyles({ theme }) {
 
         '--tw-prose-invert-body': theme('colors.zinc.400'),
         '--tw-prose-invert-headings': theme('colors.zinc.200'),
-        '--tw-prose-invert-links': theme('colors.teal.400'),
-        '--tw-prose-invert-links-hover': theme('colors.teal.400'),
-        '--tw-prose-invert-underline': theme('colors.teal.400 / 0.3'),
-        '--tw-prose-invert-underline-hover': theme('colors.teal.400'),
+        '--tw-prose-invert-links': theme('colors.sky.400'),
+        '--tw-prose-invert-links-hover': theme('colors.sky.400'),
+        '--tw-prose-invert-underline': theme('colors.sky.400 / 0.3'),
+        '--tw-prose-invert-underline-hover': theme('colors.sky.400'),
         '--tw-prose-invert-bold': theme('colors.zinc.200'),
         '--tw-prose-invert-counters': theme('colors.zinc.200'),
         '--tw-prose-invert-bullets': theme('colors.zinc.200'),
@@ -83,16 +83,16 @@ module.exports = function typographyStyles({ theme }) {
           fontWeight: theme('fontWeight.semibold'),
         },
         h2: {
-          fontSize: theme('fontSize.xl')[0],
-          lineHeight: theme('lineHeight.7'),
-          marginTop: theme('spacing.20'),
-          marginBottom: theme('spacing.4'),
+          fontSize: theme('fontSize.3xl')[0],
+          lineHeight: theme('lineHeight.10'),
+          marginTop: theme('spacing.14'),
+          marginBottom: theme('spacing.10'),
         },
         h3: {
-          fontSize: theme('fontSize.base')[0],
+          fontSize: theme('fontSize.xl')[0],
           lineHeight: theme('lineHeight.7'),
-          marginTop: theme('spacing.16'),
-          marginBottom: theme('spacing.4'),
+          marginTop: theme('spacing.4'),
+          marginBottom: theme('spacing.6'),
         },
         ':is(h2, h3) + *': {
           marginTop: 0,
@@ -118,7 +118,6 @@ module.exports = function typographyStyles({ theme }) {
           textDecorationColor: 'var(--tw-prose-underline-hover)',
         },
         strong: {
-          color: 'var(--tw-prose-bold)',
           fontWeight: theme('fontWeight.semibold'),
         },
         code: {
@@ -137,15 +136,19 @@ module.exports = function typographyStyles({ theme }) {
         ':is(h2, h3) code': {
           fontWeight: theme('fontWeight.bold'),
         },
-
         // Quotes
         blockquote: {
-          paddingLeft: theme('spacing.6'),
+          paddingLeft: theme('spacing.4'),
+          paddingRight: theme('spacing.4'),
+          paddingTop: theme('spacing.1'),
+          paddingBottom: theme('spacing.1'),
           borderLeftWidth: theme('borderWidth.2'),
           borderLeftColor: 'var(--tw-prose-quote-borders)',
           fontStyle: 'italic',
+          backgroundColor: theme('colors.zinc.100 / 0.5'),
+          borderTopRightRadius: theme('borderRadius.lg'),
+          borderBottomRightRadius: theme('borderRadius.lg'),
         },
-
         // Figures
         figcaption: {
           color: 'var(--tw-prose-captions)',
@@ -168,9 +171,9 @@ module.exports = function typographyStyles({ theme }) {
           paddingLeft: theme('spacing.6'),
         },
         li: {
-          marginTop: theme('spacing.6'),
-          marginBottom: theme('spacing.6'),
-          paddingLeft: theme('spacing[3.5]'),
+          marginTop: theme('spacing.4'),
+          marginBottom: theme('spacing.4'),
+          paddingLeft: theme('spacing[2.5]'),
         },
         'li::marker': {
           fontSize: theme('fontSize.sm')[0],

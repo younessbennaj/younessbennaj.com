@@ -12,30 +12,30 @@ function Article({ article }) {
         </Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={article.date}
+          dateTime={article.createdAt}
           className="md:hidden"
           decorate
         >
-          {formatDate(article.date)}
+          {formatDate(article.createdAt)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
+        <Card.Cta>Lire l&apos;article test</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
         dateTime={article.date}
         className="mt-1 hidden md:block"
       >
-        {formatDate(article.date)}
+        {formatDate(article.createdAt)}
       </Card.Eyebrow>
     </article>
   )
 }
 
 export const metadata = {
-  title: 'Articles',
+  title: 'Articles et guides pour réussir votre expatriation au Japon',
   description:
-    'All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order.',
+    'Retrouvez ici tous mes contenus longs : conseils pratiques, retours d’expérience et stratégies concrètes pour les développeurs et talents tech souhaitant vivre et travailler au Japon.',
 }
 
 export default async function ArticlesIndex() {
@@ -43,8 +43,8 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="In-Depth Case Studies on Front-End Engineering and Performance Optimization"
-      intro="Explore detailed analyses and practical solutions for modern front-end challenges, presented as comprehensive case studies."
+      title="Articles et guides pour réussir votre expatriation au Japon"
+      intro="Retours d’expérience, conseils pratiques et stratégies concrètes pour les talents tech qui veulent s’installer et travailler au Japon."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
