@@ -1,5 +1,6 @@
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import '@/styles/tailwind.css'
 
@@ -21,13 +22,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className="h-full antialiased" suppressHydrationWarning>
-      <body className="flex h-full bg-zinc-50 dark:bg-black">
+      <body className="dark:bg-black flex h-full bg-zinc-50">
         <Providers>
           <div className="flex w-full">
             <Layout>{children}</Layout>
           </div>
         </Providers>
       </body>
+      <GoogleAnalytics gaId="G-59WCY77VF3" />
     </html>
   )
 }
