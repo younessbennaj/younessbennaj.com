@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import {
   BarChart,
   Bar,
@@ -8,12 +7,8 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   ResponsiveContainer,
-  ReferenceLine,
 } from 'recharts'
-
-import { useResponsive } from '@/hooks/useResponsive'
 
 function inferKeys(data) {
   if (!Array.isArray(data) || data.length === 0)
@@ -46,35 +41,35 @@ const CustomTooltip = ({
   const nf0 = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 })
 
   return (
-    <div className="rounded-lg border border-zinc-200 bg-white/95 px-3 py-2 text-sm shadow-xl backdrop-blur dark:border-zinc-700 dark:bg-zinc-900/95">
-      <div className="mb-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+    <div className="dark:border-zinc-700 dark:bg-zinc-900/95 rounded-lg border border-zinc-200 bg-white/95 px-3 py-2 text-sm shadow-xl backdrop-blur">
+      <div className="dark:text-zinc-400 mb-1 text-xs font-medium text-zinc-500">
         {label}
       </div>
       <div className="mb-1 space-y-1">
         <div className="flex items-center justify-between gap-4">
           <span className="inline-flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
-            <span className="text-zinc-600 dark:text-zinc-300">{leftKey}</span>
+            <span className="dark:text-zinc-300 text-zinc-600">{leftKey}</span>
           </span>
-          <span className="tabular-nums text-zinc-900 dark:text-zinc-100">
+          <span className="dark:text-zinc-100 tabular-nums text-zinc-900">
             {nf0.format(leftVal)}
           </span>
         </div>
         <div className="flex items-center justify-between gap-4">
           <span className="inline-flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-blue-300" />
-            <span className="text-zinc-600 dark:text-zinc-300">{rightKey}</span>
+            <span className="dark:text-zinc-300 text-zinc-600">{rightKey}</span>
           </span>
-          <span className="tabular-nums text-zinc-900 dark:text-zinc-100">
+          <span className="dark:text-zinc-100 tabular-nums text-zinc-900">
             {nf0.format(rightVal)}
           </span>
         </div>
       </div>
-      <div className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">
+      <div className="dark:text-zinc-300 mt-1 text-xs text-zinc-600">
         {rightKey} est ~{nf0.format(absPct)}% {dir} que {leftKey} sur la
         catégorie {label}.
       </div>
-      <div className="mt-1 text-[10px] leading-4 text-zinc-500 dark:text-zinc-400">
+      <div className="dark:text-zinc-400 mt-1 text-[10px] leading-4 text-zinc-500">
         Indice 100 ({baseLabel} = 100) — plus bas = moins cher.
       </div>
     </div>
@@ -88,9 +83,9 @@ export function Index100Chart({
   baseLabel = 'Paris',
   leftBarColor = 'oklch(80.8% 0.114 19.571)', // Default orange/red color
   rightBarColor = 'oklch(80.9% 0.105 251.813)', // Default blue color
+  deviceType,
 }) {
-  const { isSmallDevice } = useResponsive()
-  const height = isSmallDevice ? 300 : 500
+  const height = deviceType === 'sp' ? 300 : 500
   // Infer keys if not provided
   const inferred = inferKeys(data)
   const leftKey = leftKeyProp || inferred.leftKey
@@ -100,7 +95,7 @@ export function Index100Chart({
 
   if (!hasKeys) {
     return (
-      <div className="w-full rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+      <div className="dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 w-full rounded-lg border border-zinc-200 bg-white p-4 text-sm text-zinc-600">
         Aucune série valide à afficher. Assurez‑vous que vos objets `data`
         contiennent un champ `category` et au moins deux clés numériques (ex.:
         &quot;Paris&quot;, &quot;Tokyo&quot;), ou bien passez `leftKey` et
@@ -119,12 +114,12 @@ export function Index100Chart({
 
   return (
     <div className="w-full">
-      <div className="w-full rounded-lg border border-zinc-200 bg-white p-2 md:p-3 dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="dark:border-zinc-700 dark:bg-zinc-900 w-full rounded-lg border border-zinc-200 bg-white p-2 md:p-3">
         <ResponsiveContainer width="100%" height={height}>
           <BarChart
             data={data}
-            barSize={isSmallDevice ? 14 : 28}
-            barGap={isSmallDevice ? 6 : 12}
+            barSize={deviceType === 'sp' ? 14 : 28}
+            barGap={deviceType === 'sp' ? 6 : 12}
             barCategoryGap={24}
           >
             <CartesianGrid
@@ -135,22 +130,22 @@ export function Index100Chart({
               dataKey="category"
               padding={0}
               tick={{
-                angle: isSmallDevice ? -50 : 0,
-                textAnchor: isSmallDevice ? 'end' : 'middle',
-                dy: isSmallDevice ? 4 : 0,
-                fontSize: isSmallDevice ? 9 : 16,
+                angle: deviceType === 'sp' ? -50 : 0,
+                textAnchor: deviceType === 'sp' ? 'end' : 'middle',
+                dy: deviceType === 'sp' ? 4 : 0,
+                fontSize: deviceType === 'sp' ? 9 : 16,
               }}
               tickCount={5}
-              height={isSmallDevice ? 70 : 40}
+              height={deviceType === 'sp' ? 70 : 40}
             />
             <YAxis
-              width={isSmallDevice ? 20 : 40}
-              tickSize={isSmallDevice ? 3 : 5}
+              width={deviceType === 'sp' ? 20 : 40}
+              tickSize={deviceType === 'sp' ? 3 : 5}
               tick={{
-                fontSize: isSmallDevice ? 12 : 16,
+                fontSize: deviceType === 'sp' ? 12 : 16,
               }}
             />
-            {!isSmallDevice && (
+            {deviceType !== 'sp' && (
               <Tooltip
                 cursor={{ fill: 'rgba(0,0,0,0.04)' }}
                 content={
@@ -170,7 +165,7 @@ export function Index100Chart({
         </ResponsiveContainer>
       </div>
 
-      <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <p className="dark:text-zinc-400 mt-2 text-xs text-zinc-500">
         Lecture rapide : si {rightKey} = 60 sur « Logement », cela signifie que
         c&#39;est ≈40% moins cher que {baseLabel}.
       </p>

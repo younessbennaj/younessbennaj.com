@@ -24,7 +24,6 @@
     "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/typography": "^0.5.4",
-    "@uidotdev/usehooks": "^2.4.1",
     "autoprefixer": "^10.4.12",
     "cheerio": "^1.0.0-rc.12",
     "classnames": "^2.5.1",

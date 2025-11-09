@@ -3,37 +3,17 @@ import { SalaryTable } from '@/components/SalaryTable'
 import { Alert } from '@/components/Alert'
 import { SalarySwitcher } from '@/components/SalarySwitcher'
 import banner from '@/images/salary-banner.jpg'
-import {
-  Index100Chart,
-  HorizontalIndex100Chart,
-} from '@/components/CostOfLivingCharts'
-import { ExpenseCompare } from '@/components/ExpenseCompare'
+import { Index100Chart } from '@/components/articles/index-100-chart'
+import { ExpenseCompare } from '@/components/expense-compare'
 import {
   parisTokyoLivingIndex,
   exampleExpenses,
   salariesByExperience,
   salariesBySpecialization,
   salariesByCity,
-  salariesByContractType,
-  horizontalComparisonIndex,
-} from './data'
+} from '../data'
 import { SalaryCard } from '@/components/SalaryCard'
-import { SalaryCardGroup } from '@/components/SalaryCardGroup'
-
-export const article = {
-  author: 'Youness Bennaj',
-  createdAt: '2025-10-24',
-  category: 'expatriation',
-  title: 'Salaire développeur au Japon : à quoi s’attendre en 2026 ?',
-  image: banner,
-  description:
-    'Une vue d’ensemble des salaires pour les développeurs au Japon, avec repères sur le coût de la vie, le pouvoir d’achat et les fourchettes réalistes selon l’expérience.',
-}
-
-export const metadata = {
-  title: article.title,
-  description: article.description,
-}
+import { article } from '../meta'
 
 export default (props) => <ArticleLayout article={article} {...props} />
 
@@ -136,7 +116,7 @@ Mais au-delà de ces repères communs, ce sont surtout les **écarts concrets da
 
 Chaque barre représente un poste de dépense, avec **Paris fixé à 100 comme référence**. Lorsque la barre de Tokyo descend sous cette valeur, cela signifie que le coût est **plus faible qu’à Paris** pour la même catégorie. Autrement dit, **logement**, **restaurants** ou **transports** pèsent moins lourd dans le budget quotidien à Tokyo, ce qui explique un **pouvoir d’achat plus intéressant** que ne le laisserait penser une simple conversion monétaire.
 
-<Index100Chart data={parisTokyoLivingIndex} />
+<Index100Chart data={parisTokyoLivingIndex} deviceType="pc" />
 
 <Alert
   type="success"
@@ -300,7 +280,7 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   </mrow>
 </math>
 
-<div class="not-prose mt-4 rounded-lg bg-zinc-50 p-4 text-sm dark:bg-zinc-900/60">
+<div class="not-prose dark:bg-zinc-900/60 mt-4 rounded-lg bg-zinc-50 p-4 text-sm">
   <ul class="m-0 list-disc overflow-x-scroll pl-5">
     <li className="flex items-center text-xs">
       <math>
@@ -442,8 +422,6 @@ Le niveau d’expérience reste le facteur principal influençant le salaire.
 
 Voici les chiffres moyens observés en 2025 :
 
-<SalaryCardGroup items={salariesByExperience} titleKey="level" />
-
 <SalaryTable
   title="Salaires moyens par ancienneté"
   columns={[
@@ -501,8 +479,6 @@ Voici les chiffres moyens observés en 2025 :
 
 Certaines spécialités sont nettement mieux rémunérées que d’autres, surtout si elles sont en tension sur le marché japonais.
 
-<SalaryCardGroup items={salariesBySpecialization} titleKey="spec" />
-
 <SalaryTable
   columns={[
     { key: 'spec', label: 'Spécialité' },
@@ -527,8 +503,6 @@ Certaines spécialités sont nettement mieux rémunérées que d’autres, surto
 ### Salaire par ville (hubs technologiques)
 
 Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équilibre entre salaire et coût de la vie.
-
-<SalaryCardGroup items={salariesByCity} titleKey="city" />
 
 <SalaryTable
   title="Salaires moyens par ville"
@@ -555,8 +529,6 @@ Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équili
 ### Salaire annuel par type de contrat (exemple concret)
 
 Prenons le cas d’un **développeur back‑end avec 7 ans d’expérience**. Voici comment son salaire annuel peut varier selon le type de contrat :
-
-<SalaryCardGroup items={salariesByContractType} titleKey="contract" />
 
 <SalaryTable
   title="Impact du type de contrat (exemple : back-end, 7 ans d’expérience)"

@@ -24,21 +24,21 @@ export const TableOfContents = memo(function TableOfContents({
   }
 
   return (
-    <div className="flex flex-col gap-8 bg-zinc-50 p-6 dark:bg-zinc-900">
+    <div className="dark:bg-zinc-900 flex flex-col gap-8 bg-zinc-50 p-6">
       <nav
         aria-labelledby="toc-heading"
-        className="max-h-[calc(100vh-8rem)] overflow-y-auto rounded-lg"
+        className="rounded-lg"
         role="navigation"
       >
         <h2
           id="toc-heading"
-          className="text-md mb-4 pl-4 font-semibold text-zinc-900 dark:text-zinc-300"
+          className="text-md dark:text-zinc-300 mb-4 pl-4 font-semibold text-zinc-900"
         >
           Sommaire
         </h2>
         {/* add separator */}
-        <hr className="my-4 border-t border-zinc-200 dark:border-zinc-700" />
-        <ol className="text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+        <hr className="dark:border-zinc-700 my-4 border-t border-zinc-200" />
+        <ol className="dark:text-zinc-400 text-sm leading-6 text-zinc-600">
           {toc.map(({ id, text, level }) => (
             <li key={id} className={level === 3 ? 'ml-6 text-sm' : 'text-md'}>
               <a
@@ -63,7 +63,7 @@ export const TableOfContents = memo(function TableOfContents({
         </ol>
       </nav>
       <div className="flex flex-col gap-2 pl-4">
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">
+        <span className="dark:text-zinc-400 text-xs text-zinc-500">
           Partager cet article
         </span>
         <ShareLinks url={currentUrl} title={title} />
