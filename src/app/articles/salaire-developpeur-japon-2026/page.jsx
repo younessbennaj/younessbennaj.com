@@ -8,6 +8,8 @@ export const metadata = {
   description: article.description,
 }
 
+export { article }
+
 export default function Page() {
   const userAgent = headers().get('user-agent') || ''
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(userAgent)

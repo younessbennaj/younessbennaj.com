@@ -4,13 +4,13 @@ export async function importArticle(articleFilename) {
   let { article } = await import(`../app/articles/${articleFilename}`)
 
   return {
-    slug: articleFilename.replace(/(\/page)?\.mdx$/, ''),
+    slug: articleFilename.replace(/(\/page)?\.(mdx|jsx)$/, ''),
     ...article,
   }
 }
 
 export async function getAllArticles() {
-  let articleFilenames = await glob('*/page.mdx', {
+  let articleFilenames = await glob('*/page.{mdx,jsx}', {
     cwd: './src/app/articles',
   })
 
