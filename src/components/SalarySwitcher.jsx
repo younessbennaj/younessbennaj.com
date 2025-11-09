@@ -95,7 +95,7 @@ export function SalarySwitcher({
           transition={{ duration: 3, ease: [0.22, 1, 0.36, 1] }}
           aria-hidden={!isPrefix}
           className={cn(
-            'select-none text-5xl text-[38px] font-normal leading-none text-zinc-500 sm:text-[42px] dark:text-zinc-400',
+            'dark:text-zinc-400 select-none text-5xl text-[38px] font-normal leading-none text-zinc-500 sm:text-[42px]',
             isPrefix ? 'order-1 pr-2' : 'hidden',
           )}
         >
@@ -110,10 +110,9 @@ export function SalarySwitcher({
         >
           <NumberTicker
             value={active.value}
-            startValue={previousValue.current}
             decimalPlaces={getCurrencyMeta(active.currency).decimals}
             locale={activeMeta.locale} // fr-FR pour €, ja-JP pour ¥
-            className="text-zinc-900 dark:text-zinc-100"
+            className="dark:text-zinc-100 text-zinc-900"
           />
         </div>
 
@@ -124,7 +123,7 @@ export function SalarySwitcher({
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           aria-hidden={isPrefix}
           className={cn(
-            'select-none text-[38px] font-normal leading-none text-zinc-500 sm:text-[42px] md:text-5xl dark:text-zinc-400',
+            'dark:text-zinc-400 select-none text-[38px] font-normal leading-none text-zinc-500 sm:text-[42px] md:text-5xl',
             !isPrefix ? 'order-2 pl-2' : 'hidden',
           )}
         >
@@ -139,7 +138,7 @@ export function SalarySwitcher({
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 1 }}
             aria-hidden={isPrefix}
             className={cn(
-              'select-none self-center text-lg font-normal leading-none text-green-500 md:text-xl dark:text-zinc-400',
+              'dark:text-zinc-400 select-none self-center text-lg font-normal leading-none text-green-500 md:text-xl',
               !isPrefix ? 'order-2 pl-2' : 'hidden',
             )}
           >

@@ -1,0 +1,603 @@
+import { ArticleLayoutSSR } from '@/components/ArticleLayoutSSR'
+import { SalaryTable } from '@/components/SalaryTable'
+import { Alert } from '@/components/Alert'
+import { SalarySwitcher } from '@/components/SalarySwitcher'
+import banner from '@/images/salary-banner.jpg'
+import { Index100Chart } from '@/components/articles/index-100-chart'
+import { ExpenseCompare } from '@/components/expense-compare'
+import {
+  parisTokyoLivingIndex,
+  exampleExpenses,
+  salariesByExperience,
+  salariesBySpecialization,
+  salariesByCity,
+} from '../data'
+import { SalaryCard } from '@/components/SalaryCard'
+import { article } from '../meta'
+
+export default (props) => <ArticleLayoutSSR article={article} {...props} />
+
+## Introduction
+
+Le Japon attire de plus en plus de développeurs francophones, séduits par l’idée de travailler dans un environnement différent, tout en profitant d’un cadre de vie unique.
+
+Mais lorsqu’on commence à s’intéresser aux salaires, les choses deviennent vite confuses. Témoignages contradictoires, types de contrats variés, disparités énormes d’une offre à l’autre… On se perd rapidement dans les comparaisons, d’autant que beaucoup commettent l’erreur de se fier uniquement à une conversion brute des yens en euros.
+
+Le problème, c’est que ce chiffre ne veut rien dire sans contexte. Coût de la vie, système social, mode de consommation, avantages associés au poste : tout cela joue un rôle clé dans l’évaluation d’une offre.
+
+Dans cet article, je vous propose une lecture plus claire, plus concrète. L’objectif est simple : fournir aux développeurs français un véritable point de comparaison entre Paris et Tokyo, en partant de données réalistes, de cas concrets, et de mon propre retour d’expérience.
+
+---
+
+## Pourquoi une conversion brute ne suffit pas
+
+Quand j’ai commencé à envisager sérieusement un départ au Japon, l’une de mes plus grandes interrogations, c’était de savoir si le niveau de salaire allait suffire. J’avais lu un peu tout et son contraire, vu des packages très différents d’une offre à l’autre, sans trop comprendre les écarts. Je me demandais si je n’allais pas devoir faire une croix sur mon confort de vie, ou revoir mes ambitions à la baisse.
+
+En réalité, une fois sur place, j’ai vite été surpris. Mon salaire était plus ou moins équivalent à ce que je touchais à Paris. Pourtant, au quotidien, j’avais la sensation de **vivre mieux**. Je faisais plus de choses, je profitais davantage, tout en arrivant à économiser chaque mois. Cette impression s’est confirmée au fil des semaines. C’est ce qui m’a poussé à analyser ce phénomène de plus près.
+
+Le premier piège, quand on commence à se renseigner sur les salaires au Japon, c’est de vouloir **convertir directement les montants en euros** pour se faire une idée. C’est logique, mais c’est trompeur. Car ce chiffre brut, une fois converti, ne reflète ni le coût de la vie local, ni les spécificités du contrat, ni même la manière dont on consomme au quotidien.
+
+Les ressentis autour du salaire au Japon varient énormément selon le pays d’origine. Un même package peut être perçu comme généreux, correct ou insuffisant selon les habitudes de vie, le système social de référence ou les attentes personnelles.
+
+C’est pourquoi, dans cet article, j’ai choisi de me concentrer sur un comparatif clair entre **Tokyo et Paris**, en m’adressant spécifiquement aux développeurs français.
+
+<Alert
+  type="info"
+  title="Pourquoi Tokyo vs Paris ?"
+  description="En ligne, la plupart des témoignages sont en anglais, rédigés par des développeurs venus des États-Unis, d’Inde, de Chine, ou d’autres pays avec des réalités très différentes des nôtres. Le rapport au salaire, à la protection sociale ou à la consommation varie beaucoup selon le contexte culturel et économique."
+  details={
+    <p className="mb-2">
+      Un Américain pourra juger les salaires japonais faibles par rapport aux
+      120 000 $ ou 150 000 $ qu’il pouvait toucher chez lui, tout en
+      reconnaissant que certaines dépenses, comme la santé, lui coûtent beaucoup
+      moins ici. À l’inverse, un développeur chinois ou indien aura peut-être
+      l’impression de gagner davantage qu’avant, mais trouvera le coût de la vie
+      au Japon sensiblement plus élevé.
+      <br />
+      <br />
+      Autrement dit, un même salaire à Tokyo ne provoquera pas le même ressenti
+      selon le pays d’origine, le niveau de vie de départ et les attentes de
+      chacun. C’est pour cela qu’il est difficile de tirer des conclusions à
+      partir de témoignages génériques trouvés en ligne.
+      <br />
+      <br />
+      En tant que français, nous avons nos propres repères : type de contrat,
+      salaire brut vs net, charges sociales, coût du logement, habitudes de
+      consommation. C’est pourquoi ce guide se concentre volontairement sur un
+      comparatif Tokyo / Paris, pour offrir une base claire, familière et
+      vraiment utile.
+    </p>
+  }
+/>
+
+Pour illustrer tout cela, on va suivre le cas concret d’un développeur back-end avec sept ans d’expérience, qui travaillait à Paris avant de s’installer à Tokyo. À Paris, il gagnait **57 780 € brut annuel**. À Tokyo, son salaire est de **10,1 millions de yens**. Une fois convertis, les montants sont très proches. C’est donc un bon point de départ pour observer ce que ces chiffres représentent concrètement dans la vie de tous les jours.
+
+<SalarySwitcher
+  title="Conversion brute : 10,100,000 JPY ↔ 57,780 EUR"
+  from={{ value: 10_100_000, currency: 'JPY', label: 'yens', locale: 'ja-JP' }}
+  to={{ value: 57_780, currency: 'EUR', label: 'euros', locale: 'fr-FR' }}
+  initial="from"
+  locale="ja-JP"
+/>
+
+<Alert
+  type="info"
+  title="Contrat direct vs cabinets de recrutement"
+  description="Beaucoup de profils passent d’abord par un cabinet : c’est une bonne porte d’entrée pour décrocher un premier poste. Dans ce cas, le salaire est souvent légèrement amputé, le cabinet percevant une commission indirecte. Pour comparer le pouvoir d’achat, nous nous basons ici sur un scénario de contrat direct, plus lisible et généralement mieux doté."
+  details={
+    <>
+      <p className="mb-2">
+        <strong>Comment ça marche&nbsp;?</strong> Le cabinet met en relation le
+        candidat et l’entreprise. Les honoraires sont réglés par l’entreprise,
+        pas prélevés directement sur votre salaire, mais ils peuvent influer sur
+        le montant proposé.
+      </p>
+      <p className="mb-2">
+        <strong>Impact sur le package&nbsp;:</strong> le salaire peut être
+        aligné sur une grille interne avec une négociation parfois moins
+        flexible. Si l’intermédiaire est une société de service
+        (dispatch/haken/ESN), la marge peut réduire le salaire annuel par
+        rapport à un contrat direct.
+      </p>
+      <p className="mb-2">
+        <strong>Passerelle vers un direct&nbsp;:</strong> il est courant d’être
+        embauché via intermédiaire puis d’obtenir un contrat direct après une
+        période concluante.
+      </p>
+    </>
+  }
+/>
+
+### Comparatif Tokyo vs Paris : une vue d’ensemble
+
+Globalement, pour un Français, venir travailler au Japon est plutôt une **bonne surprise**. Le système social y est assez proche du nôtre : une partie du salaire est prélevée pour financer la retraite, l’assurance maladie, l’assurance chômage. J’emploie ici des termes simples, on reviendra plus en détail sur le sujet dans un article dédié. Mais disons que, pour un Français, cette structure est **familière**. Ce n’est pas le choc qu’un Américain peut ressentir en découvrant un système public moins coûteux mais plus intrusif, ou en voyant son salaire amputé de moitié par des cotisations auxquelles il n’est pas habitué.
+
+Mais au-delà de ces repères communs, ce sont surtout les **écarts concrets dans le coût de la vie** qui font la différence au quotidien. C’est là que Tokyo peut vraiment surprendre, **dans le bon sens**. En comparant Paris et Tokyo à travers les principaux **postes de dépenses**, le graphique ci-dessous illustre pourquoi la **conversion brute en euros ne suffit pas**, et met en évidence l’**écart réel** entre les deux villes.
+
+Chaque barre représente un poste de dépense, avec **Paris fixé à 100 comme référence**. Lorsque la barre de Tokyo descend sous cette valeur, cela signifie que le coût est **plus faible qu’à Paris** pour la même catégorie. Autrement dit, **logement**, **restaurants** ou **transports** pèsent moins lourd dans le budget quotidien à Tokyo, ce qui explique un **pouvoir d’achat plus intéressant** que ne le laisserait penser une simple conversion monétaire.
+
+<Index100Chart data={parisTokyoLivingIndex} deviceType="pc" />
+
+<Alert
+  type="success"
+  description="Tokyo affiche des indices inférieurs à 100 sur la plupart des postes de dépense. Concrètement, cela signifie qu’à niveau de vie comparable, vos dépenses mensuelles sont moins élevées qu’à Paris. Une bonne nouvelle pour le pouvoir d’achat !"
+/>
+
+### Tokyo vs Paris: Dépenses totales mensuelles
+
+Voici ce que ça représente concrètement en terme d'argent. En un coup d’œil, voyez quelle ville est la plus chère et sur quelles catégories les différences se jouent. Utilisez le bouton pour basculer entre euros (€) et yens (¥).
+
+<Alert
+  type="info"
+  title="Comment lire ce comparateur"
+  description="Chaque cercle montre la répartition des dépenses mensuelles par catégorie (logement, transports, alimentation, loisirs, etc.). Ces catégories ont été retenues car elles concentrent l’essentiel des dépenses récurrentes d’un profil urbain et offrent une base de comparaison pertinente du pouvoir d’achat. Le total est affiché en bas pour comparer le coût global de chaque ville."
+/>
+
+<ExpenseCompare
+  data={exampleExpenses}
+  cityA="Paris"
+  cityB="Tokyo"
+  defaultCurrency="EUR"
+  exchangeRate={0.0058}
+/>
+
+<Alert
+  type="success"
+  description="Même une fois convertis en yens, les totaux mensuels à Tokyo restent significativement inférieurs à ceux de Paris. On observe également que la répartition par catégories est globalement similaire en pourcentage entre les deux villes, mais les montants absolus sont plus faibles à Tokyo. C’est un indicateur fort : vivre à Tokyo peut coûter moins cher qu’à Paris, tout en offrant un cadre de vie attractif."
+/>
+
+ <blockquote>
+📝 **Retour d'expérience**
+
+Une fois installé à Tokyo, j'ai rapidement ressenti quelque chose d'inattendu : j'avais l'impression de **vivre mieux qu'à Paris**. Pas seulement différemment, mais objectivement mieux.
+
+Mon salaire était équivalent à ce que je gagnais en France, mais concrètement, je faisais plus de choses. Je sortais plus souvent, je voyageais davantage le weekend, j'avais un appartement plus agréable, et paradoxalement, j'arrivais même à économiser chaque mois. Cette sensation s'est confirmée au fil des semaines.
+
+C'est ce décalage qui m'a poussé à analyser le phénomène de plus près :
+
+➤ **Logement** : des solutions accessibles, notamment via les sharehouses modernes et bien situées  
+➤ **Nourriture** : manger à l'extérieur est courant et bien moins coûteux qu'en France  
+➤ **Loisirs** : escapades nature ou culturelles faciles et abordables  
+➤ **Santé** : un système efficace et rassurant  
+➤ **Transports** : des pass mensuels qui donnent accès à toute la métropole
+
+En pratique, cela signifie qu'un salaire équivalent à Tokyo peut offrir un **pouvoir d'achat et une qualité de vie supérieurs** à ce qu'on pourrait avoir à Paris.
+
+</blockquote>
+
+### Visualiser concrètement
+
+En bref, convertir des yens en euros ne suffit pas. Mais contrairement à d'autres expatriés, nous avons un avantage : **le système social japonais ressemble beaucoup au nôtre**.
+
+Cotisations retraite, assurance maladie publique, assurance chômage... Ces mécanismes nous sont familiers. Un Américain doit calculer ce qu'il économise en assurance santé privée (souvent 500-1000$/mois), un Britannique doit s'adapter à un nouveau système de retraite. Nous, on retrouve nos repères.
+
+**Résultat ?** La vraie variable d'ajustement, c'est le coût de la vie quotidienne. Logement, transports, restaurants, loisirs : voilà où se joue la différence de pouvoir d'achat entre Tokyo et Paris. C'est plus simple, plus direct, plus fiable.
+
+Pour notre profil (dev back‑end, 7 ans), cette analyse montre que la vie coûte globalement moins cher à Tokyo. Nous réajustons donc la conversion pour tenir compte de cet écart, afin d'afficher un équivalent "Paris" plus juste.
+
+Ci-dessous, voyez l'équivalent "Paris" d'une offre type à Tokyo pour ce profil.
+
+<SalarySwitcher
+  title="Exemple : 10,100,000 JPY ↔ équivalent Paris"
+  from={{ value: 10_100_000, currency: 'JPY', label: 'yens', locale: 'ja-JP' }}
+  to={{ value: 71_468, currency: 'EUR', label: 'euros', locale: 'fr-FR' }}
+  initial="from"
+  locale="ja-JP"
+  percentage={0.22}
+/>
+
+<Alert
+  type="success"
+  description="Résultat : à Tokyo, un salaire de 10,1 M¥ pour un développeur back‑end (7 ans d’expérience) procure un niveau de vie équivalent à ~71,5 k€ à Paris. Soit un bonus de pouvoir d’achat d’environ +22 % par rapport à la simple conversion brute (~58,6 k€)."
+/>
+
+Dans la suite de l'article, nous allons donc passer en revue les salaires observés en 2025 selon différents critères (ancienneté, spécialité, ville, type de contrat). C'est pourquoi dans les tableaux qui suivent, vous pourrez passer d'un simple clic entre :
+
+- Salaire Tokyo (JPY)
+- Équivalent "pouvoir d'achat Paris" (EUR)
+
+<Alert 
+  title="Comment est calculé l’équivalent « pouvoir d’achat Paris »"
+  description="L’idée est d’ajuster un salaire libellé en yens (JPY) en euros (EUR), puis d’appliquer un facteur de coût de la vie pour comparer à Paris."
+  details={
+<div className="prose max-w-none">
+  <p>
+    Voici la formule générale utilisée :
+  </p>
+
+<math display="block" className="text-lg">
+  <mrow>
+    <msub>
+      <mi>S</mi>
+      <mi>Paris&nbsp;eq</mi>
+    </msub>
+    <mo>=</mo>
+    <msub>
+      <mi>S</mi>
+      <mi>JPY</mi>
+    </msub>
+    <mo>×</mo>
+    <msub>
+      <mi>r</mi>
+      <mtext>EUR/JPY</mtext>
+    </msub>
+    <mo>×</mo>
+    <mfrac>
+      <msub>
+        <mi>C</mi>
+        <mi>Paris</mi>
+      </msub>
+      <msub>
+        <mi>C</mi>
+        <mi>Tokyo</mi>
+      </msub>
+    </mfrac>
+  </mrow>
+</math>
+
+<p className="mt-3">
+  En pratique, on regroupe le rapport de coûts dans un seul coefficient α&nbsp;
+  :
+</p>
+
+<math display="block" className="text-lg">
+  <mrow>
+    <msub>
+      <mi>α</mi>
+    </msub>
+    <mo>=</mo>
+    <mfrac>
+      <msub>
+        <mi>C</mi>
+        <mi>Paris</mi>
+      </msub>
+      <msub>
+        <mi>C</mi>
+        <mi>Tokyo</mi>
+      </msub>
+    </mfrac>
+  </mrow>
+</math>
+
+<math display="block" className="text-lg">
+  <mrow>
+    <msub>
+      <mi>S</mi>
+      <mi>Paris&nbsp;eq</mi>
+    </msub>
+    <mo>=</mo>
+    <msub>
+      <mi>S</mi>
+      <mi>JPY</mi>
+    </msub>
+    <mo>×</mo>
+    <msub>
+      <mi>r</mi>
+      <mtext>EUR/JPY</mtext>
+    </msub>
+    <mo>×</mo>
+    <mi>α</mi>
+  </mrow>
+</math>
+
+<div className="not-prose dark:bg-zinc-900/60 mt-4 rounded-lg bg-zinc-50 p-4 text-sm">
+  <ul className="m-0 list-disc overflow-x-scroll pl-5">
+    <li className="flex items-center text-xs">
+      <math>
+        <msub>
+          <mi>S</mi>
+          <mi>Paris&nbsp;eq</mi>
+        </msub>
+      </math>{' '}
+      : salaire annuel en euros (équivalent Paris).
+    </li>
+    <li className="flex items-center text-xs">
+      <math>
+        <msub>
+          <mi>S</mi>
+          <mi>JPY</mi>
+        </msub>
+      </math>{' '}
+      : salaire annuel en yens.
+    </li>
+    <li className="flex items-center text-xs">
+      <math>
+        <msub>
+          <mi>r</mi>
+          <mtext>EUR/JPY</mtext>
+        </msub>
+      </math>{' '}
+      : taux de change (euros par yen).
+    </li>
+    <li className="flex items-center text-xs">
+      <math>
+        <msub>
+          <mi>C</mi>
+          <mi>Paris</mi>
+        </msub>
+      </math>
+      : indice de coût de la vie à Paris.
+    </li>
+    <li className="flex items-center text-xs">
+      <math>
+        <msub>
+          <mi>C</mi>
+          <mi>Tokyo</mi>
+        </msub>
+      </math>{' '}
+      : indice de coût de la vie à Tokyo.
+    </li>
+    <li className="flex items-center text-xs">
+      <math>
+        <mi>α</mi>
+      </math>
+      : facteur d’ajustement de pouvoir d’achat. Par défaut dans
+      l’article&nbsp;: 1.22
+    </li>
+  </ul>
+</div>
+
+<p className="mt-4 hidden md:block">Exemple (valeurs illustratives) :</p>
+<math display="block" className="hidden text-lg md:block">
+  <mrow>
+    <msub>
+      <mi>S</mi>
+      <mi>JPY</mi>
+    </msub>
+    <mo>=</mo>
+    <mn>6</mn>
+    <mo>,</mo>
+    <mn>000</mn>
+    <mo>,</mo>
+    <mn>000</mn>
+    <mo>&nbsp;</mo>
+    <mtext>JPY</mtext>
+    <mo>,</mo>
+    <mspace width="0.75em" />
+    <msub>
+      <mi>r</mi>
+      <mtext>EUR/JPY</mtext>
+    </msub>
+    <mo>=</mo>
+    <mn>0.0058</mn>
+    <mo>,</mo>
+    <mspace width="0.75em" />
+    <mi>α</mi>
+    <mo>=</mo>
+    <mn>1.22</mn>
+  </mrow>
+</math>
+
+{' '}
+
+<math display="block" className="hidden text-lg md:block">
+  <mrow>
+    <msub>
+      <mi>S</mi>
+      <mi>Paris&nbsp;eq</mi>
+    </msub>
+    <mo>=</mo>
+    <mrow>
+      <mo>(</mo>
+      <mn>6</mn>
+      <mo>,</mo>
+      <mn>000</mn>
+      <mo>,</mo>
+      <mn>000</mn>
+      <mo>×</mo>
+      <mn>0.0058</mn>
+      <mo>)</mo>
+    </mrow>
+    <mo>×</mo>
+    <mn>1.22</mn>
+    <mo>≈</mo>
+    <mn>42</mn>
+    <mo>,</mo>
+    <mn>456</mn>
+    <mo>&nbsp;</mo>
+    <mtext>EUR</mtext>
+  </mrow>
+</math>
+
+  <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+    Remarque&nbsp;: le résultat est une <strong>approximation de pouvoir d’achat</strong>, pas un salaire contractuel. Il permet de comparer ce que « vaut » un salaire de Tokyo une fois ramené au niveau de prix parisien.
+  </p>
+</div>
+  }
+/>
+
+---
+
+## Les salaires des développeurs au Japon en 2025
+
+Maintenant qu'on a établi une méthode de comparaison efficace entre Tokyo et Paris, faisons un tour d'horizon des salaires observés en 2025.
+
+Les tableaux qui suivent utilisent le toggle interactif pour basculer entre les montants bruts en yens et leur équivalent "pouvoir d'achat Paris". Cela vous permettra d'évaluer concrètement ce que représentent les offres japonaises par rapport à vos repères français.
+
+On va passer en revue les salaires selon quatre critères clés : **l'ancienneté** (facteur principal), **la spécialité** (certaines sont mieux payées), **la ville** (Tokyo vs autres hubs tech), et **le type de contrat** (direct vs cabinet).
+
+### Salaire moyen par ancienneté
+
+Le niveau d’expérience reste le facteur principal influençant le salaire.
+
+Voici les chiffres moyens observés en 2025 :
+
+<SalaryTable
+  title="Salaires moyens par ancienneté"
+  columns={[
+    { key: 'level', label: 'Niveau d’expérience' },
+    { key: 'avg', label: 'Salaire moyen annuel', align: 'right' },
+    { key: 'low', label: 'Fourchette basse', align: 'right' },
+    { key: 'high', label: 'Fourchette haute', align: 'right' },
+  ]}
+  rows={salariesByExperience}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="info"
+  description="Les profils seniors sont particulièrement recherchés au Japon, surtout pour les étrangers. Le marché tech japonais privilégie l'expertise software pour combler son retard technologique et former les équipes locales."
+  details={
+    <>
+      <p>
+        Le Japon reconnaît avoir pris du retard sur certaines technologies
+        modernes (cloud, DevOps, méthodes agiles). Les entreprises cherchent
+        donc activement des profils expérimentés pour :
+      </p>
+      <ul>
+        <li>
+          <strong>Transférer l'expertise :</strong> apporter des compétences
+          techniques avancées
+        </li>
+        <li>
+          <strong>Former les équipes locales :</strong> mentoring et montée en
+          compétences
+        </li>
+        <li>
+          <strong>Moderniser l'architecture :</strong> migration vers des
+          technologies récentes
+        </li>
+        <li>
+          <strong>Apporter les best practices :</strong> méthodologies de
+          développement modernes
+        </li>
+      </ul>
+      <p className="mt-2">
+        C'est pourquoi les profils seniors avec expérience en mentoring sont un
+        fort atout, particulièrement valorisés sur le marché japonais.
+      </p>
+    </>
+  }
+/>
+
+---
+
+### Salaire moyen par spécialité
+
+Certaines spécialités sont nettement mieux rémunérées que d’autres, surtout si elles sont en tension sur le marché japonais.
+
+<SalaryTable
+  columns={[
+    { key: 'spec', label: 'Spécialité' },
+    { key: 'avg', label: 'Salaire moyen annuel', align: 'right' },
+    { key: 'low', label: 'Fourchette basse', align: 'right' },
+    { key: 'high', label: 'Fourchette haute', align: 'right' },
+  ]}
+  rows={salariesBySpecialization}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="info"
+  description="Certaines spécialités sont particulièrement recherchées au Japon : ingénierie cloud, data science, IA/ML, cybersécurité ou encore DevOps. Ces domaines offrent souvent des salaires plus élevés et de meilleures opportunités de contrat direct, surtout pour les profils mid à senior."
+/>
+
+---
+
+### Salaire par ville (hubs technologiques)
+
+Le Japon est centralisé sur Tokyo, mais certaines villes offrent un bon équilibre entre salaire et coût de la vie.
+
+<SalaryTable
+  title="Salaires moyens par ville"
+  columns={[
+    { key: 'city', label: 'Ville' },
+    { key: 'avg', label: 'Salaire moyen annuel (JPY)', align: 'right' },
+    { key: 'low', label: 'Fourchette basse (JPY)', align: 'right' },
+    { key: 'high', label: 'Fourchette haute (JPY)', align: 'right' },
+  ]}
+  rows={salariesByCity}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="info"
+  description="Tokyo paie mieux, mais le coût de la vie est aussi plus élevé. Osaka et Fukuoka offrent un meilleur rapport salaire / qualité de vie pour certains profils."
+/>
+
+---
+
+### Salaire annuel par type de contrat (exemple concret)
+
+Prenons le cas d’un **développeur back‑end avec 7 ans d’expérience**. Voici comment son salaire annuel peut varier selon le type de contrat :
+
+<SalaryTable
+  title="Impact du type de contrat (exemple : back-end, 7 ans d’expérience)"
+  columns={[
+    { key: 'type', label: 'Type de contrat' },
+    { key: 'brut', label: 'Salaire brut annuel (JPY)', align: 'right' },
+    { key: 'notes', label: 'Notes' },
+  ]}
+  rows={[
+    {
+      type: "Contrat direct avec l'entreprise",
+      brut: 10_000_000,
+      notes: 'Prime annuelle souvent incluse, stabilité',
+    },
+    {
+      type: 'Placement via cabinet de recrutement',
+      brut: 8_375_000,
+      notes: 'Cabinet prend une marge, salaire plus bas',
+    },
+  ]}
+  city="paris"
+  adjustmentFactor={1.22}
+  exchangeRate={0.0058}
+  locale="fr-FR"
+/>
+
+<Alert
+  type="warning"
+  description="Le mode de recrutement influence directement votre salaire. Un contrat direct avec l'entreprise offre généralement une meilleure rémunération qu'un placement via cabinet de recrutement, qui prend une commission sur votre salaire."
+/>
+
+---
+
+## Conclusion
+
+Partir travailler au Japon en tant que développeur en 2026 représente une **opportunité réelle et attractive**, à condition d'aborder la question salariale avec les bons repères.
+
+Cet article a démontré pourquoi une **simple conversion yens-euros est trompeuse**. Grâce à notre analyse comparative Tokyo/Paris, nous avons établi qu'un développeur back-end expérimenté peut bénéficier d'un **pouvoir d'achat supérieur de 22%** à Tokyo par rapport à une conversion brute. Concrètement, 10M¥ à Tokyo équivalent à ~71k€ de pouvoir d'achat parisien, bien au-delà des ~58k€ de la conversion directe.
+
+### Les points clés validés par les données :
+
+- **L'expérience est reine** : de 6M¥ pour un junior à 12M¥+ pour un expert, l'écart est massif
+- **Les spécialités en tension paient mieux** : Data/IA et Cloud peuvent atteindre 12M¥, soit ~85k€ équivalent Paris
+- **Le type de contrat influence fortement** : CDI direct vs cabinet peut représenter 1,5M¥ d'écart (~13k€ équivalent)
+- **Tokyo domine mais coûte plus** : Osaka et Fukuoka offrent un excellent rapport qualité de vie/salaire
+
+### Au-delà du salaire : un gain de qualité de vie
+
+Les chiffres ne racontent qu'une partie de l'histoire. **Vivre au Japon en tant que développeur expatrié, c'est aussi et surtout un gain substantiel en qualité de vie** :
+
+- **Espace de vie** : appartements mieux conçus, espaces verts accessibles, transports efficaces
+- **Équilibre vie pro/perso** : culture du respect des horaires, moins de stress chronique
+- **Loisirs diversifiés** : culture riche, nature accessible, voyages abordables en Asie
+- **Potentiel d'épargne préservé** : malgré un mode de vie plus agréable, possibilité d'économiser
+
+En d'autres termes, vous ne sacrifiez pas votre confort financier pour cette expatriation, **vous l'améliorez sur tous les plans**.
+
+### Le vrai avantage compétitif japonais
+
+Le marché japonais privilégie **l'expertise et la stabilité**. Les profils seniors avec expérience en mentoring sont particulièrement valorisés pour combler le retard technologique local. C'est une opportunité unique de faire levier sur son expérience européenne tout en découvrant un cadre de vie stimulant.
+
+### Prêt à franchir le pas ?
+
+Que vous soyez encore en phase de réflexion ou déjà décidé à tenter l'aventure japonaise, une préparation solide fait toute la différence. Naviguer seul dans le marché tech japonais, c'est prendre le risque de faire les mauvais choix : entreprise inadaptée, négociation salariale ratée, visa mal géré, ou installation bâclée qui complique les premiers mois.
+
+Comme dans le Kyūdō, **il faut viser juste dès le départ**. Chaque détail compte : optimisation de votre profil, compréhension des codes culturels, stratégie de recherche d'emploi, techniques de négociation adaptées au marché japonais, et préparation logistique pour une installation sereine.
+
+**Estimez votre salaire potentiel au Japon dès maintenant** : [Simulateur de salaire](/simulateur)
+
+**Découvrez comment structurer votre projet de A à Z et réussir votre installation** : [Services d'accompagnement](/services)
+
+Votre aventure au Japon vous tend les bras. Il ne reste plus qu'à bien la préparer ! 🇯🇵
