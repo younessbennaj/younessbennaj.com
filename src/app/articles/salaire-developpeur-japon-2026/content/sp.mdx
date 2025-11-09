@@ -201,12 +201,12 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   title="Comment est calculé l’équivalent « pouvoir d’achat Paris »"
   description="L’idée est d’ajuster un salaire libellé en yens (JPY) en euros (EUR), puis d’appliquer un facteur de coût de la vie pour comparer à Paris."
   details={
-<div class="prose max-w-none">
+<div className="prose max-w-none">
   <p>
     Voici la formule générale utilisée :
   </p>
 
-<math display="block" class="text-lg">
+<math display="block" className="text-lg">
   <mrow>
     <msub>
       <mi>S</mi>
@@ -236,12 +236,12 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   </mrow>
 </math>
 
-<p class="mt-3">
+<p className="mt-3">
   En pratique, on regroupe le rapport de coûts dans un seul coefficient α&nbsp;
   :
 </p>
 
-<math display="block" class="text-lg">
+<math display="block" className="text-lg">
   <mrow>
     <msub>
       <mi>α</mi>
@@ -260,7 +260,7 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   </mrow>
 </math>
 
-<math display="block" class="text-lg">
+<math display="block" className="text-lg">
   <mrow>
     <msub>
       <mi>S</mi>
@@ -281,8 +281,8 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   </mrow>
 </math>
 
-<div class="not-prose dark:bg-zinc-900/60 mt-4 rounded-lg bg-zinc-50 p-4 text-sm">
-  <ul class="m-0 list-disc overflow-x-scroll pl-5">
+<div className="not-prose dark:bg-zinc-900/60 mt-4 rounded-lg bg-zinc-50 p-4 text-sm">
+  <ul className="m-0 list-disc overflow-x-scroll pl-5">
     <li className="flex items-center text-xs">
       <math>
         <msub>
@@ -338,8 +338,8 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   </ul>
 </div>
 
-<p class="mt-4 hidden md:block">Exemple (valeurs illustratives) :</p>
-<math display="block" class="hidden text-lg md:block">
+<p className="mt-4 hidden md:block">Exemple (valeurs illustratives) :</p>
+<math display="block" className="hidden text-lg md:block">
   <mrow>
     <msub>
       <mi>S</mi>
@@ -371,7 +371,7 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
 
 {' '}
 
-<math display="block" class="hidden text-lg md:block">
+<math display="block" className="hidden text-lg md:block">
   <mrow>
     <msub>
       <mi>S</mi>
@@ -400,7 +400,7 @@ Dans la suite de l'article, nous allons donc passer en revue les salaires observ
   </mrow>
 </math>
 
-  <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+  <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
     Remarque&nbsp;: le résultat est une <strong>approximation de pouvoir d’achat</strong>, pas un salaire contractuel. Il permet de comparer ce que « vaut » un salaire de Tokyo une fois ramené au niveau de prix parisien.
   </p>
 </div>

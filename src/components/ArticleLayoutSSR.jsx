@@ -1,29 +1,13 @@
-'use client'
-
-import { useContext } from 'react'
-import { useRouter } from 'next/navigation'
-
-import { AppContext } from '@/app/providers'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
-import { ArticleHeader } from '@/components/ArticleHeader'
-import { ArticleFooter } from '@/components/ArticleFooter'
+import { extractHeadingsFromMDX } from '@/lib/article-toc'
 import { TableOfContents } from '@/components/TableOfContents'
-import { TagList } from '@/components/TagList'
-import { ShareLinks } from '@/components/ShareLinks'
-import { useTableOfContents } from '@/hooks/useTableOfContents'
-import { useReadingTime } from '@/hooks/useReadingTime'
-import { useCurrentUrl } from '@/hooks/useCurrentUrl'
-import { useNormalizedTags } from '@/hooks/useNormalizedTags'
+import { ArticleHeader } from '@/components/ArticleHeader'
 
-export function ArticleLayout({ article, children }) {
-  const router = useRouter()
-  const { previousPathname } = useContext(AppContext)
-
-  // Custom hooks for better separation of concerns
-  const { toc, activeId } = useTableOfContents(children)
-  const currentUrl = useCurrentUrl()
-  const normalizedTags = useNormalizedTags(article?.tags)
+export async function ArticleLayoutSSR({ article, children }) {
+  const slug = 'salaire-developpeur-japon-2026'
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}/articles/${slug}`
+  const toc = await extractHeadingsFromMDX(slug)
 
   return (
     <Container className="mt-16 lg:mt-32">
@@ -71,22 +55,7 @@ export function ArticleLayout({ article, children }) {
               article={article}
               readingTime={article.readingTime}
             />
-
-            {/* Article Metadata */}
-            <div
-              className="my-10 flex flex-wrap items-center justify-between gap-4"
-              role="group"
-              aria-label="Article metadata"
-            >
-              <TagList tags={normalizedTags} />
-
-              <div className="block md:hidden">
-                <ShareLinks url={currentUrl} title={article.title} />
-              </div>
-            </div>
-
             <div className="mx-auto max-w-5xl lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-12">
-              {/* Article Content */}
               <div className="min-w-0">
                 <section aria-label="Article content">
                   <Prose
@@ -97,28 +66,18 @@ export function ArticleLayout({ article, children }) {
                     {children}
                   </Prose>
                 </section>
-
-                <ArticleFooter
-                  article={article}
-                  normalizedTags={normalizedTags}
-                  currentUrl={currentUrl}
-                />
               </div>
-
-              {/* Table of Contents Sidebar */}
-              {toc && toc.length > 0 && (
-                <aside
-                  aria-label="Table of contents"
-                  className="hidden rounded-lg border border-zinc-100 shadow-sm lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:self-start lg:overflow-y-auto"
-                >
-                  <TableOfContents
-                    currentUrl={currentUrl}
-                    toc={toc}
-                    activeId={activeId}
-                    title={article.title}
-                  />
-                </aside>
-              )}
+              <aside
+                aria-label="Table of contents"
+                className="hidden rounded-lg border border-zinc-100 shadow-sm lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:self-start lg:overflow-y-auto"
+              >
+                <TableOfContents
+                  toc={toc}
+                  initialActiveId={toc[0].id}
+                  title={article.title}
+                  currentUrl={url}
+                />
+              </aside>
             </div>
           </article>
         </main>

@@ -1,27 +1,20 @@
+'use client'
+
+import React from 'react'
 import { memo } from 'react'
-import { smoothScrollTo } from '@/lib/performanceUtils'
 import classNames from 'classnames'
 import { ShareLinks } from '@/components/ShareLinks'
+import { useTableOfContents } from '@/hooks/useTableOfContents'
 
 export const TableOfContents = memo(function TableOfContents({
   toc,
-  activeId,
+  initialActiveId,
   currentUrl,
   title,
 }) {
-  if (!toc.length) return null
+  const { activeId } = useTableOfContents(toc, initialActiveId)
 
-  const scrollToHeading = (e, id) => {
-    e.preventDefault()
-    const element = document.getElementById(id)
-    if (element) {
-      smoothScrollTo(element)
-      // Update URL without triggering navigation
-      if (window.history.replaceState) {
-        window.history.replaceState(null, '', `#${id}`)
-      }
-    }
-  }
+  if (!toc.length) return null
 
   return (
     <div className="dark:bg-zinc-900 flex flex-col gap-8 bg-zinc-50 p-6">
@@ -40,10 +33,12 @@ export const TableOfContents = memo(function TableOfContents({
         <hr className="dark:border-zinc-700 my-4 border-t border-zinc-200" />
         <ol className="dark:text-zinc-400 text-sm leading-6 text-zinc-600">
           {toc.map(({ id, text, level }) => (
-            <li key={id} className={level === 3 ? 'ml-6 text-sm' : 'text-md'}>
+            <li
+              key={id + text}
+              className={level === 3 ? 'ml-6 text-sm' : 'text-md'}
+            >
               <a
                 href={`#${id}`}
-                onClick={(e) => scrollToHeading(e, id)}
                 aria-current={activeId === id ? 'location' : undefined}
                 className={classNames(
                   'block rounded-lg transition-colors focus:outline-none',

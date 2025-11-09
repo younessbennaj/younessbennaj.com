@@ -122,7 +122,6 @@ export function StraightAngleCityDonut({
             {mode === 'JPY' && <span>{CURRENCY_META[mode].symbol}</span>}
             <NumberTicker
               value={total}
-              startValue={0}
               decimalPlaces={CURRENCY_META[mode].decimals}
               locale={CURRENCY_META[mode].locale} // fr-FR pour €, ja-JP pour ¥
               className="dark:text-zinc-100 text-zinc-900"

@@ -1,6 +1,6 @@
 import glob from 'fast-glob'
 
-async function importArticle(articleFilename) {
+export async function importArticle(articleFilename) {
   let { article } = await import(`../app/articles/${articleFilename}`)
 
   return {
