@@ -1,4 +1,4 @@
-import { ArticleLayout } from '@/components/ArticleLayout'
+import { ArticleLayoutSSR } from '@/components/ArticleLayoutSSR'
 import banner from '@/images/banner-2.jpg'
 
 export const article = {
@@ -26,53 +26,50 @@ export const article = {
     "Une vue d'ensemble structurée des étapes pour s'installer et lancer sa carrière au Japon en tant que développeur ou talent tech.",
 }
 
-export const metadata = {
-  title: article.title,
-  description: article.description,
-}
+export default (props) => (
+  <ArticleLayoutSSR
+    article={article}
+    {...props}
+    slug="guide-expatriation-japon-developpeur"
+  />
+)
 
-export default (props) => <ArticleLayout article={article} {...props} />
-
-<h2 id="introduction">Introduction</h2>
+## Introduction
 
 De plus en plus de développeurs et de talents tech envisagent de s'expatrier au Japon, attirés par sa culture unique, ses opportunités professionnelles et son cadre de vie. Mais avant de se lancer, encore faut-il comprendre les démarches à entreprendre, les options de visa disponibles, le fonctionnement du marché de l'emploi et les étapes d'installation.
 
 Ce guide vous propose une vue d'ensemble claire et structurée pour vous orienter dans votre projet d'expatriation au Japon. Il sert aussi de point de départ vers d'autres articles détaillés disponibles sur ce site.
 
-<h2 id="clarifier-son-projet-d-expatriation">
-  Clarifier son projet d'expatriation
-</h2>
+## Clarifier son projet d'expatriation
 
 Avant toute démarche, prenez le temps de réfléchir à ce que vivre au Japon implique vraiment : la langue, la culture professionnelle, le coût de la vie, le statut de résident étranger... Un projet solide commence par une réflexion lucide.
 
 → À lire : [_Pourquoi j'ai choisi de m'expatrier au Japon_](/articles/pourquoi-vivre-au-japon)
 
-<h2 id="comprendre-le-marche-de-l-emploi-tech">
-  Comprendre le marché de l'emploi tech
-</h2>
+## Comprendre le marché de l'emploi tech
 
 Le Japon offre de nombreuses opportunités dans la tech, mais il faut en comprendre les spécificités : types de contrats, attentes des recruteurs, salaires, niveau de langue requis...
 
 → À lire : [_Salaire et pouvoir d'achat au Japon quand on vient de France_](/articles/salaire-developpeur-japon-2026)
 
-<h2 id="choisir-un-visa-adapte">Choisir un visa adapté</h2>
+## Choisir un visa adapté
 
 Visa ingénieur, PVT, visa hautement qualifié… plusieurs options s'offrent à vous selon votre profil. Chacune a ses avantages, ses contraintes, et ses conditions d'éligibilité.
 
 → À venir
 
-<h2 id="trouver-un-emploi-au-japon">Trouver un emploi au Japon</h2>
+## Trouver un emploi au Japon
 
 Postuler depuis l'étranger ou venir sur place ? Comment se faire remarquer des recruteurs ? Quels sont les canaux à privilégier ?
 
 → À venir
 
-<h2 id="reussir-son-installation">Réussir son installation</h2>
+## Réussir son installation
 
 Une fois sur place, il faut rapidement gérer des démarches importantes : logement, téléphone, compte bancaire, numéro de résident, pension… Anticiper cette phase permet d'éviter beaucoup de stress.
 
 → À venir
 
-<h2 id="conclusion">Conclusion</h2>
+## Conclusion
 
 Ce guide est pensé pour évoluer et s'enrichir au fil du temps. N'hésitez pas à revenir régulièrement consulter les nouveaux articles ou à explorer la page [Services](/services) pour bénéficier d'un accompagnement personnalisé.
