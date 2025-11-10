@@ -1,7 +1,6 @@
-import { ArticleLayout } from '@/components/ArticleLayout'
+import { ArticleLayoutSSR } from '@/components/ArticleLayoutSSR'
 import { ArticleImage } from '@/components/ArticleImage'
 import clsx from 'clsx'
-import banner from '@/images/banner-3.jpg'
 import photo1 from '@/images/japon-entre-tradition-et-modernite.jpeg'
 import photo2 from '@/images/otaku.png'
 import gto from '@/images/gto.jpg'
@@ -11,23 +10,15 @@ import river from '@/images/river.jpg'
 import countryside from '@/images/country-side.jpg'
 import plane from '@/images/plane.jpg'
 import manga from '@/images/manga.jpg'
+import { article } from '../meta'
 
-export const article = {
-  author: 'Youness Bennaj',
-  createdAt: '2025-07-30',
-  category: 'expatriation',
-  image: banner,
-  title: "Pourquoi j'ai choisi de partir vivre au Japon",
-  description:
-    "Dans cet article, je partage les raisons personnelles et professionnelles qui m'ont poussé à faire le grand saut vers le Japon, et ce que cela signifie de s’expatrier dans un pays aussi fascinant que complexe.",
-}
-
-export const metadata = {
-  title: article.title,
-  description: article.description,
-}
-
-export default (props) => <ArticleLayout article={article} {...props} />
+export default (props) => (
+  <ArticleLayoutSSR
+    article={article}
+    {...props}
+    slug="pourquoi-vivre-au-japon"
+  />
+)
 
 **_Pourquoi partir vivre au Japon ?_**
 
@@ -37,9 +28,7 @@ Cet article retrace mon parcours, de l’envie floue à l’expatriation concrè
 
 Si tu envisages toi aussi de t’installer au Japon, ou si ce sujet t’intrigue simplement, tu y trouveras peut-être des repères utiles, un retour d’expérience honnête, sans fantasme ni raccourci.
 
-<h2 id="pourquoi-le-japon-m-attirait-depuis-l-enfance">
-  Pourquoi le Japon m’attirait depuis l’enfance
-</h2>
+## Pourquoi le Japon m’attirait depuis l’enfance
 
 <Image src={child} alt="summer wars" className="mb-2" />
 
@@ -71,12 +60,7 @@ C’est ainsi que j’ai découvert **une scène musicale totalement nouvelle po
 
 Et puis il y a eu les produits culturels. Les jouets, les consoles, les jeux vidéo japonais qui débarquaient dans les rayons français comme des éclats d’un autre monde. J’ai reçu Pokémon Argent avec une Game Boy Color pour mes 9 ans. Je n’en avais pas conscience à l’époque, mais cette version du jeu, inspirée de la région de Kansai avec ses temples, ses rizières et ses festivals. Animal Crossing, avec ses événements saisonniers et ses nuits d’été où résonnaient les grillons sur ma Nintendo DS, distillait dans chaque geste anodin une forme de contemplation. Ramasser un coquillage, écouter le vent dans les arbres, arroser ses fleurs… autant de tâches simples qui devenaient, sans que je m’en rende compte, une initiation à un rapport au monde apaisé, attentif, profondément japonais. Tous ces produits culturels m’ont façonné en douceur, année après année. Ils ont infusé dans mon imaginaire, nourri ma sensibilité, et tissé un lien intime avec un pays que je ne connaissais pas encore. C’était une lente imprégnation. Une présence discrète, constante, familière.
 
-<h2
-  id="
-  le-japon-entre-tradition-et-modernite"
->
-  "Le Japon: entre tradition et modernité"
-</h2>
+## "Le Japon: entre tradition et modernité"
 
 <ArticleImage
   src={photo1}
@@ -104,9 +88,7 @@ Ces documentaires posaient souvent un regard extérieur, parfois un peu pressé,
 
 Au fil des années, toutes ces influences ont nourri une curiosité grandissante, jusqu’à faire germer une idée simple, mais tenace : un jour, je vivrai au Japon. Pourtant, la vie a suivi son cours. Les choix, les contraintes, les priorités ont peu à peu repoussé ce projet à plus tard. S’y ajoutait une impression tenace : celle que l’expatriation au Japon relevait d’un parcours semé d’embûches. Les témoignages concrets manquaient, ou alors ils venaient de profils très éloignés du mien. Sur YouTube, la plupart des récits étaient ceux de créateurs de contenu vivant de leur activité, de passionnés économisant pour quelques semaines sur place, ou encore d’expatriés installés depuis longtemps, parlant couramment japonais et travaillant dans des domaines liés à la culture, au tourisme, ou comme professeurs de français, souvent sans qualification particulière. Leurs parcours avaient beau être inspirants, je peinais à m’y identifier. Je ne parlais pas japonais, je n’avais pas le contexte personnel ni professionnel pour tout plaquer. Et pendant longtemps, j’ai cru que ce projet resterait dans le domaine du rêve, peut-être réalisable un jour à travers un long voyage, mais pas au-delà.
 
-<h2 id="de-l-envie-a-l-action-ce-qui-m-a-pousse-a-franchir-le-pas-vers-le-japon">
-  De l’envie à l’action : ce qui m’a poussé à franchir le pas vers le Japon
-</h2>
+## De l’envie à l’action : ce qui m’a poussé à franchir le pas vers le Japon
 
 <Image src={plane} alt="La vent se lève" className="mb-2" />
 
@@ -126,7 +108,7 @@ La ville est devenue un cadre de vie possible. Et ce projet, que je portais depu
 
 Au bout de quelques semaines, l'évidence s'est imposée tranquillement : je ne me voyais plus rentrer. Ce qui devait être un test de trois mois prenait une autre tournure. L'idée de reprendre l'avion dans l'autre sens me semblait de moins en moins naturelle. Pas par rejet de la France, simplement parce que **j'avais trouvé mon rythme ici**. La décision s'est prise d'elle-même. Plus question de partir pour revenir : il fallait maintenant organiser une installation durable. Visa de travail, recherche d'emploi... L'aventure changeait de dimension.
 
-<h2 id="conclusion">Conclusion</h2>
+## Conclusion
 
 Aujourd’hui, en écrivant ces lignes depuis Tokyo, je mesure le chemin parcouru. Ce rêve d’enfance, longtemps nourri par l’imaginaire et la distance, a fini par devenir réalité. Mais le passage du fantasme à l’expérience concrète ne s’est pas fait en ligne droite. Il a fallu du temps, des ajustements, des hésitations aussi, pour que l’envie se transforme en projet, puis en décision assumée. Cette maturation lente m’a permis d’aborder l’expatriation avec plus de lucidité. Je n’ai pas tout idéalisé, mais j’ai su préserver cette fascination initiale, désormais éclairée par le réel.
 

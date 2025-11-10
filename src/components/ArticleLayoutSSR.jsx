@@ -4,8 +4,7 @@ import { extractHeadingsFromMDX } from '@/lib/article-toc'
 import { TableOfContents } from '@/components/TableOfContents'
 import { ArticleHeader } from '@/components/ArticleHeader'
 
-export async function ArticleLayoutSSR({ article, children }) {
-  const slug = 'salaire-developpeur-japon-2026'
+export async function ArticleLayoutSSR({ article, children, slug }) {
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/articles/${slug}`
   const toc = await extractHeadingsFromMDX(slug)
 

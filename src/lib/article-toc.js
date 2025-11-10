@@ -5,6 +5,7 @@ import rehypeSlug from 'rehype-slug'
 import { VFile } from 'vfile'
 import fs from 'fs'
 import path from 'path'
+import { headers } from 'next/headers'
 
 function extractHeadingsPlugin() {
   return (tree, file) => {
@@ -56,12 +57,41 @@ function extractTextFromElement(node) {
 }
 
 export async function extractHeadingsFromMDX(articleSlug) {
-  const filePath = path.join(
+  const userAgent = headers().get('user-agent') || ''
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(userAgent)
+  const deviceType = isMobile ? 'sp' : 'pc'
+
+  const filePCPath = path.join(
     process.cwd(),
     'src/app/articles',
     articleSlug,
     'content/pc.mdx',
   )
+
+  const fileSPPath = path.join(
+    process.cwd(),
+    'src/app/articles',
+    articleSlug,
+    'content/sp.mdx',
+  )
+
+  const defaultFilePath = path.join(
+    process.cwd(),
+    'src/app/articles',
+    articleSlug,
+    'content/default.mdx',
+  )
+
+  // Choisir le bon fichier en fonction du device si ils existent
+  // Sinon, utiliser le fichier par défaut
+
+  let filePath = defaultFilePath
+
+  if (deviceType === 'pc' && fs.existsSync(filePCPath)) {
+    filePath = filePCPath
+  } else if (deviceType === 'sp' && fs.existsSync(fileSPPath)) {
+    filePath = fileSPPath
+  }
 
   try {
     const fileContent = fs.readFileSync(filePath, 'utf8')
